@@ -5,19 +5,18 @@ using Microsoft.AspNetCore.Http;
 
 namespace EndProjectOrgani.Entities
 {
-    public class Blog:BaseEntity
+    public class SaleOff:BaseEntity
     {
-        public string Title { get; set; }
+        public string Name { get; set; }
+        public decimal OldPrice { get; set; }
+        public decimal NewPrice { get; set; }
         public string Image { get; set; }
         [NotMapped]
         public IFormFile Photo { get; set; }
 
-        public int OwnerId { get; set; }
 
         //Relation Property
-
         public List<Comment> Comments { get; set; }
-        public Owner Owner { get; set; }
-        public BlogDetail BlogDetails { get; set; }
+        public SaleOffDetail SaleOffDetails { get; set; }
     }
 }

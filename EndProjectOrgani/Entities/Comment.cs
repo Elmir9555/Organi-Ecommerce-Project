@@ -1,16 +1,16 @@
 ﻿using System;
 namespace EndProjectOrgani.Entities
 {
-    public class BlogDetail:BaseEntity
+    public class Comment:BaseEntity
     {
-        public string Description { get; set; }
-        public string CategoryName { get; set; }
-        public string Tags { get; set; }
+        public string Message { get; set; }
 
         public int BlogId { get; set; }
+        public int SaleOffId { get; set; }
 
         //Relation Property
 
         public Blog Blog { get; set; }
+        public SaleOff SaleOff { get; set; }
     }
 }

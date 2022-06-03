@@ -13,6 +13,9 @@
     <None Remove="Microsoft.EntityFrameworkCore.Tools" />
     <None Remove="Microsoft.EntityFrameworkCore.Design" />
     <None Remove="Context\" />
+    <None Remove="Validation\" />
+    <None Remove="Validation\ModelMetaDataTypeValidation\" />
+    <None Remove="Repository\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Home\" />
@@ -20,6 +23,9 @@
     <Folder Include="wwwroot\" />
     <Folder Include="Entities\" />
     <Folder Include="Context\" />
+    <Folder Include="Validation\" />
+    <Folder Include="Validation\ModelMetaDataTypeValidation\" />
+    <Folder Include="Repository\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\" />
