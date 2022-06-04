@@ -5735,7 +5735,7 @@
       "outputPath": "/Users/elmirustayev/Desktop/EndProjectOrgani/EndProjectOrgani/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/elmirustayev/.nuget/NuGet/NuGet.Config"
+        "/Users/elmirustayev/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"

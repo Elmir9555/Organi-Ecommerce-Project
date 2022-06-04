@@ -3,9 +3,6 @@ namespace EndProjectOrgani.Entities
 {
     public class Subscribe:BaseEntity
     {
-        public class Subcribe : BaseEntity
-        {
-            public string Email { get; set; }
-        }
+            public string Email { get; set; }       
     }
 }

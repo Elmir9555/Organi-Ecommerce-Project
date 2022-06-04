@@ -21,6 +21,15 @@
     <None Remove="Areas\AdminPanel\" />
     <None Remove="Areas\AdminPanel\Controllers\" />
     <None Remove="Areas\AdminPanel\Views\" />
+    <None Remove="Areas\AdminPanel\Views\Shared\" />
+    <None Remove="Areas\AdminPanel\Views\Advert\" />
+    <None Remove="Areas\AdminPanel\Views\Blog\" />
+    <None Remove="Areas\AdminPanel\Views\Category\" />
+    <None Remove="Areas\AdminPanel\Views\Comment\" />
+    <None Remove="Areas\AdminPanel\Views\Contact\" />
+    <None Remove="Areas\AdminPanel\Views\Product\" />
+    <None Remove="Areas\AdminPanel\Views\SaleOff\" />
+    <None Remove="Areas\AdminPanel\Views\Subscribe\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Home\" />
@@ -32,15 +41,26 @@
     <Folder Include="Validation\ModelMetaDataTypeValidation\" />
     <Folder Include="Repository\" />
     <Folder Include="UniteOfWork\" />
-    <Folder Include="wwwroot\AdminPanel\" />
     <Folder Include="Areas\" />
     <Folder Include="Areas\AdminPanel\" />
     <Folder Include="Areas\AdminPanel\Controllers\" />
     <Folder Include="Areas\AdminPanel\Views\" />
+    <Folder Include="Areas\AdminPanel\Views\Shared\" />
+    <Folder Include="Areas\AdminPanel\Views\Advert\" />
+    <Folder Include="Areas\AdminPanel\Views\Blog\" />
+    <Folder Include="Areas\AdminPanel\Views\Category\" />
+    <Folder Include="Areas\AdminPanel\Views\Comment\" />
+    <Folder Include="Areas\AdminPanel\Views\Contact\" />
+    <Folder Include="Areas\AdminPanel\Views\Product\" />
+    <Folder Include="Areas\AdminPanel\Views\SaleOff\" />
+    <Folder Include="Areas\AdminPanel\Views\Subscribe\" />
+    <Folder Include="wwwroot\AdminPanel\" />
+    <Folder Include="wwwroot\AdminPanel\assets\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\" />
     <Content Remove="wwwroot\AdminPanel\" />
+    <Content Remove="wwwroot\AdminPanel\assets\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.25" />

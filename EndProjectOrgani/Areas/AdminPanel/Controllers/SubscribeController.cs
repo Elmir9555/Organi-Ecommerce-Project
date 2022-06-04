@@ -25,7 +25,7 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
 
         public async Task<IActionResult> SubcribeList()
         {
-            var list = await _uow.GetRepository<Subcribe>().GetAllOrderByAsync(x => x.Id, false);
+            var list = await _uow.GetRepository<Subscribe>().GetAllOrderByAsync(x => x.Id, false);
 
             return View(list);
         }
@@ -35,12 +35,12 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Create(Subcribe model)
+        public async Task<IActionResult> Create(Subscribe model)
         {
             if (!ModelState.IsValid)
                 return View();
 
-            await _uow.GetRepository<Subcribe>().CreateAsync(model);
+            await _uow.GetRepository<Subscribe>().CreateAsync(model);
             await _uow.SaveChangeAsync();
 
             return RedirectToAction("SubcribeList", "Subcribe", new { area = "AdminPanel" });
@@ -48,13 +48,13 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
 
         public async Task<IActionResult> Update(int id)
         {
-            var entity = await _uow.GetRepository<Subcribe>().FindAsync(id);
+            var entity = await _uow.GetRepository<Subscribe>().FindAsync(id);
             return View(entity);
         }
         [HttpPost]
-        public async Task<IActionResult> Update(int id, Subcribe model)
+        public async Task<IActionResult> Update(int id, Subscribe model)
         {
-            var Dbentity = await _uow.GetRepository<Subcribe>().FindAsync(id);
+            var Dbentity = await _uow.GetRepository<Subscribe>().FindAsync(id);
 
             Dbentity.Email = model.Email;
             Dbentity.Status = DataStatus.Updated;
@@ -66,7 +66,7 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
 
         public async Task<IActionResult> Delete(int id)
         {
-            var entity = await _uow.GetRepository<Subcribe>().FindAsync(id);
+            var entity = await _uow.GetRepository<Subscribe>().FindAsync(id);
             if (entity == null) return NotFound();
 
             //_uow.GetRepository<Category>().Delete(entity);
@@ -80,7 +80,7 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
 
         public async Task<IActionResult> Details(int id)
         {
-            var entity = await _uow.GetRepository<Subcribe>().FindAsync(id);
+            var entity = await _uow.GetRepository<Subscribe>().FindAsync(id);
             return View(entity);
         }
     }
