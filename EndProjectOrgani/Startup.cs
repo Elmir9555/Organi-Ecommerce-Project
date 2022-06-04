@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EndProjectOrgani.Context;
+using EndProjectOrgani.UniteOfWork;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -31,6 +32,8 @@ namespace EndProjectOrgani
             {
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
+
+            services.AddScoped<IUow, Uow>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,14 +53,18 @@ namespace EndProjectOrgani
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                    name: "DefaultArea",
-                    pattern: "{area:exists}/{Controller=AdminPanel}/{action=index}/{id?}"
+                   name: "Defaultareas",
+                   pattern: "{area:exists}/{controller=Product}/{action=ProductList}/{id?}"
+                   );
+                endpoints.MapControllerRoute(
+                    name: "Default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}"
                     );
                 endpoints.MapDefaultControllerRoute();
             });

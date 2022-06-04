@@ -16,6 +16,11 @@
     <None Remove="Validation\" />
     <None Remove="Validation\ModelMetaDataTypeValidation\" />
     <None Remove="Repository\" />
+    <None Remove="UniteOfWork\" />
+    <None Remove="Areas\" />
+    <None Remove="Areas\AdminPanel\" />
+    <None Remove="Areas\AdminPanel\Controllers\" />
+    <None Remove="Areas\AdminPanel\Views\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Home\" />
@@ -26,9 +31,16 @@
     <Folder Include="Validation\" />
     <Folder Include="Validation\ModelMetaDataTypeValidation\" />
     <Folder Include="Repository\" />
+    <Folder Include="UniteOfWork\" />
+    <Folder Include="wwwroot\AdminPanel\" />
+    <Folder Include="Areas\" />
+    <Folder Include="Areas\AdminPanel\" />
+    <Folder Include="Areas\AdminPanel\Controllers\" />
+    <Folder Include="Areas\AdminPanel\Views\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\" />
+    <Content Remove="wwwroot\AdminPanel\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.25" />
