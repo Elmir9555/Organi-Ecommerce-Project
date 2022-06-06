@@ -20,17 +20,18 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> ProductDetailsList()
+        public async Task<IActionResult> ProductDetailList()
         {
-            var list = await _context.ProductDetails.Where(x => x.Status == DataStatus.Deleted!).Include(x => x.Product).ToListAsync();
+            var list = await _context.ProductDetails.Where(x => x.Status != DataStatus.Deleted!).Include(x => x.Product).ToListAsync();
 
             return View(list);
         }
 
 
+
         public async Task<IActionResult> Create()
         {
-            var model = await _context.Products.Where(x => x.Status == DataStatus.Deleted!).ToListAsync();
+            var model = await _context.Products.Where(x => x.Status != DataStatus.Deleted!).OrderByDescending(x => x.Id).ToListAsync();
 
             var details = new ProductDetail();
 
@@ -46,7 +47,7 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
             await _context.ProductDetails.AddAsync(details);
             await _context.SaveChangesAsync();
 
-            return RedirectToAction("ProductDetailsList", "ProductDetails", new { area = "AdminPanel" });
+            return RedirectToAction("ProductDetailList", "ProductDetail", new { area = "AdminPanel" });
         }
 
         public async Task<IActionResult> Update(int id)
@@ -68,7 +69,7 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
             _context.ProductDetails.Update(details);
             await _context.SaveChangesAsync();
 
-            return RedirectToAction("ProductDetailsList", "ProductDetails", new { area = "AdminPanel" });
+            return RedirectToAction("ProductDetailList", "ProductDetail", new { area = "AdminPanel" });
         }
 
         public async Task<IActionResult> Delete(int id)
@@ -82,7 +83,7 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
             _context.ProductDetails.Update(details);
             await _context.SaveChangesAsync();
 
-            return RedirectToAction("ProductDetailsList", "ProductDetails", new { area = "AdminPanel" });
+            return RedirectToAction("ProductDetailList", "ProductDetail", new { area = "AdminPanel" });
         }
 
         public async Task<IActionResult> Details(int id)

@@ -12,10 +12,10 @@ using Microsoft.EntityFrameworkCore;
 namespace EndProjectOrgani.Areas.AdminPanel.Controllers
 {
     [Area("AdminPanel")]
-    public class CommnetController : Controller
+    public class CommentController : Controller
     {
         readonly AppDbContext _context;
-        public CommnetController(AppDbContext context)
+        public CommentController(AppDbContext context)
         {
             _context = context;
         }

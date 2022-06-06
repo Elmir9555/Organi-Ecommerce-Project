@@ -19,8 +19,15 @@ using EndProjectOrgani.Entities;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 2 "/Users/elmirustayev/Desktop/EndProjectOrgani/EndProjectOrgani/Areas/AdminPanel/Views/_ViewImports.cshtml"
+using EndProjectOrgani.Utilities.Paginations;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"f400a24e4f1c1f8dbc87c0f761266a45e781e06b", @"/Areas/AdminPanel/Views/_ViewStart.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"1987fed5214879411e22fb4c35a37463be06eb72", @"/Areas/AdminPanel/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"85dc7459527d4f2ed77f9bac2d2554cd7cf4c9bc", @"/Areas/AdminPanel/Views/_ViewImports.cshtml")]
     public class Areas_AdminPanel_Views__ViewStart : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

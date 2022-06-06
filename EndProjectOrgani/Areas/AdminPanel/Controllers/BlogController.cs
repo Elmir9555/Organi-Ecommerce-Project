@@ -29,20 +29,20 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
 
         public async Task<IActionResult> BlogList()
         {
-            var list = await _context.Blogs.Where(x => x.Status == DataStatus.Deleted!).Include(x => x.Owner).ToListAsync();
+            var list = await _context.Blogs.Where(x => x.Status != DataStatus.Deleted!).Include(x => x.Owner).ToListAsync();
 
             return View(list);
         }
 
         public async Task<IActionResult> Create()
         {
-            var owner = await _context.Owners.Where(x => x.Status == DataStatus.Deleted!).ToListAsync();
+            var owner = await _context.Owners.Where(x => x.Status != DataStatus.Deleted!).ToListAsync();
             var blog = new Blog();
 
             return View((blog, owner));
         }
         [HttpPost]
-        public async Task<IActionResult> Create(Blog model)
+        public async Task<IActionResult> Create([Bind(Prefix = "Item1")] Blog model)
         {
             if (!ModelState.IsValid)
                 return View();
@@ -75,7 +75,7 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
             return View((blog, owner));
         }
         [HttpPost]
-        public async Task<IActionResult> Update(int id, Blog model)
+        public async Task<IActionResult> Update(int id, [Bind(Prefix = "Item1")] Blog model)
         {
             var Dbentity = await _uow.GetRepository<Blog>().FindAsync(id);
 
@@ -130,7 +130,7 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
 
         public async Task<IActionResult> Details(int id)
         {
-            var entity = await _uow.GetRepository<Blog>().FindAsync(id);
+            var entity = await _context.Blogs.Include(x => x.Owner).FirstOrDefaultAsync(x => x.Id == id);
             return View(entity);
         }
     }

@@ -16,12 +16,12 @@
 
                         <thead>
                             <tr>
-                                <th class="text-center">#</th>
-                                <th colspan="2">Adress</th>
-                                <th>Phone</th>
-                                <th>Email</th>
-                                <th>OpenTime</th>
-                                <th style="text-align: center;padding-left:100px;">Process</th>
+                                <th colspan="1" class="text-center">#</th>
+                                <th colspan="1">Adress</th>
+                                <th colspan="1">Phone</th>
+                                <th colspan="1">Email</th>
+                                <th colspan="1">OpenTime</th>
+                                <th colspan="2" style="display:flex;justify-content:center;padding-left:100px;">Process</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -29,20 +29,20 @@
                             {
                                 <tr>
                                     <td class="text-center" style="padding-top:18px">@count</td>
-                                    <td colspan="2" style="padding-top:20px">
+                                    <td colspan="1" style="padding-top:20px">
                                         <h6>@saleoff.Adress</h6>
                                     </td>
-                                    <td colspan="2" style="padding-top:20px">
+                                    <td colspan="1" style="padding-top:20px">
                                         <h6>@saleoff.Phone</h6>
                                     </td>
-                                    <td colspan="2" style="padding-top:20px">
+                                    <td colspan="1" style="padding-top:20px">
                                         <h6>@saleoff.Email</h6>
                                     </td>
-                                    <td colspan="2" style="padding-top:20px">
+                                    <td colspan="1" style="padding-top:20px;">
                                         <h6>@saleoff.OpenTime</h6>
                                     </td>
 
-                                    <td style="display: flex;gap:25px;justify-content:flex-end;">
+                                    <td  style="display:flex;gap:25px;justify-content:flex-end;">
                                         <a asp-action="Details" asp-controller="Contact" asp-area="AdminPanel" asp-route-id="@saleoff.Id" class="btn btn-primary" style="color:white">Detail</a>
                                         <a asp-action="Update" asp-controller="Contact" asp-area="AdminPanel" asp-route-id="@saleoff.Id" class="btn btn-info">Update</a>
                                         <a asp-action="Delete" asp-controller="Contact" asp-area="AdminPanel" asp-route-id="@saleoff.Id" class="btn btn-danger" style="color:white">Delete</a>

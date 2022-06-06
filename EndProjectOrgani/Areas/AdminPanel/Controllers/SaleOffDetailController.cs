@@ -20,9 +20,9 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> SaleOffDetails()
+        public async Task<IActionResult> SaleOffDetailList()
         {
-            var list = await _context.SaleOffDetails.Where(x => x.Status == DataStatus.Deleted!).Include(x => x.SaleOff).ToListAsync();
+            var list = await _context.SaleOffDetails.Where(x => x.Status != DataStatus.Deleted!).Include(x => x.SaleOff).ToListAsync();
 
             return View(list);
         }
@@ -30,7 +30,7 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
 
         public async Task<IActionResult> Create()
         {
-            var model = await _context.SaleOffs.Where(x => x.Status == DataStatus.Deleted!).ToListAsync();
+            var model = await _context.SaleOffs.Where(x => x.Status != DataStatus.Deleted!).ToListAsync();
 
             var details = new SaleOffDetail();
 
@@ -46,7 +46,7 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
             await _context.SaleOffDetails.AddAsync(details);
             await _context.SaveChangesAsync();
 
-            return RedirectToAction("SaleOffDetailsList", "SaleOffDetails", new { area = "AdminPanel" });
+            return RedirectToAction("SaleOffDetailList", "SaleOffDetail", new { area = "AdminPanel" });
         }
 
         public async Task<IActionResult> Update(int id)
@@ -68,7 +68,7 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
             _context.SaleOffDetails.Update(details);
             await _context.SaveChangesAsync();
 
-            return RedirectToAction("SaleOffDetailsList", "SaleOffDetails", new { area = "AdminPanel" });
+            return RedirectToAction("SaleOffDetailList", "SaleOffDetail", new { area = "AdminPanel" });
         }
 
         public async Task<IActionResult> Delete(int id)
@@ -82,7 +82,7 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
             _context.SaleOffDetails.Update(details);
             await _context.SaveChangesAsync();
 
-            return RedirectToAction("SaleOffDetailsList", "SaleOffDetails", new { area = "AdminPanel" });
+            return RedirectToAction("SaleOffDetailList", "SaleOffDetail", new { area = "AdminPanel" });
         }
 
         public async Task<IActionResult> Details(int id)

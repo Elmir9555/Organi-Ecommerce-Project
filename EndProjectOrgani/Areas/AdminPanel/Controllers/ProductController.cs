@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using EndProjectOrgani.Context;
 using EndProjectOrgani.Entities;
 using EndProjectOrgani.UniteOfWork;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -17,25 +19,29 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
     {
         readonly IUow _uow;
         readonly IWebHostEnvironment _env;
-        public ProductController(IUow uow, IWebHostEnvironment env)
+        readonly AppDbContext _context;
+        public ProductController(IUow uow, IWebHostEnvironment env, AppDbContext context)
         {
             _uow = uow;
             _env = env;
+            _context = context;
         }
 
         public async Task<IActionResult> ProductList()
         {
-            var list = await _uow.GetRepository<Product>().GetAllOrderByAsync(x => x.Id, false);
+            var list = await _context.Products.Where(x => x.Status != DataStatus.Deleted).Include(x => x.Category).OrderByDescending(x => x.Id).ToListAsync();
 
             return View(list);
         }
 
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            return View();
+            var list = await _uow.GetRepository<Category>().GetAllOrderByAsync(x => x.Id, false);
+
+            return View((new Product(), list));
         }
         [HttpPost]
-        public async Task<IActionResult> Create(Product model)
+        public async Task<IActionResult> Create([Bind(Prefix = "Item1")] Product model)
         {
             if (!ModelState.IsValid)
                 return View();
@@ -63,10 +69,11 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
         public async Task<IActionResult> Update(int id)
         {
             var category = await _uow.GetRepository<Product>().FindAsync(id);
-            return View(category);
+            var list = await _uow.GetRepository<Category>().GetAllOrderByAsync(x => x.Id, false);
+            return View((category, list));
         }
         [HttpPost]
-        public async Task<IActionResult> Update(int id, Product model)
+        public async Task<IActionResult> Update(int id, [Bind(Prefix = "Item1")] Product model)
         {
             var Dbentity = await _uow.GetRepository<Product>().FindAsync(id);
 
@@ -94,6 +101,7 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
             Dbentity.Name = model.Name;
             Dbentity.Status = DataStatus.Updated;
             Dbentity.ModifatedDate = DateTime.Now;
+            Dbentity.CategoryId = model.CategoryId;
 
             await _uow.SaveChangeAsync();
             return RedirectToAction("ProductList", "Product", new { area = "AdminPanel" });
@@ -114,6 +122,7 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
             entity.Image = string.Empty;
             entity.Status = DataStatus.Deleted;
             entity.ModifatedDate = DateTime.Now;
+
             await _uow.SaveChangeAsync();
 
             return RedirectToAction("ProductList", "Product", new { area = "AdminPanel" });
@@ -121,7 +130,8 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
 
         public async Task<IActionResult> Details(int id)
         {
-            var entity = await _uow.GetRepository<Product>().FindAsync(id);
+            var entity = await _context.Products.Include(x => x.Category).OrderByDescending(x => x.Id).FirstOrDefaultAsync(x => x.Id == id);
+
             return View(entity);
         }
     }

@@ -20,9 +20,9 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> BlogDetailsList()
+        public async Task<IActionResult> BlogDetailList()
         {
-            var list = await _context.BlogDetails.Where(x => x.Status == DataStatus.Deleted!).Include(x => x.Blog).ToListAsync();
+            var list = await _context.BlogDetails.Where(x => x.Status != DataStatus.Deleted!).Include(x => x.Blog).ToListAsync();
 
             return View(list);
         }
@@ -30,7 +30,7 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
 
         public async Task<IActionResult> Create()
         {
-            var model = await _context.Blogs.Where(x => x.Status == DataStatus.Deleted!).ToListAsync();
+            var model = await _context.Blogs.Where(x => x.Status != DataStatus.Deleted!).ToListAsync();
 
             var details = new BlogDetail();
 
@@ -46,7 +46,7 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
             await _context.BlogDetails.AddAsync(details);
             await _context.SaveChangesAsync();
 
-            return RedirectToAction("BlogDetailsList", "BlogDetails", new { area = "AdminPanel" });
+            return RedirectToAction("BlogDetailList", "BlogDetail", new { area = "AdminPanel" });
         }
 
         public async Task<IActionResult> Update(int id)
@@ -68,7 +68,7 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
             _context.BlogDetails.Update(details);
             await _context.SaveChangesAsync();
 
-            return RedirectToAction("BlogDetailsList", "BlogDetails", new { area = "AdminPanel" });
+            return RedirectToAction("BlogDetailList", "BlogDetail", new { area = "AdminPanel" });
         }
 
         public async Task<IActionResult> Delete(int id)
@@ -82,7 +82,7 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
             _context.BlogDetails.Update(details);
             await _context.SaveChangesAsync();
 
-            return RedirectToAction("BlogDetailsList", "BlogDetails", new { area = "AdminPanel" });
+            return RedirectToAction("BlogDetailList", "BlogDetail", new { area = "AdminPanel" });
         }
 
         public async Task<IActionResult> Details(int id)

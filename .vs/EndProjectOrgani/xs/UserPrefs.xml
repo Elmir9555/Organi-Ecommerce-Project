@@ -5,15 +5,27 @@
         <State name="__root__">
           <Node name="EndProjectOrgani" expanded="True">
             <Node name="EndProjectOrgani" expanded="True">
-              <Node name="Views" expanded="True" />
-              <Node name="wwwroot" expanded="True" />
+              <Node name="Areas" expanded="True">
+                <Node name="AdminPanel" expanded="True">
+                  <Node name="Controllers" expanded="True" />
+                  <Node name="Views" expanded="True">
+                    <Node name="Advert" expanded="True">
+                      <Node name="AdvertList.cshtml" selected="True" />
+                    </Node>
+                    <Node name="Owner" expanded="True" />
+                    <Node name="SaleOff" expanded="True" />
+                    <Node name="SaleOffDetail" expanded="True" />
+                  </Node>
+                </Node>
+              </Node>
+              <Node name="Entities" expanded="True" />
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.ItemProperties.EndProjectOrgani FirstBuild="True" PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.ItemProperties.EndProjectOrgani PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

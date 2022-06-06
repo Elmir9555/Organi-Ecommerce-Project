@@ -28,6 +28,9 @@
     <!-- Custom Style-->
     <link href="~/AdminPanel/assets/css/app-style.css" rel="stylesheet" />
 
+    <link href="~/AdminPanel/assets/css/view.css" rel="stylesheet" />
+    <link href="~/AdminPanel/assets/css/index.css" rel="stylesheet" />
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 </head>
 
@@ -72,7 +75,7 @@
                 </li>
 
                 <li>
-                    <a asp-action="SaleOffDetailsList" asp-controller="SaleOffDetails" asp-area="AdminPanel">
+                    <a asp-action="SaleOffDetailList" asp-controller="SaleOffDetail" asp-area="AdminPanel">
                         <i class="zmdi zmdi-lock"></i> <span>SaleOffDetails</span>
                     </a>
                 </li>
@@ -84,7 +87,7 @@
                 </li>
 
                 <li>
-                    <a asp-action="BlogDetailsList" asp-controller="BlogDetails" asp-area="AdminPanel">
+                    <a asp-action="BlogDetailList" asp-controller="BlogDetail" asp-area="AdminPanel">
                         <i class="zmdi zmdi-face"></i> <span>BlogDetails</span>
                     </a>
                 </li>
@@ -111,7 +114,7 @@
                     </a>
                 </li>
                 <li>
-                    <a asp-action="SubribeList" asp-controller="Subcribe" asp-area="AdminPanel">
+                    <a asp-action="SubscribeList" asp-controller="Subscribe" asp-area="AdminPanel">
                         <i class="zmdi zmdi-format-list-bulleted"></i> <span>Subcribe</span>
                     </a>
                 </li>
@@ -186,15 +189,7 @@
         </div>
 
 
-        <!--Start footer-->
-        <footer class="footer">
-            <div class="container">
-                <div class="text-center">
-                    Copyright © 2018 Dashtreme Admin
-                </div>
-            </div>
-        </footer>
-        <!--End footer-->
+    
         <!--start color switcher-->
         <div class="right-sidebar">
             <div class="switcher-icon">

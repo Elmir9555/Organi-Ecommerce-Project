@@ -30,6 +30,12 @@
     <None Remove="Areas\AdminPanel\Views\Product\" />
     <None Remove="Areas\AdminPanel\Views\SaleOff\" />
     <None Remove="Areas\AdminPanel\Views\Subscribe\" />
+    <None Remove="Areas\AdminPanel\Views\Owner\" />
+    <None Remove="Areas\AdminPanel\Views\ProductDetail\" />
+    <None Remove="Areas\AdminPanel\Views\SaleOffDetail\" />
+    <None Remove="Areas\AdminPanel\Views\BlogDetail\" />
+    <None Remove="Utilities\" />
+    <None Remove="Utilities\Paginations\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Home\" />
@@ -56,11 +62,37 @@
     <Folder Include="Areas\AdminPanel\Views\Subscribe\" />
     <Folder Include="wwwroot\AdminPanel\" />
     <Folder Include="wwwroot\AdminPanel\assets\" />
+    <Folder Include="wwwroot\AdminPanel\img\" />
+    <Folder Include="wwwroot\AdminPanel\img\category\" />
+    <Folder Include="wwwroot\AdminPanel\img\product\" />
+    <Folder Include="Areas\AdminPanel\Views\Owner\" />
+    <Folder Include="Areas\AdminPanel\Views\ProductDetail\" />
+    <Folder Include="Areas\AdminPanel\Views\SaleOffDetail\" />
+    <Folder Include="wwwroot\AdminPanel\img\SaleOff\" />
+    <Folder Include="wwwroot\AdminPanel\img\ProductDetail\" />
+    <Folder Include="Areas\AdminPanel\Views\BlogDetail\" />
+    <Folder Include="wwwroot\AdminPanel\img\Owner\" />
+    <Folder Include="wwwroot\AdminPanel\img\Blog\" />
+    <Folder Include="wwwroot\AdminPanel\img\BlogDetail\" />
+    <Folder Include="wwwroot\AdminPanel\img\Advert\" />
+    <Folder Include="wwwroot\AdminPanel\img\SaleOffDetail\" />
+    <Folder Include="Utilities\" />
+    <Folder Include="Utilities\Paginations\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\" />
     <Content Remove="wwwroot\AdminPanel\" />
     <Content Remove="wwwroot\AdminPanel\assets\" />
+    <Content Remove="wwwroot\AdminPanel\img\" />
+    <Content Remove="wwwroot\AdminPanel\img\category\" />
+    <Content Remove="wwwroot\AdminPanel\img\product\" />
+    <Content Remove="wwwroot\AdminPanel\img\SaleOff\" />
+    <Content Remove="wwwroot\AdminPanel\img\ProductDetail\" />
+    <Content Remove="wwwroot\AdminPanel\img\Owner\" />
+    <Content Remove="wwwroot\AdminPanel\img\Blog\" />
+    <Content Remove="wwwroot\AdminPanel\img\BlogDetail\" />
+    <Content Remove="wwwroot\AdminPanel\img\Advert\" />
+    <Content Remove="wwwroot\AdminPanel\img\SaleOffDetail\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.25" />

@@ -19,8 +19,15 @@ using EndProjectOrgani.Entities;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 2 "/Users/elmirustayev/Desktop/EndProjectOrgani/EndProjectOrgani/Areas/AdminPanel/Views/_ViewImports.cshtml"
+using EndProjectOrgani.Utilities.Paginations;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"4dbf169d6c7b59fe75050b9272d9c69f05213ea9", @"/Areas/AdminPanel/Views/Subscribe/SubscribeList.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"1987fed5214879411e22fb4c35a37463be06eb72", @"/Areas/AdminPanel/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"85dc7459527d4f2ed77f9bac2d2554cd7cf4c9bc", @"/Areas/AdminPanel/Views/_ViewImports.cshtml")]
     public class Areas_AdminPanel_Views_Subscribe_SubscribeList : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<List<Subscribe>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-action", "Create", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -67,7 +74,7 @@ using EndProjectOrgani.Entities;
 #line hidden
 #nullable disable
             WriteLiteral("\n<div class=\"row\">\n    <div class=\"container\">\n        <h3 style=\"text-align: center\">Subcribe Table</h3>\n        <div class=\"create-btn\" style=\"display:flex;justify-content:flex-end;padding-top:20px;padding-right: 20px;\">\n            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4dbf169d6c7b59fe75050b9272d9c69f05213ea97170", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4dbf169d6c7b59fe75050b9272d9c69f05213ea97395", async() => {
                 WriteLiteral("Create");
             }
             );
@@ -137,7 +144,7 @@ using EndProjectOrgani.Entities;
 #line hidden
 #nullable disable
             WriteLiteral("</h6>\n                                    </td>\n                                    <td style=\"display: flex;gap:25px;justify-content:flex-end;\">\n                                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4dbf169d6c7b59fe75050b9272d9c69f05213ea911287", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4dbf169d6c7b59fe75050b9272d9c69f05213ea911512", async() => {
                 WriteLiteral("Detail");
             }
             );
@@ -174,7 +181,7 @@ using EndProjectOrgani.Entities;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\n                                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4dbf169d6c7b59fe75050b9272d9c69f05213ea914125", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4dbf169d6c7b59fe75050b9272d9c69f05213ea914350", async() => {
                 WriteLiteral("Update");
             }
             );
@@ -210,7 +217,7 @@ using EndProjectOrgani.Entities;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\n                                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4dbf169d6c7b59fe75050b9272d9c69f05213ea916880", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4dbf169d6c7b59fe75050b9272d9c69f05213ea917105", async() => {
                 WriteLiteral("Delete");
             }
             );

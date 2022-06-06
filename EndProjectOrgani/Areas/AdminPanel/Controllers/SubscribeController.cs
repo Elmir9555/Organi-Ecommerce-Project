@@ -13,11 +13,11 @@ using static EndProjectOrgani.Entities.Subscribe;
 namespace EndProjectOrgani.Areas.AdminPanel.Controllers
 {
     [Area("AdminPanel")]
-    public class SubcribeController : Controller
+    public class SubscribeController : Controller
     {
         readonly IUow _uow;
         readonly IWebHostEnvironment _env;
-        public SubcribeController(IUow uow, IWebHostEnvironment env)
+        public SubscribeController(IUow uow, IWebHostEnvironment env)
         {
             _uow = uow;
             _env = env;

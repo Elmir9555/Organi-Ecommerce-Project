@@ -1,5 +1,4 @@
-﻿
-@model List<Category>
+﻿@model List<Category>
 @{
     var count = 1;
 }
@@ -19,9 +18,11 @@
                             <tr>
                                 <th class="text-center">#</th>
                                 <th colspan="2">Name</th>
+
                                 <th>Image</th>
 
-                                <th style="text-align: center;padding-left:100px;">Process</th>
+                                <th colspan="2">CreatedDate</th>
+                                <th style="display: flex;justify-content:center">Process</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -32,10 +33,14 @@
                                     <td colspan="2" style="padding-top:20px">
                                         <h6>@saleoff.Name</h6>
                                     </td>
+
                                     <td>
                                         <div class="d-flex align-items-center"><img class="rounded-circle" src="~/AdminPanel/img/category/@saleoff.Image" width="40"></div>
                                     </td>
 
+                                    <td colspan="2" style="padding-top:20px">
+                                        <h6>@saleoff.CreatedDate.ToString("dd MMMM yyyy")</h6>
+                                    </td>
                                     <td style="display: flex;gap:25px;justify-content:flex-end;">
                                         <a asp-action="Details" asp-controller="Category" asp-area="AdminPanel" asp-route-id="@saleoff.Id" class="btn btn-primary" style="color:white">Detail</a>
                                         <a asp-action="Update" asp-controller="Category" asp-area="AdminPanel" asp-route-id="@saleoff.Id" class="btn btn-info">Update</a>
@@ -46,6 +51,16 @@
                             }
                         </tbody>
                     </table>
+                </div>
+
+                <div class="pagination">
+                    <div class="pag">
+                        1
+                    </div>
+                    <div class="pag">2</div>
+                    <div class="pag">3</div>
+                    <div class="pag">-></div>
+
                 </div>
             </div>
         </div>
