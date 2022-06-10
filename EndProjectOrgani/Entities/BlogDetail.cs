@@ -1,6 +1,10 @@
 ﻿using System;
+using EndProjectOrgani.Validation.ModelMetaDataTypeValidation;
+using Microsoft.AspNetCore.Mvc;
+
 namespace EndProjectOrgani.Entities
 {
+    [ModelMetadataType(typeof(BlogDetailsValidation))]
     public class BlogDetail:BaseEntity
     {
         public string Description { get; set; }

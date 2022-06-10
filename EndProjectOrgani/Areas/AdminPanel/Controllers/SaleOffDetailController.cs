@@ -22,7 +22,7 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
 
         public async Task<IActionResult> SaleOffDetailList()
         {
-            var list = await _context.SaleOffDetails.Where(x => x.Status != DataStatus.Deleted!).Include(x => x.SaleOff).ToListAsync();
+            var list = await _context.SaleOffDetails.Where(x => x.Status != DataStatus.Deleted).Include(x => x.SaleOff).ToListAsync();
 
             return View(list);
         }
@@ -30,7 +30,7 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
 
         public async Task<IActionResult> Create()
         {
-            var model = await _context.SaleOffs.Where(x => x.Status != DataStatus.Deleted!).ToListAsync();
+            var model = await _context.SaleOffs.Where(x => x.Status != DataStatus.Deleted).ToListAsync();
 
             var details = new SaleOffDetail();
 
@@ -52,7 +52,7 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
         public async Task<IActionResult> Update(int id)
         {
             var details = await _context.SaleOffDetails.FindAsync(id);
-            var model = await _context.SaleOffs.ToListAsync();
+            var model = await _context.SaleOffs.Where(x => x.Status != DataStatus.Deleted).ToListAsync();
 
             return View((details, model));
         }
@@ -75,11 +75,7 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
         {
             var details = _context.SaleOffDetails.Find(id);
 
-            //_context.ProductDetails.Remove(details);
-
-            details.Status = DataStatus.Deleted;
-            details.ModifatedDate = DateTime.Now;
-            _context.SaleOffDetails.Update(details);
+            _context.SaleOffDetails.Remove(details);
             await _context.SaveChangesAsync();
 
             return RedirectToAction("SaleOffDetailList", "SaleOffDetail", new { area = "AdminPanel" });

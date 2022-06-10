@@ -23,46 +23,13 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
             _env = env;
         }
 
-        public async Task<IActionResult> SubcribeList()
+        public async Task<IActionResult> SubscribeList()
         {
             var list = await _uow.GetRepository<Subscribe>().GetAllOrderByAsync(x => x.Id, false);
 
             return View(list);
         }
 
-        public IActionResult Create()
-        {
-            return View();
-        }
-        [HttpPost]
-        public async Task<IActionResult> Create(Subscribe model)
-        {
-            if (!ModelState.IsValid)
-                return View();
-
-            await _uow.GetRepository<Subscribe>().CreateAsync(model);
-            await _uow.SaveChangeAsync();
-
-            return RedirectToAction("SubcribeList", "Subcribe", new { area = "AdminPanel" });
-        }
-
-        public async Task<IActionResult> Update(int id)
-        {
-            var entity = await _uow.GetRepository<Subscribe>().FindAsync(id);
-            return View(entity);
-        }
-        [HttpPost]
-        public async Task<IActionResult> Update(int id, Subscribe model)
-        {
-            var Dbentity = await _uow.GetRepository<Subscribe>().FindAsync(id);
-
-            Dbentity.Email = model.Email;
-            Dbentity.Status = DataStatus.Updated;
-            Dbentity.ModifatedDate = DateTime.Now;
-
-            await _uow.SaveChangeAsync();
-            return RedirectToAction("SubcribeList", "Subcribe", new { area = "AdminPanel" });
-        }
 
         public async Task<IActionResult> Delete(int id)
         {
@@ -75,13 +42,9 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
             entity.ModifatedDate = DateTime.Now;
             await _uow.SaveChangeAsync();
 
-            return RedirectToAction("SubcribeList", "Subcribe", new { area = "AdminPanel" });
+            return RedirectToAction("SubscribeList", "Subcribe", new { area = "AdminPanel" });
         }
 
-        public async Task<IActionResult> Details(int id)
-        {
-            var entity = await _uow.GetRepository<Subscribe>().FindAsync(id);
-            return View(entity);
-        }
+
     }
 }

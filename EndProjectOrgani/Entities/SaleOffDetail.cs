@@ -1,6 +1,10 @@
 ﻿using System;
+using EndProjectOrgani.Validation.ModelMetaDataTypeValidation;
+using Microsoft.AspNetCore.Mvc;
+
 namespace EndProjectOrgani.Entities
 {
+    [ModelMetadataType(typeof(SaleOffDetailsValidation))]
     public class SaleOffDetail:BaseEntity
     {
         public string Description { get; set; }

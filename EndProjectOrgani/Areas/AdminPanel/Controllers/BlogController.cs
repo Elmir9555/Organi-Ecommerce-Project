@@ -69,7 +69,7 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
 
         public async Task<IActionResult> Update(int id)
         {
-            var owner = await _context.Owners.Where(x => x.Status == DataStatus.Deleted!).ToListAsync();
+            var owner = await _context.Owners.Where(x => x.Status != DataStatus.Deleted!).ToListAsync();
             var blog = await _uow.GetRepository<Blog>().FindAsync(id);
 
             return View((blog, owner));
@@ -100,6 +100,7 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
             }
 
             Dbentity.Image = fileName;
+            Dbentity.OwnerId = model.OwnerId;
             Dbentity.Title = model.Title;
             Dbentity.Status = DataStatus.Updated;
             Dbentity.ModifatedDate = DateTime.Now;

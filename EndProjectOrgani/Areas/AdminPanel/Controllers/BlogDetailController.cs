@@ -20,7 +20,7 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> BlogDetailList()
+        public async Task<IActionResult> BlogDetailsList()
         {
             var list = await _context.BlogDetails.Where(x => x.Status != DataStatus.Deleted!).Include(x => x.Blog).ToListAsync();
 
@@ -52,7 +52,7 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
         public async Task<IActionResult> Update(int id)
         {
             var details = await _context.BlogDetails.FindAsync(id);
-            var model = await _context.Blogs.Where(x => x.Status == DataStatus.Deleted!).ToListAsync();
+            var model = await _context.Blogs.Where(x => x.Status != DataStatus.Deleted!).ToListAsync();
 
             return View((details, model));
         }
@@ -66,6 +66,7 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
             details.Status = DataStatus.Updated;
             details.ModifatedDate = DateTime.Now;
             _context.BlogDetails.Update(details);
+
             await _context.SaveChangesAsync();
 
             return RedirectToAction("BlogDetailList", "BlogDetail", new { area = "AdminPanel" });
@@ -75,11 +76,8 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
         {
             var details = _context.BlogDetails.Find(id);
 
-            //_context.ProductDetails.Remove(details);
+            _context.BlogDetails.Remove(details);
 
-            details.Status = DataStatus.Deleted;
-            details.ModifatedDate = DateTime.Now;
-            _context.BlogDetails.Update(details);
             await _context.SaveChangesAsync();
 
             return RedirectToAction("BlogDetailList", "BlogDetail", new { area = "AdminPanel" });
@@ -88,6 +86,7 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
         public async Task<IActionResult> Details(int id)
         {
             var details = await _context.BlogDetails.Include(x => x.Blog).FirstOrDefaultAsync(x => x.Id == id);
+
             return View(details);
         }
     }

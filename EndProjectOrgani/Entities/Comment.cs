@@ -1,6 +1,10 @@
 ﻿using System;
+using EndProjectOrgani.Validation.ModelMetaDataTypeValidation;
+using Microsoft.AspNetCore.Mvc;
+
 namespace EndProjectOrgani.Entities
 {
+    [ModelMetadataType(typeof(CommentValidation))]
     public class Comment:BaseEntity
     {
         public string Message { get; set; }

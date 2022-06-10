@@ -6,9 +6,7 @@
 <div class="row">
     <div class="container">
         <h3 style="text-align: center">Comment Table</h3>
-        <div class="create-btn" style="display:flex;justify-content:flex-end;padding-top:20px;padding-right: 20px;">
-            <a asp-action="Create" asp-area="AdminPanel" asp-controller="Comment" class="btn btn-success">Create</a>
-        </div>
+
         <div class="tb">
             <div class="container mt-5">
                 <div class="table-responsive">
@@ -17,7 +15,10 @@
                         <thead>
                             <tr>
                                 <th class="text-center">#</th>
+                                <th colspan="2">Blog Title</th>
                                 <th colspan="2">Message</th>
+                                <th colspan="2">CreatedDate</th>
+
                                 <th style="text-align: center;padding-left:100px;">Process</th>
                             </tr>
                         </thead>
@@ -28,6 +29,12 @@
                                     <td class="text-center" style="padding-top:18px">@count</td>
                                     <td colspan="2" style="padding-top:20px">
                                         <h6>@saleoff.Message</h6>
+                                    </td>
+                                    <td colspan="2" style="padding-top:20px">
+                                        <h6>@saleoff.Blog.Title</h6>
+                                    </td>
+                                    <td colspan="2" style="padding-top:20px">
+                                        <h6>@saleoff.CreatedDate</h6>
                                     </td>
                                     <td style="display: flex;gap:25px;justify-content:flex-end;">
                                         <a asp-action="Details" asp-controller="Comment" asp-area="AdminPanel" asp-route-id="@saleoff.Id" class="btn btn-primary" style="color:white">Detail</a>

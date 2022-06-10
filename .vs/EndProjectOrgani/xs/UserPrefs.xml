@@ -1,24 +1,28 @@
 ﻿<Properties StartupConfiguration="{478630B5-36FF-40A9-A875-79D5C07D5F87}|Default">
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="EndProjectOrgani/Views/Account/Login.cshtml">
+    <Files>
+      <File FileName="EndProjectOrgani/Controllers/ShopController.cs" Line="18" Column="34" />
+      <File FileName="EndProjectOrgani/Views/Home/HomePage.cshtml" Line="5" Column="35" />
+      <File FileName="EndProjectOrgani/Views/Shared/_Layout.cshtml" Line="1" Column="1" />
+      <File FileName="EndProjectOrgani/Views/Shared/Components/CategoryList/Default.cshtml" Line="8" Column="2" />
+      <File FileName="EndProjectOrgani/Views/_ViewImports.cshtml" Line="2" Column="34" />
+      <File FileName="EndProjectOrgani/Views/_ViewStart.cshtml" Line="1" Column="1" />
+      <File FileName="EndProjectOrgani/Views/Shop/ShopPage.cshtml" Line="242" Column="8" />
+      <File FileName="EndProjectOrgani/Views/Contact/ContactPage.cshtml" Line="90" Column="8" />
+      <File FileName="EndProjectOrgani/Views/Blog/BlogPage.cshtml" Line="185" Column="8" />
+      <File FileName="EndProjectOrgani/Views/Account/Login.cshtml" Line="4" Column="6" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="EndProjectOrgani" expanded="True">
             <Node name="EndProjectOrgani" expanded="True">
-              <Node name="Areas" expanded="True">
-                <Node name="AdminPanel" expanded="True">
-                  <Node name="Controllers" expanded="True" />
-                  <Node name="Views" expanded="True">
-                    <Node name="Advert" expanded="True">
-                      <Node name="AdvertList.cshtml" selected="True" />
-                    </Node>
-                    <Node name="Owner" expanded="True" />
-                    <Node name="SaleOff" expanded="True" />
-                    <Node name="SaleOffDetail" expanded="True" />
-                  </Node>
+              <Node name="Controllers" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="Account" expanded="True">
+                  <Node name="Login.cshtml" selected="True" />
                 </Node>
               </Node>
-              <Node name="Entities" expanded="True" />
             </Node>
           </Node>
         </State>

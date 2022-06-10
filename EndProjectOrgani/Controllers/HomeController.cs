@@ -6,32 +6,33 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using EndProjectOrgani.Models;
+using EndProjectOrgani.UniteOfWork;
+using EndProjectOrgani.Context;
+using EndProjectOrgani.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace EndProjectOrgani.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        readonly IUow _uow;
+        readonly AppDbContext _context;
+        public HomeController(IUow uow, AppDbContext context)
         {
-            _logger = logger;
+            _uow = uow;
+            _context = context;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public async Task<IActionResult> HomePage()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            var categories = await _uow.GetRepository<Category>().GetAllOrderByAsync(x => x.Id, false);
+            var products = await _context.Products.Where(x => x.Status != DataStatus.Deleted).Include(x => x.Category).ToListAsync();
+            var blogs = await _context.Blogs.Where(x => x.Status != DataStatus.Deleted).Include(x => x.BlogDetails).OrderByDescending(x => x.Id).ToListAsync();
+            var advert = await _uow.GetRepository<Advert>().GetAllOrderByAsync(x => x.Id, false);
+            return View((categories, products, blogs, advert));
         }
     }
+
 }

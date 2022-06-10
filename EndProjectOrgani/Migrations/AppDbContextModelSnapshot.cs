@@ -395,6 +395,9 @@ namespace EndProjectOrgani.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("ModifatedDate")
                         .HasColumnType("datetime2");
 

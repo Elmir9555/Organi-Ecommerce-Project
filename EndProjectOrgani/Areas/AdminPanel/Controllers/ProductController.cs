@@ -130,7 +130,7 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
 
         public async Task<IActionResult> Details(int id)
         {
-            var entity = await _context.Products.Include(x => x.Category).OrderByDescending(x => x.Id).FirstOrDefaultAsync(x => x.Id == id);
+            var entity = await _context.Products.Include(x => x.Category).FirstOrDefaultAsync(x => x.Id == id);
 
             return View(entity);
         }

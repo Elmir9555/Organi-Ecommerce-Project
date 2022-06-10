@@ -22,7 +22,7 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
 
         public async Task<IActionResult> ProductDetailList()
         {
-            var list = await _context.ProductDetails.Where(x => x.Status != DataStatus.Deleted!).Include(x => x.Product).ToListAsync();
+            var list = await _context.ProductDetails.Where(x => x.Status != DataStatus.Deleted).Include(x => x.Product).ToListAsync();
 
             return View(list);
         }
@@ -31,7 +31,7 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
 
         public async Task<IActionResult> Create()
         {
-            var model = await _context.Products.Where(x => x.Status != DataStatus.Deleted!).OrderByDescending(x => x.Id).ToListAsync();
+            var model = await _context.Products.Where(x => x.Status != DataStatus.Deleted).OrderByDescending(x => x.Id).ToListAsync();
 
             var details = new ProductDetail();
 
@@ -53,7 +53,7 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
         public async Task<IActionResult> Update(int id)
         {
             var details = await _context.ProductDetails.FindAsync(id);
-            var model = await _context.Products.ToListAsync();
+            var model = await _context.Products.Where(x => x.Status != DataStatus.Deleted).OrderByDescending(x => x.Id).ToListAsync();
 
             return View((details, model));
         }
@@ -66,6 +66,7 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
             }
             details.Status = DataStatus.Updated;
             details.ModifatedDate = DateTime.Now;
+
             _context.ProductDetails.Update(details);
             await _context.SaveChangesAsync();
 
@@ -76,11 +77,8 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
         {
             var details = _context.ProductDetails.Find(id);
 
-            //_context.ProductDetails.Remove(details);
+            _context.ProductDetails.Remove(details);
 
-            details.Status = DataStatus.Deleted;
-            details.ModifatedDate = DateTime.Now;
-            _context.ProductDetails.Update(details);
             await _context.SaveChangesAsync();
 
             return RedirectToAction("ProductDetailList", "ProductDetail", new { area = "AdminPanel" });

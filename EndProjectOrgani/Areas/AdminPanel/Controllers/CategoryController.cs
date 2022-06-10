@@ -125,4 +125,5 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
             return View(entity);
         }
     }
+
 }

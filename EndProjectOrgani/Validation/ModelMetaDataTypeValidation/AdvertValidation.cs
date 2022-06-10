@@ -1,11 +1,12 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Http;
 
 namespace EndProjectOrgani.Validation.ModelMetaDataTypeValidation
 {
     public class AdvertValidation
     {
-        [Required]
-        public string Image { get; set; }
+        [Required(ErrorMessage = "Photo bos kecmeyin.")]
+        public IFormFile Photo { get; set; }
     }
 }

@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using EndProjectOrgani.Validation.ModelMetaDataTypeValidation;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
 namespace EndProjectOrgani.Entities
 {
+    [ModelMetadataType(typeof(BlogValidation))]
     public class Blog:BaseEntity
     {
         public string Title { get; set; }

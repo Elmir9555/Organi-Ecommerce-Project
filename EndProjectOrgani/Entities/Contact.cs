@@ -1,6 +1,10 @@
 ﻿using System;
+using EndProjectOrgani.Validation.ModelMetaDataTypeValidation;
+using Microsoft.AspNetCore.Mvc;
+
 namespace EndProjectOrgani.Entities
 {
+    [ModelMetadataType(typeof(ContactValidation))]
     public class Contact:BaseEntity
     {
         public string Email { get; set; }

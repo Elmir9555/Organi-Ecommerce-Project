@@ -22,41 +22,19 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
 
         public async Task<IActionResult> CommentList()
         {
-            var list = await _context.Comments.Where(x => x.Status == DataStatus.Deleted!).Include(x => x.SaleOff).Include(x => x.Blog).ToListAsync();
+            var list = await _context.Comments.Where(x => x.Status != DataStatus.Deleted!).Include(x => x.SaleOff).ToListAsync();
 
             return View(list);
         }
 
 
-        public async Task<IActionResult> Create()
-        {
-            var details = new Comment();
-
-            var blog = await _context.Blogs.Where(x => x.Status == DataStatus.Deleted!).ToListAsync();
-            var saleoff = await _context.SaleOffs.Where(x => x.Status == DataStatus.Deleted!).ToListAsync();
-
-            return View((details, blog, saleoff));
-        }
-        [HttpPost]
-        public async Task<IActionResult> Create([Bind(Prefix = "Item1")] Comment details)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View(details);
-            }
-            await _context.Comments.AddAsync(details);
-            await _context.SaveChangesAsync();
-
-            return RedirectToAction("CommentList", "Comment", new { area = "AdminPanel" });
-        }
 
         public async Task<IActionResult> Update(int id)
         {
             var details = await _context.Comments.FindAsync(id);
-            var blog = await _context.Blogs.Where(x => x.Status == DataStatus.Deleted!).ToListAsync();
-            var saleoff = await _context.SaleOffs.Where(x => x.Status == DataStatus.Deleted!).ToListAsync();
+            var saleoff = await _context.SaleOffs.Where(x => x.Status != DataStatus.Deleted!).ToListAsync();
 
-            return View((details, blog, saleoff));
+            return View((details, saleoff));
         }
         [HttpPost]
         public async Task<IActionResult> Update([Bind(Prefix = "Item1")] Comment details)
@@ -89,7 +67,7 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
 
         public async Task<IActionResult> Details(int id)
         {
-            var details = await _context.Comments.Include(x => x.SaleOff).Include(x => x.Blog).FirstOrDefaultAsync(x => x.Id == id);
+            var details = await _context.Comments.Include(x => x.SaleOff).FirstOrDefaultAsync(x => x.Id == id);
             return View(details);
         }
     }

@@ -37,7 +37,7 @@
                                         <h6 style="max-width:100px;overflow:auto;min-height:30px;">@saleoff.Description</h6>
                                     </td>
                                     <td colspan="2" style="padding-top:20px">
-                                        <h6>@saleoff.Availability</h6>
+                                        @((saleoff.Availability)? "Movcuddur" : "Movcud Deyil")
                                     </td>
                                     <td colspan="2" style="padding-top:20px">
                                         <h6>@saleoff.StarCount</h6>

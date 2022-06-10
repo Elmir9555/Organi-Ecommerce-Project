@@ -36,6 +36,12 @@
     <None Remove="Areas\AdminPanel\Views\BlogDetail\" />
     <None Remove="Utilities\" />
     <None Remove="Utilities\Paginations\" />
+    <None Remove="Views\Shared\Components\" />
+    <None Remove="Views\Shared\Components\CategoryList\" />
+    <None Remove="Views\Shop\" />
+    <None Remove="Views\Contact\" />
+    <None Remove="Views\Blog\" />
+    <None Remove="Views\Account\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Home\" />
@@ -78,6 +84,13 @@
     <Folder Include="wwwroot\AdminPanel\img\SaleOffDetail\" />
     <Folder Include="Utilities\" />
     <Folder Include="Utilities\Paginations\" />
+    <Folder Include="wwwroot\MemberPanel\" />
+    <Folder Include="Views\Shared\Components\" />
+    <Folder Include="Views\Shared\Components\CategoryList\" />
+    <Folder Include="Views\Shop\" />
+    <Folder Include="Views\Contact\" />
+    <Folder Include="Views\Blog\" />
+    <Folder Include="Views\Account\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\" />
@@ -93,6 +106,7 @@
     <Content Remove="wwwroot\AdminPanel\img\BlogDetail\" />
     <Content Remove="wwwroot\AdminPanel\img\Advert\" />
     <Content Remove="wwwroot\AdminPanel\img\SaleOffDetail\" />
+    <Content Remove="wwwroot\MemberPanel\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.25" />

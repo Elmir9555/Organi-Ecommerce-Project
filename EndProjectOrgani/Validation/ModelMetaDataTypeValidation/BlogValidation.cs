@@ -1,13 +1,14 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Http;
 
 namespace EndProjectOrgani.Validation.ModelMetaDataTypeValidation
 {
     public class BlogValidation
     {
-        [Required(ErrorMessage = "Bu alani bos kecmeyin.")]
+        [Required(ErrorMessage = "Title bos kecmeyin.")]
         public string Title { get; set; }
-        [Required(ErrorMessage = "Bu alani bos kecmeyin.")]
-        public string Image { get; set; }
+        [Required(ErrorMessage = "Photo bos kecmeyin.")]
+        public IFormFile Photo { get; set; }
     }
 }

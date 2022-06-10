@@ -5,10 +5,8 @@
 
 <div class="row">
     <div class="container">
-        <h3 style="text-align: center">Subcribe Table</h3>
-        <div class="create-btn" style="display:flex;justify-content:flex-end;padding-top:20px;padding-right: 20px;">
-            <a asp-action="Create" asp-area="AdminPanel" asp-controller="Subcribe" class="btn btn-success">Create</a>
-        </div>
+        <h3 style="text-align: center">Subscribe Table</h3>
+
         <div class="tb">
             <div class="container mt-5">
                 <div class="table-responsive">
@@ -18,25 +16,24 @@
                             <tr>
                                 <th class="text-center">#</th>
                                 <th colspan="2">Email</th>
-                                <th>CreatedDate</th>
-                                <th style="text-align: center;padding-left:100px;">Process</th>
+
+                                <th colspan="2">CreatedDate</th>
+                                <th style="display: flex;justify-content:center">Process</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var subcribe in Model)
+                            @foreach (var saleoff in Model)
                             {
                                 <tr>
                                     <td class="text-center" style="padding-top:18px">@count</td>
                                     <td colspan="2" style="padding-top:20px">
-                                        <h6>@subcribe.Email</h6>
+                                        <h6>@saleoff.Email</h6>
                                     </td>
                                     <td colspan="2" style="padding-top:20px">
-                                        <h6>@subcribe.CreatedDate</h6>
+                                        <h6>@saleoff.CreatedDate.ToString("dd MMMM yyyy")</h6>
                                     </td>
                                     <td style="display: flex;gap:25px;justify-content:flex-end;">
-                                        <a asp-action="Details" asp-controller="Subcribe" asp-area="AdminPanel" asp-route-id="@subcribe.Id" class="btn btn-primary" style="color:white">Detail</a>
-                                        <a asp-action="Update" asp-controller="Subcribe" asp-area="AdminPanel" asp-route-id="@subcribe.Id" class="btn btn-info">Update</a>
-                                        <a asp-action="Delete" asp-controller="Subcribe" asp-area="AdminPanel" asp-route-id="@subcribe.Id" class="btn btn-danger" style="color:white">Delete</a>
+                                        <a asp-action="Delete" asp-controller="Subscribe" asp-area="AdminPanel" asp-route-id="@saleoff.Id" class="btn btn-danger" style="color:white">Delete</a>
                                     </td>
                                 </tr>
                                 count++;
