@@ -58,13 +58,14 @@ namespace EndProjectOrgani
 
             app.UseEndpoints(endpoints =>
             {
+
                 endpoints.MapControllerRoute(
-                   name: "Defaultareas",
-                   pattern: "{area:exists}/{controller=Product}/{action=ProductList}/{id?}"
-                   );
+                    name: "Default2",
+                    pattern: "{area:exists}/{controller=Home}/{action=HomePage}/{id?}"
+                    );
                 endpoints.MapControllerRoute(
                     name: "Default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}"
+                    pattern: "{controller=Home}/{action=HomePage}/{id?}"
                     );
                 endpoints.MapDefaultControllerRoute();
             });

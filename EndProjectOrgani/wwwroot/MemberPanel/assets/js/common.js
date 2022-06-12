@@ -1,4 +1,5 @@
 //getBasketCount
+
 export function getCount(list) {
   return list.length;
 }
@@ -13,6 +14,7 @@ export function getCountheart(heart) {
 
 
 //basketCount
+
 export function basketCount(sum) {
   sum.innerText = JSON.parse(localStorage.getItem("products")).length
 }
@@ -31,7 +33,6 @@ export function dropdowns() {
   $(document).ready(function () {
 
     $(".dropbtns").click(function () {
-      console.log("salam");
       $("#myDropdown").toggle(1000);
     });
 
@@ -57,6 +58,7 @@ export function dropdowns() {
 
 
 //searchfilter dropdown
+
 export function searchfilterdropdown() {
   $(document).ready(function () {
 
@@ -70,6 +72,7 @@ export function searchfilterdropdown() {
 //searchfilter dropdown
 
 //add products to basket
+
 export function addproducts() {
 
   let products = document.querySelectorAll("#addproduct")

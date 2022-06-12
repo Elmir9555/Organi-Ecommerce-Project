@@ -127,16 +127,16 @@ basketCount(basketcount)
 //increase count
 $(document).on("click",".plus",function(e){
   
-  //   var count=Number(e.target.parentElement.children[1].innerText)
-  //  count++;
-  //  e.target.parentElement.children[1].innerText=count;
+     var count=Number(e.target.parentElement.children[1].innerText)
+    count++;
+    e.target.parentElement.children[1].innerText=count;
 
-  let getlocal=JSON.parse(localStorage.getItem("products"));
-  console.log(getlocal);
-  let getcount=getlocal.map(m=>m.count)
+  //let getlocal=JSON.parse(localStorage.getItem("products"));
+  //console.log(getlocal);
+  //let getcount=getlocal.map(m=>m.count)
   
-  let get=getcount[0]
-  localStorage.setItem("products", JSON.stringify(count+=1))
+  //let get=getcount[0]
+  //localStorage.setItem("products", JSON.stringify(count+=1))
 
 
   

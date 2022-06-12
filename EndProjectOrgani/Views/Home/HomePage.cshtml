@@ -1,6 +1,9 @@
 ﻿@model (List<Category> categories, List<Product> products, List<Blog> blogs, List<Advert> adverts)
 <!-- Start-Body -->
 
+<link rel="stylesheet" href="~/MemberPanel/assets/sass/home.css">
+<link rel="stylesheet" href="~/MemberPanel/assets/css/home.css">
+
 <main>
     <section id="first-part-body">
         <div class="first-part-body">
@@ -18,7 +21,7 @@
                                 </div>
                                 <div class="free">Free Pickup and Delivery Available</div>
                                 <button class="shopnow">
-                                    <a href="~/MemberPanel/shop.html" target="_blank">SHOP NOW</a>
+                                    <a asp-controller="Shop" asp-action="ShopPage" target="_blank">SHOP NOW</a>
                                 </button>
                             </div>
                             <div class="image">
@@ -75,7 +78,7 @@
                         {
                             <div class="col-lg-3 col-sm-12" data-id="@product1.Id">
                                 <div class="picture">
-                                    <img src="~/AdminPanel/img/product/@product1.Image" alt="product">
+                                    <img src="~/AdminPanel/img/product/@product1.Image" style="width: 100%;height: 100%;" alt="product">
                                     <div class="icons">
                                         <div class="heart-icon">
                                             <a href="#" id="addheart"><i class="fas fa-heart"></i></a>
@@ -112,7 +115,7 @@
                                 {
                                     <div class="col-lg-3 col-sm-12" data-id="@product.Id">
                                         <div class="picture">
-                                            <img src="~/AdminPanel/img/product/@product.Image" alt="product">
+                                            <img src="~/AdminPanel/img/product/@product.Image" style="width: 100%;height: 100%;" alt="product">
                                             <div class="icons">
                                                 <div class="heart-icon">
                                                     <a href="" id="addheart"><i class="fas fa-heart"></i></a>
@@ -183,7 +186,7 @@
                                                     {
                                                         drink++;
                                                         <div>
-                                                            <img src="~/AdminPanel/img/product/@item.Image" alt="">
+                                                            <img src="~/AdminPanel/img/product/@item.Image" style="width:100%;height:100%;" alt="">
                                                             <p style="text-align: center"><a href="">@item.Name: <strong>$@item.Price</strong> </a> </p>
                                                         </div> }
                                                     if (drink == 4) break;
@@ -203,7 +206,7 @@
                                                     {
                                                         eggs++;
                                                         <div>
-                                                            <img src="~/AdminPanel/img/product/@item.Image" alt="">
+                                                            <img src="~/AdminPanel/img/product/@item.Image" style="width:100%;height:100%;" alt="">
                                                             <p style="text-align: center"><a href="">@item.Name: <strong>$@item.Price</strong> </a> </p>
                                                         </div> }
                                                     if (eggs == 4) break;
@@ -227,7 +230,7 @@
                                                     {
                                                         breads++;
                                                         <div>
-                                                            <img src="~/AdminPanel/img/product/@item.Image" alt="">
+                                                            <img src="~/AdminPanel/img/product/@item.Image" style="width:100%;height:100%;" alt="">
                                                             <p style="text-align: center"><a href="">@item.Name: <strong>$@item.Price</strong> </a> </p>
                                                         </div> }
                                                     if (breads == 4) break;
@@ -241,24 +244,12 @@
 
                                     </div>
                                     <div class="item" style="display: flex; flex-direction: column; gap:20px;">
-                                        <!-- <div>  <img src="~/MemberPanel/assets/img/banana.jpeg" alt=""> <p style="text-align: center"><a href="">Banana: <strong>$30</strong> </a> </p></div>
-                                        <div>  <img src="~/MemberPanel/assets/img/chicken.jpeg" alt=""><p style="text-align: center"><a href="">Banana: <strong>$30</strong> </a></div>
-                                        <div>  <img src="~/MemberPanel/assets/img/drink.jpeg" alt=""><p style="text-align: center"><a href="">Banana: <strong>$30</strong> </a></div> -->
+
                                     </div>
                                     <div class="item" style="display: flex; flex-direction: column; gap:20px;">
-                                        <!-- <div>  <img src="~/MemberPanel/assets/img/banana.jpeg" alt=""> <p style="text-align: center"><a href="">Banana: <strong>$30</strong> </a> </p></div>
-                                        <div>  <img src="~/MemberPanel/assets/img/chicken.jpeg" alt=""><p style="text-align: center"><a href="">Banana: <strong>$30</strong> </a></div>
-                                        <div>  <img src="~/MemberPanel/assets/img/drink.jpeg" alt=""><p style="text-align: center"><a href="">Banana: <strong>$30</strong> </a></div> -->
+
                                     </div>
-                                    <!-- <div class="item"><h4>4</h4></div>
-                                    <div class="item"><h4>5</h4></div>
-                                    <div class="item"><h4>6</h4></div> -->
-                                    <!-- <div class="item"><h4>7</h4></div>
-                                    <div class="item"><h4>8</h4></div>
-                                    <div class="item"><h4>9</h4></div>
-                                    <div class="item"><h4>10</h4></div> -->
-                                    <!-- <div class="item"><h4>11</h4></div> -->
-                                    <!-- <div class="item"><h4>12</h4></div> -->
+                              
                                 </div>
 
                             </div>
@@ -284,7 +275,7 @@
                                                     {
                                                         count++;
                                                         <div>
-                                                            <img src="~/AdminPanel/img/product/@item.Image" alt="">
+                                                            <img src="~/AdminPanel/img/product/@item.Image" style="width:100%;height:100%;" alt="">
                                                             <p style="text-align: center"><a href="">@item.Name: <strong>$@item.Price</strong> </a> </p>
                                                         </div> }
                                                     if (count == 4) break;
@@ -304,7 +295,7 @@
                                                     {
                                                         count1++;
                                                         <div>
-                                                            <img src="~/AdminPanel/img/product/@item.Image" alt="">
+                                                            <img src="~/AdminPanel/img/product/@item.Image" style="width:100%;height:100%;" alt="">
                                                             <p style="text-align: center"><a href="">@item.Name: <strong>$@item.Price</strong> </a> </p>
                                                         </div> }
                                                     if (count1 == 4) break;
@@ -328,7 +319,7 @@
                                                     {
                                                         count2++;
                                                         <div>
-                                                            <img src="~/AdminPanel/img/product/@item.Image" alt="">
+                                                            <img src="~/AdminPanel/img/product/@item.Image" style="width:100%;height:100%;" alt="">
                                                             <p style="text-align: center"><a href="">@item.Name: <strong>$@item.Price</strong> </a> </p>
                                                         </div> }
                                                     if (count2 == 4) break;
@@ -342,24 +333,12 @@
 
                                     </div>
                                     <div class="item" style="display: flex; flex-direction: column; gap:20px;">
-                                        <!-- <div>  <img src="~/MemberPanel/assets/img/banana.jpeg" alt=""> <p style="text-align: center"><a href="">Banana: <strong>$30</strong> </a> </p></div>
-                                        <div>  <img src="~/MemberPanel/assets/img/chicken.jpeg" alt=""><p style="text-align: center"><a href="">Banana: <strong>$30</strong> </a></div>
-                                        <div>  <img src="~/MemberPanel/assets/img/drink.jpeg" alt=""><p style="text-align: center"><a href="">Banana: <strong>$30</strong> </a></div> -->
+
                                     </div>
                                     <div class="item" style="display: flex; flex-direction: column; gap:20px;">
-                                        <!-- <div>  <img src="~/MemberPanel/assets/img/banana.jpeg" alt=""> <p style="text-align: center"><a href="">Banana: <strong>$30</strong> </a> </p></div>
-                                        <div>  <img src="~/MemberPanel/assets/img/chicken.jpeg" alt=""><p style="text-align: center"><a href="">Banana: <strong>$30</strong> </a></div>
-                                        <div>  <img src="~/MemberPanel/assets/img/drink.jpeg" alt=""><p style="text-align: center"><a href="">Banana: <strong>$30</strong> </a></div> -->
+
                                     </div>
-                                    <!-- <div class="item"><h4>4</h4></div>
-                                    <div class="item"><h4>5</h4></div>
-                                    <div class="item"><h4>6</h4></div> -->
-                                    <!-- <div class="item"><h4>7</h4></div>
-                                    <div class="item"><h4>8</h4></div>
-                                    <div class="item"><h4>9</h4></div>
-                                    <div class="item"><h4>10</h4></div> -->
-                                    <!-- <div class="item"><h4>11</h4></div> -->
-                                    <!-- <div class="item"><h4>12</h4></div> -->
+                  
                                 </div>
 
                             </div>
@@ -410,5 +389,7 @@
         </div>
     </section>
 </main>
+
+<script type="module" src="~/MemberPanel/assets/js/home.js"></script>
 
 <!-- End-body -->
