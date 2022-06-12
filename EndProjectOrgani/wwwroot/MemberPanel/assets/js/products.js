@@ -1,7 +1,9 @@
-import {favoriCount,basketCount,getCountheart,dropdowns,searchfilterdropdown} from "./common.js"
+import {favoriCount,basketCount,getCountheart,dropdowns,searchfilterdropdown,addproducts,addproductsfav} from "./common.js"
 
 //header start ALL CATEGORIES dropdown
-dropdowns();
+
+ dropdowns();
+
 //header end ALL CATEGORIES dropdown
 
 
@@ -10,7 +12,20 @@ searchfilterdropdown();
 //end searchfilter
 
 
+$(document).ready(function () {
+    $("#default").click(function () {
+        $(".sort-content").toggle();
 
+        if ($(".sort-content").css("display") == "block") {
+            $("#icon").css("transform", "rotate(-180deg)")
+            $("#icon").css("transition", "all 0.5s")
+
+        }
+        else {
+            $("#icon").css("transform", "rotate(0deg)")
+        }
+    });
+});
 
 
 
@@ -28,4 +43,8 @@ basketCount(basketcount)
 //rightcorner favoriproduct count 
 let countfavo=document.querySelector(".product-count strong")
 countfavo.innerText=JSON.parse(localStorage.getItem("FavoriProduct")).length
-//rightcorner favoriproduct count 
+//rightcorner favoriproduct count
+
+
+addproducts();
+addproductsfav();

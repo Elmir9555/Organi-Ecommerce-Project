@@ -123,3 +123,6 @@
 /Users/elmirustayev/Desktop/EndProjectOrgani/EndProjectOrgani/obj/Debug/netcoreapp3.1/Razor/Views/Shop/ShopPage.cshtml.g.cs
 /Users/elmirustayev/Desktop/EndProjectOrgani/EndProjectOrgani/obj/Debug/netcoreapp3.1/Razor/Views/_ViewImports.cshtml.g.cs
 /Users/elmirustayev/Desktop/EndProjectOrgani/EndProjectOrgani/obj/Debug/netcoreapp3.1/Razor/Views/_ViewStart.cshtml.g.cs
+/Users/elmirustayev/Desktop/EndProjectOrgani/EndProjectOrgani/obj/Debug/netcoreapp3.1/Razor/Views/Product/ProductCategoryPage.cshtml.g.cs
+/Users/elmirustayev/Desktop/EndProjectOrgani/EndProjectOrgani/obj/Debug/netcoreapp3.1/Razor/Views/Product/ProductDetailsPage.cshtml.g.cs
+/Users/elmirustayev/Desktop/EndProjectOrgani/EndProjectOrgani/obj/Debug/netcoreapp3.1/Razor/Views/Product/ProductPage.cshtml.g.cs

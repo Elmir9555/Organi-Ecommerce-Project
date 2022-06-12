@@ -2073,65 +2073,9 @@ basketCount(basketcount)
 
 
 //basket
-//addproductsfav();
-//addproducts();
+addproductsfav();
+addproducts();
 //basket
 
 
-
-let products = document.querySelectorAll("#addproduct")
-let count = document.querySelector(".basket-count")
-
-if (JSON.parse(localStorage.getItem("products") == null)) {
-    localStorage.setItem("products", JSON.stringify([]));
-}
-
-let productList = JSON.parse(localStorage.getItem("products"))
-
-products.forEach(product => {
-
-    product.addEventListener("click", function (e) {
-        e.preventDefault();
-
-
-        let productimage = this.parentNode.parentNode.previousElementSibling.getAttribute("src");
-        let productname = this.parentNode.parentNode.nextElementSibling.childNodes[1].innerText;
-        let productprice = this.parentNode.parentNode.parentNode.lastElementChild.innerText;
-        let productid = this.parentNode.parentNode.parentNode.parentNode.getAttribute("data-id");
-        let productcount = this.parentNode.parentNode.parentNode.lastElementChild.innerText;
-
-        let existproduct = productList.find(m => m.id == productid);
-
-        if (existproduct == undefined) {
-            productList.push({
-                id: productid,
-                image: productimage,
-                name: productname,
-                price: productprice,
-                count: 1
-
-            });
-
-            alert("Product Added Success!")
-
-
-
-
-
-        }
-
-        else {
-            alert("You have added this Product to your Cart,Please check your basket")
-        }
-
-
-        localStorage.setItem("products", JSON.stringify(productList))
-        count.innerText = getCount(productList)
-    });
-
-
-
-})
-
-count.innerText = getCount(productList)
 

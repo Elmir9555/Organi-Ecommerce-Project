@@ -43,6 +43,7 @@
     <None Remove="Views\Blog\" />
     <None Remove="Views\Account\" />
     <None Remove="ViewComponents\" />
+    <None Remove="Views\Product\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Home\" />
@@ -93,6 +94,7 @@
     <Folder Include="Views\Blog\" />
     <Folder Include="Views\Account\" />
     <Folder Include="ViewComponents\" />
+    <Folder Include="Views\Product\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\" />
