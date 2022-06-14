@@ -19,7 +19,7 @@ namespace EndProjectOrgani.Entities
 
         //Relation Property
 
-        public List<Comment> Comments { get; set; }
+        
         public Owner Owner { get; set; }
         public BlogDetail BlogDetails { get; set; }
     }

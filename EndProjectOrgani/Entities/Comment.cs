@@ -9,12 +9,12 @@ namespace EndProjectOrgani.Entities
     {
         public string Message { get; set; }
 
-        public int BlogId { get; set; }
+        public int ProductId { get; set; }
         public int SaleOffId { get; set; }
 
         //Relation Property
-
-        public Blog Blog { get; set; }
+        
+        public Product Product { get; set; }
         public SaleOff SaleOff { get; set; }
     }
 }

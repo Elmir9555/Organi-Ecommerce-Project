@@ -1,11 +1,27 @@
-import {favoriCount,basketCount,getCountheart, searchfilterdropdown,dropdowns,addproducts, addproductsfav} from "./common.js"
+//import {favoriCount,basketCount,getCountheart, searchfilterdropdown,dropdowns,addproducts, addproductsfav} from "./common.js"
+
+//const { getCount } = require("./common");
 
 //header start ALL CATEGORIES dropdown
-dropdowns();
+
+$(document).ready(function () {
+
+    $(".dropbtns").click(function () {
+        console.log("salam");
+        $("#myDropdown").toggle(1000);
+    });
+
+});
 //header end ALL CATEGORIES dropdown
 
 //start searchfilter
-searchfilterdropdown();
+$(document).ready(function () {
+
+    $("#all-categ").click(function () {
+        $(".dropdown-content-cate").toggle(800);
+
+    })
+});
 //end searchfilter
 
 
@@ -1986,6 +2002,9 @@ $(document).ready(function() {
   }());
 
 
+
+//owl-carousel
+
 $(document).ready(function() {
     $('.owl-carousel').owlCarousel({
         loop:true,
@@ -2009,13 +2028,16 @@ $(document).ready(function() {
         }
     })
 })
-
+//owl-carousel
 
 
 
 //animation icon
-$(document).ready(function() {
-    $("#default").click(function() {
+$(document).ready(function () {
+
+    
+    $("#default").click(function () {
+    
         $(".sort-content").toggle();
 
         if ($(".sort-content").css("display") == "block") {
@@ -2034,48 +2056,151 @@ $(document).ready(function() {
         $(".active").removeClass("active");
         $(this).addClass("active");
 
-       
-
-
-        // $(this).css("color","white");
-        // $(this).css("background-color","#7fad39");
-        // $(this).css("border","none");
     })
 
 
      
     $(".count").click(function(){
         $(".active").removeClass("active");
-       
-
-       
-
-
-        // $(this).css("color","white");
-        // $(this).css("background-color","#7fad39");
-        // $(this).css("border","none");
+      
     })
-    
-    
-
 
 })
 //animation icon
 
 
-//basketcount
-let heartcount=document.querySelector(".heart-count")
-favoriCount(heartcount)
 
-let basketcount=document.querySelector(".basket-count")
-basketCount(basketcount)
-//basketcount
+//Add Favori
+
+let hearticon = document.querySelectorAll("#addheart")
+
+if (JSON.parse(localStorage.getItem("FavoriProduct")) == null) {
+    localStorage.setItem("FavoriProduct", JSON.stringify([]));
+}
+
+let favoriList = JSON.parse(localStorage.getItem("FavoriProduct"))
+let heartcount = document.querySelector(".heart-count")
+
+hearticon.forEach(hearticons => {
 
 
-//basket
-addproductsfav();
-addproducts();
-//basket
+
+    hearticons.addEventListener("click", function (e) {
+        e.preventDefault();
+        let favoriImage = this.parentNode.parentNode.previousElementSibling.getAttribute("src");
+        let favoriname = this.parentNode.parentNode.nextElementSibling.childNodes[1].innerText;
+        let favoriprice = this.parentNode.parentNode.parentNode.lastElementChild.innerText;
+        let favoriid = this.parentNode.parentNode.parentNode.parentNode.getAttribute("data-id");
+
+        let existproduct = favoriList.find(m => m.id == favoriid);
+
+        if (existproduct == undefined) {
+            favoriList.push({
+                id: favoriid,
+                image: favoriImage,
+                name: favoriname,
+                price: favoriprice
+
+            });
+
+            alert("Product Added Success!")
+
+        }
+
+        else {
+            alert("You have added this Product to your  Favourites page,Please check your Favourites Page")
+
+        }
+
+
+
+
+
+
+
+        localStorage.setItem("FavoriProduct", JSON.stringify(favoriList))
+        heartcount.innerText = getCountheart(favoriList)
+
+
+    })
+});
+
+function getCountheart(heart) {
+    return heart.length;
+}
+
+heartcount.innerText = getCountheart(favoriList)
+//Add Favori
+
+
+
+//Add Basket
+
+let products = document.querySelectorAll("#addproduct")
+let count = document.querySelector(".basket-count")
+
+if (JSON.parse(localStorage.getItem("products") == null)) {
+    localStorage.setItem("products", JSON.stringify([]));
+}
+
+let productList = JSON.parse(localStorage.getItem("products"))
+
+products.forEach(product => {
+
+    product.addEventListener("click", function (e) {
+        e.preventDefault();
+        console.log("salam")
+
+        let productimage = this.parentNode.parentNode.previousElementSibling.getAttribute("src");
+        let productname = this.parentNode.parentNode.nextElementSibling.childNodes[1].innerText;
+        let productprice = this.parentNode.parentNode.parentNode.lastElementChild.innerText;
+        let productid = this.parentNode.parentNode.parentNode.parentNode.getAttribute("data-id");
+        let productcount = this.parentNode.parentNode.parentNode.lastElementChild.innerText;
+
+        let existproduct = productList.find(m => m.id == productid);
+
+        if (existproduct == undefined) {
+            productList.push({
+                id: productid,
+                image: productimage,
+                name: productname,
+                price: productprice,
+                count: 1
+
+            });
+
+            alert("Product Added Success!")
+
+
+
+
+
+        }
+
+        else {
+            alert("You have added this Product to your Cart,Please check your basket")
+        }
+
+
+        localStorage.setItem("products", JSON.stringify(productList))
+        count.innerText = getCount(productList)
+    });
+
+
+
+})
+
+function getCount(list) {
+    return list.length;
+}
+
+count.innerText = getCount(productList)
+
+
+
+//Add Basket
+
+    
 
 
 

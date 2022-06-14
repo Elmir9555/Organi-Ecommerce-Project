@@ -136,6 +136,7 @@ export function addproducts() {
 
 
 //add products to favourites
+
 export function addproductsfav(){
   let hearticon=document.querySelectorAll("#addheart")
 

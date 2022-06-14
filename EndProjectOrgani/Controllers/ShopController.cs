@@ -6,6 +6,7 @@ using EndProjectOrgani.Context;
 using EndProjectOrgani.Entities;
 using EndProjectOrgani.UniteOfWork;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -28,5 +29,12 @@ namespace EndProjectOrgani.Controllers
             var products = await _uow.GetRepository<Product>().GetAllOrderByAsync(x => x.Id, false);
             return View((saleoff, products, categories));
         }
+
+        public async Task<List<Product>> GetProductsWithPrice(int minValue, int maxValue)
+        {
+            return await _context.Products.Where(m => m.Price >= (decimal)minValue && m.Price <= (decimal)maxValue).ToListAsync();
+        }
+
+        
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using EndProjectOrgani.Validation.ModelMetaDataTypeValidation;
 using Microsoft.AspNetCore.Http;
@@ -17,6 +18,7 @@ namespace EndProjectOrgani.Entities
         public int Count { get; set; }
 
         public int CategoryId { get; set; }
+        public List<Comment> Comments { get; set; }
 
         //Relation Property
 

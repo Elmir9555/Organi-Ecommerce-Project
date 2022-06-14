@@ -1,43 +1,32 @@
 ﻿<Properties StartupConfiguration="{478630B5-36FF-40A9-A875-79D5C07D5F87}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="EndProjectOrgani/wwwroot/MemberPanel/assets/js/products.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="EndProjectOrgani/Views/Shared/_Layout.cshtml">
     <Files>
-      <File FileName="EndProjectOrgani/Views/Shared/_Layout.cshtml" Line="19" Column="1" />
-      <File FileName="EndProjectOrgani/Views/Contact/ContactPage.cshtml" />
-      <File FileName="EndProjectOrgani/Views/Blog/BlogPage.cshtml" />
-      <File FileName="EndProjectOrgani/Views/Shop/ShopPage.cshtml" Line="244" Column="1" />
+      <File FileName="EndProjectOrgani/Controllers/ShopController.cs" Line="38" Column="9" />
+      <File FileName="EndProjectOrgani/Views/Shop/ShopPage.cshtml" />
+      <File FileName="EndProjectOrgani/Program.cs" />
       <File FileName="EndProjectOrgani/wwwroot/MemberPanel/assets/js/shop.js" />
-      <File FileName="EndProjectOrgani/wwwroot/MemberPanel/assets/js/shopcard.js" />
-      <File FileName="EndProjectOrgani/Views/Home/HomePage.cshtml" />
+      <File FileName="EndProjectOrgani/Views/Shared/_Layout.cshtml" Line="18" Column="76" />
       <File FileName="EndProjectOrgani/wwwroot/MemberPanel/assets/js/common.js" />
-      <File FileName="EndProjectOrgani/Views/Product/ProductCategoryPage.cshtml" Line="112" Column="8" />
-      <File FileName="EndProjectOrgani/Views/Product/ProductDetailsPage.cshtml" Line="302" Column="8" />
-      <File FileName="EndProjectOrgani/Views/Product/ProductPage.cshtml" Line="110" Column="74" />
-      <File FileName="EndProjectOrgani/Program.cs" Line="16" Column="1" />
-      <File FileName="EndProjectOrgani/wwwroot/MemberPanel/assets/js/products.js" Line="26" Column="3" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="EndProjectOrgani" expanded="True">
             <Node name="EndProjectOrgani" expanded="True">
-              <Node name="Areas" expanded="True">
-                <Node name="AdminPanel" expanded="True">
-                  <Node name="Views" expanded="True">
-                    <Node name="Shared" expanded="True" />
-                  </Node>
-                </Node>
-              </Node>
+              <Node name="Context" expanded="True" />
               <Node name="Controllers" expanded="True" />
-              <Node name="ViewComponents" expanded="True" />
+              <Node name="Entities" expanded="True" />
+              <Node name="UniteOfWork" expanded="True" />
               <Node name="Views" expanded="True">
-                <Node name="Shared" expanded="True" />
+                <Node name="Shared" expanded="True">
+                  <Node name="_Layout.cshtml" selected="True" />
+                </Node>
+                <Node name="Shop" expanded="True" />
               </Node>
               <Node name="wwwroot" expanded="True">
                 <Node name="MemberPanel" expanded="True">
                   <Node name="assets" expanded="True">
-                    <Node name="js" expanded="True">
-                      <Node name="products.js" selected="True" />
-                    </Node>
+                    <Node name="js" expanded="True" />
                   </Node>
                 </Node>
               </Node>
