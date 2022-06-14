@@ -1,7 +1,14 @@
 ﻿@using EndProjectOrgani.Models
 @model UserCreatedModel
 
+@{
+    Layout = null;
+}
+
 <link rel="stylesheet" asp-append-version="true" href="~/MemberPanel/assets/css/register.css">
+
+
+
 
 <div class="main-w3layouts wrapper">
     <h1 style="height:40px;color:rgba(255,255,255,0.5)">Register</h1>
@@ -12,6 +19,9 @@
                 <input class="text email"  asp-for="Email" placeholder="Email" required="">
                 <input class="text" asp-for="Password" placeholder="Password" required="">
                 <input class="text w3lpass" asp-for="ConfrimPassword" placeholder="Confirm Password" required="">
+                <div asp-validation-summary="All" style="color:red;">
+
+                </div>
                 <!-- <div class="wthree-text">
                     <label class="anim">
                         <input type="checkbox" class="checkbox" required="">

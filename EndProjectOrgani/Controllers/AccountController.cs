@@ -20,13 +20,13 @@ namespace EndProjectOrgani.Controllers
     public class AccountController : Controller
     {
         readonly UserManager<AppUser> _userManager;
-        readonly SignInManager<AppUser> _singInManager;
+        readonly SignInManager<AppUser> _signInManager;
         readonly RoleManager<AppRole> _roleManager;
 
         public AccountController(RoleManager<AppRole> roleManager, SignInManager<AppUser> singInManager, UserManager<AppUser> userManager)
         {
             _roleManager = roleManager;
-            _singInManager = singInManager;
+            _signInManager = singInManager;
             _userManager = userManager;
         }
 
@@ -93,7 +93,7 @@ namespace EndProjectOrgani.Controllers
                     using var smtp = new SmtpClient();
 
                     smtp.Connect("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
-                    smtp.Authenticate("elmiriu@code.edu.az", "elmir2002");
+                    smtp.Authenticate("elmirustayev9@gmail.com", "iibetythnxwkhwli");
                     smtp.Send(message);
                     smtp.Disconnect(true);
 
@@ -120,9 +120,9 @@ namespace EndProjectOrgani.Controllers
 
             await _userManager.ConfirmEmailAsync(user, token);
 
-            await _singInManager.SignInAsync(user, false);
+            await _signInManager.SignInAsync(user, false);
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("HomePage", "Home");
         }
 
         public IActionResult SignUpEmail()
@@ -131,67 +131,59 @@ namespace EndProjectOrgani.Controllers
         }
 
 
-        //public IActionResult Login()
-        //{
-        //    return View(new UserLoginModel());
-        //}
-        //[HttpPost]
-        //public async Task<IActionResult> Login(UserLoginModel model)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var user = await _userManager.FindByNameAsync(model.Username);
+        public IActionResult Login()
+        {
+            return View(new UserLoginModel());
+        }
+        [HttpPost]
+        public async Task<IActionResult> Login(UserLoginModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.FindByNameAsync(model.Username);
 
-        //        var result = await _singInManager.PasswordSignInAsync(model.Username, model.Password, model.RememberMe, true);
+                var result = await _signInManager.PasswordSignInAsync(model.Username, model.Password, model.RememberMe, true);
 
-        //        if (result.Succeeded)
-        //        {
-        //            var roles = await _userManager.GetRolesAsync(user);
-        //            if (roles.Contains("Admin"))
-        //            {
-        //                return RedirectToAction("Index", "AdminPanel", new { area = "Admin" });
-        //            }
-        //            else if (roles.Contains("Member"))
-        //            {
-        //                return RedirectToAction("Index", "Home");
-        //            }
-        //        }
-        //        else if (result.IsLockedOut)
-        //        {
-        //            var logouttime = await _userManager.GetLockoutEndDateAsync(user);
-        //            var minute = (logouttime.Value.UtcDateTime - DateTime.UtcNow).Minutes;
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("HomePage", "Home");
+                }
+                else if (result.IsLockedOut)
+                {
+                    var logouttime = await _userManager.GetLockoutEndDateAsync(user);
+                    var minute = (logouttime.Value.UtcDateTime - DateTime.UtcNow).Minutes;
 
-        //            ModelState.AddModelError("", $"Hesabiniz {minute} deqiqeliyine muveqqeti olaraq baglanmisdir.");
-        //        }
-        //        else
-        //        {
-        //            string message = string.Empty;
+                    ModelState.AddModelError("", $"Hesabiniz {minute} deqiqeliyine muveqqeti olaraq baglanmisdir.");
+                }
+                else
+                {
+                    string message = string.Empty;
 
-        //            if (user != null)
-        //            {
-        //                var failedcount = await _userManager.GetAccessFailedCountAsync(user);
-        //                var count = _userManager.Options.Lockout.MaxFailedAccessAttempts - failedcount;
+                    if (user != null)
+                    {
+                        var failedcount = await _userManager.GetAccessFailedCountAsync(user);
+                        var count = _userManager.Options.Lockout.MaxFailedAccessAttempts - failedcount;
 
-        //                message = $"{count} defe de yalnis giris etseniz hesabiniz muveqqeti olarag baglanacaq.";
-        //            }
+                        message = $"{count} defe de yalnis giris etseniz hesabiniz muveqqeti olarag baglanacaq.";
+                    }
 
-        //            else if (user == null)
-        //            {
-        //                message = "Username ve password sehvdir.";
-        //            }
+                    else if (user == null)
+                    {
+                        message = "Username ve password sehvdir.";
+                    }
 
-        //            ModelState.AddModelError("", message);
-        //        }
-        //    }
-        //    return View(model);
-        //}
+                    ModelState.AddModelError("", message);
+                }
+            }
+            return View(model);
+        }
 
 
-        //public async Task<IActionResult> SingOut()
-        //{
-        //    await _signInManager.SignOutAsync();
+        public async Task<IActionResult> LogOut()
+        {
+            await _signInManager.SignOutAsync();
 
-        //    return RedirectToAction("Login");
-        //}
+            return RedirectToAction("Login");
+        }
     }
 }

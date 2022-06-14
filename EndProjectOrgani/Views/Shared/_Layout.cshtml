@@ -79,36 +79,49 @@
                             <div class="exchange-login-social">
                                 <ul>
                                     @*<li class="social">
-                                            <a href="">
-                                                <i class="fab fa-facebook-f"></i>
-                                            </a>
-                                            <a href="">
-                                                <i class="fab fa-twitter"></i>
-                                            </a>
-                                            <a href="">
-                                                <i class="fab fa-linkedin-in"></i>
-                                            </a>
-                                            <a href="">
-                                                <i class="fab fa-pinterest-p"></i>
-                                            </a>
-                                        </li>*@
+            <a href="">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="">
+                <i class="fab fa-pinterest-p"></i>
+            </a>
+        </li>*@
 
-                                    <li class="login">
+                                    @if (!User.Identity.IsAuthenticated)
+                                    {
+                                        <li class="login">
 
-                                        <div class="login-icon">
-                                            <i class="fas fa-user"></i>
-                                            <span><a href="~/MemberPanel/register.html">Register</a></span>
-                                        </div>
+                                            <div class="login-icon">
+                                                <i class="fas fa-user"></i>
+                                                <span><a asp-action="SignUp" asp-controller="Account">Register</a></span>
+                                            </div>
 
 
-                                    </li>
+                                        </li>
 
-                                    <li class="login">
-                                        <div class="login-icon">
-                                            <i class="fas fa-user"></i>
-                                            <span><a href="~/MemberPanel/login.html">Login</a></span>
-                                        </div>
-                                    </li>
+                                        <li class="login">
+                                            <div class="login-icon">
+                                                <i class="fas fa-user"></i>
+                                                <span><a asp-action="Login" asp-controller="Account">Login</a></span>
+                                            </div>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <a asp-action="Logout" asp-controller="Account">LogOut</a>
+
+                                        @if(User.IsInRole("Admin"))
+                                        {
+                                           <a asp-action="CategoryList" asp-controller="Category" asp-area="AdminPanel">Admin Panel</a> 
+                                        }
+                                    }
+
                                 </ul>
                             </div>
                         </div>

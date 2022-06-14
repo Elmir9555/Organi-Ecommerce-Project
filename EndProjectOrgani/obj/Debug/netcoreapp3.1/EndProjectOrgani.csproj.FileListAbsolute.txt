@@ -135,3 +135,4 @@
 /Users/elmirustayev/Desktop/EndProjectOrgani/EndProjectOrgani/bin/Debug/netcoreapp3.1/MimeKit.dll
 /Users/elmirustayev/Desktop/EndProjectOrgani/EndProjectOrgani/bin/Debug/netcoreapp3.1/BouncyCastle.Crypto.dll
 /Users/elmirustayev/Desktop/EndProjectOrgani/EndProjectOrgani/obj/Debug/netcoreapp3.1/Razor/Views/Account/SignUp.cshtml.g.cs
+/Users/elmirustayev/Desktop/EndProjectOrgani/EndProjectOrgani/obj/Debug/netcoreapp3.1/Razor/Views/Account/SignUpEmail.cshtml.g.cs
