@@ -1,10 +1,11 @@
 ﻿using System;
 using EndProjectOrgani.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace EndProjectOrgani.Context
 {
-    public class AppDbContext:DbContext
+    public class AppDbContext:IdentityDbContext<AppUser,AppRole,int>
     {
         public AppDbContext(DbContextOptions<AppDbContext>options):base(options)
         {

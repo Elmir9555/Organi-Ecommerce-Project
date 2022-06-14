@@ -1,14 +1,43 @@
-import {favoriCount,basketCount,getCountheart, dropdowns,searchfilterdropdown} from "./common.js"
+
 //header start ALL CATEGORIES dropdown
-dropdowns();
+
+$(document).ready(function () {
+
+    $(".dropbtns").click(function () {
+        $("#myDropdown").toggle(1000);
+    });
+
+});
+
+window.onclick = function (event) {
+    if (!event.target.matches('.dropbtns')) {
+        var dropdowns = document.getElementsByClassName("dropdown-contents");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+        }
+    }
+}
 //header end ALL CATEGORIES dropdown
 
 
-//start searchfilter
-searchfilterdropdown();
-//end searchfilter
+
+//start searchfilterdropdown
+
+$(document).ready(function () {
+
+    $("#all-categ").click(function () {
+        $(".dropdown-content-cate").toggle(800);
+
+    })
+});
+//end searchfilterdropdown
 
 //tab-menu
+
 $(document).ready(function(){
   $("span").click(function(){
     $(".active").removeClass("active");
@@ -62,14 +91,28 @@ plus.addEventListener("click",function(){
 //increase count
 
 
-//basket count
-let heartcount=document.querySelector(".heart-count")
+//BasketFavoriCount
+
+let heartcount = document.querySelector(".heart-count")
 favoriCount(heartcount)
 
-let basketcount=document.querySelector(".basket-count")
-basketCount(basketcount)
-//basket count
+function favoriCount(sum) {
+    sum.innerText = JSON.parse(localStorage.getItem("FavoriProduct")).length
+}
 
+
+
+
+
+let basketcount = document.querySelector(".basket-count")
+basketCount(basketcount)
+
+function basketCount(sum) {
+    sum.innerText = JSON.parse(localStorage.getItem("products")).length
+}
+//BasketFavoriCount
+
+//Add Basket
 
 let addcartproduct=document.querySelector(".addbtn button")
 
@@ -107,6 +150,8 @@ function addbasket(){
 
 localStorage.setItem("products", JSON.stringify(productList))
 }
+
+//Add Basket
 
 
 

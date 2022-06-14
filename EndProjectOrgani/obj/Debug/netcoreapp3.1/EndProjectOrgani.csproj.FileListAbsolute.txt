@@ -126,3 +126,12 @@
 /Users/elmirustayev/Desktop/EndProjectOrgani/EndProjectOrgani/obj/Debug/netcoreapp3.1/Razor/Views/Product/ProductCategoryPage.cshtml.g.cs
 /Users/elmirustayev/Desktop/EndProjectOrgani/EndProjectOrgani/obj/Debug/netcoreapp3.1/Razor/Views/Product/ProductDetailsPage.cshtml.g.cs
 /Users/elmirustayev/Desktop/EndProjectOrgani/EndProjectOrgani/obj/Debug/netcoreapp3.1/Razor/Views/Product/ProductPage.cshtml.g.cs
+/Users/elmirustayev/Desktop/EndProjectOrgani/EndProjectOrgani/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Cryptography.Internal.dll
+/Users/elmirustayev/Desktop/EndProjectOrgani/EndProjectOrgani/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+/Users/elmirustayev/Desktop/EndProjectOrgani/EndProjectOrgani/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+/Users/elmirustayev/Desktop/EndProjectOrgani/EndProjectOrgani/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Identity.Core.dll
+/Users/elmirustayev/Desktop/EndProjectOrgani/EndProjectOrgani/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Identity.Stores.dll
+/Users/elmirustayev/Desktop/EndProjectOrgani/EndProjectOrgani/bin/Debug/netcoreapp3.1/MailKit.dll
+/Users/elmirustayev/Desktop/EndProjectOrgani/EndProjectOrgani/bin/Debug/netcoreapp3.1/MimeKit.dll
+/Users/elmirustayev/Desktop/EndProjectOrgani/EndProjectOrgani/bin/Debug/netcoreapp3.1/BouncyCastle.Crypto.dll
+/Users/elmirustayev/Desktop/EndProjectOrgani/EndProjectOrgani/obj/Debug/netcoreapp3.1/Razor/Views/Account/SignUp.cshtml.g.cs

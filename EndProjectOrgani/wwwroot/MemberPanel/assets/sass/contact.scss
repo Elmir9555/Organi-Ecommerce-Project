@@ -560,150 +560,142 @@ a{
 
 
 //start-footer
-.footer{
-    background-color:#F3F6FA;
+.footer {
+    background-color: #F3F6FA;
     padding-top: 40px;
     height: 280px;
-    margin-top:70px;
+    margin-top: 70px;
 
-   
-   
 
-    .adress-link-subs{
-        .adress-phone-mail{
+
+
+    .adress-link-subs {
+        .adress-phone-mail {
             padding-top: 20px;
 
-            p{
-                font-weight:300;
+            p {
+                font-weight: 300;
             }
-
         }
 
-        .useful-link{
-            font-size:16px;
+        .useful-link {
+            font-size: 16px;
             font-weight: bold;
-            letter-spacing:0px;
+            letter-spacing: 0px;
         }
-        .links{
-            display:flex;
-           
-           
-            .navbar{
-                a{
-                    display:block;
-                    width: 100%;
-                    text-decoration:none;
-                    line-height:35px;
-                    color: black;
-                    font-weight:300;
 
-                    &:hover{
+        .links {
+            display: flex;
+
+
+            .navbar {
+                a {
+                    display: block;
+                    width: 100%;
+                    text-decoration: none;
+                    line-height: 35px;
+                    color: black;
+                    font-weight: 300;
+
+                    &:hover {
                         color: $primaryBtn;
                         transition: all 0.2s;
-                       
                     }
                 }
             }
-            .ourselves-link{
+
+            .ourselves-link {
                 padding-top: 8px;
-                a{
-                    display:block;
-                    width: 100%;
-                    text-decoration:none;
-                    line-height:35px;
-                    color: black;
-                    font-weight:300;
 
-                    &:hover{
+                a {
+                    display: block;
+                    width: 100%;
+                    text-decoration: none;
+                    line-height: 35px;
+                    color: black;
+                    font-weight: 300;
+
+                    &:hover {
                         color: $primaryBtn;
                         transition: all 0.2s;
                     }
-
                 }
             }
         }
 
-        .join{
-            font-size:16px;
+        .join {
+            font-size: 16px;
             font-weight: bold;
-            letter-spacing:0px;
+            letter-spacing: 0px;
             height: 20px;
-            
         }
-        .get-email{
-            font-size:13px;
+
+        .get-email {
+            font-size: 13px;
             height: 50px;
         }
 
-        input{
+        input {
             border: none;
             width: 240px;
-            height:45px;
+            height: 45px;
             padding-left: 20px;
-            border:1px solid rgba(0,0,0,0.1);
+            border: 1px solid rgba(0,0,0,0.1);
 
-            &:focus{
+            &:focus {
                 outline: 0;
             }
         }
 
-        #subscribe{
-            height:45px;
+        #subscribe {
+            height: 45px;
             width: 100px;
             border: none;
             color: white;
-            background-color:$primaryBtn;
-            font-weight:bold;
-            font-size:14px;
-            margin-left:-3px;
-
-
-            
+            background-color: $primaryBtn;
+            font-weight: bold;
+            font-size: 14px;
+            margin-left: -3px;
         }
 
-        .sociall{
+        .sociall {
             display: flex;
             gap: 25px;
             padding-top: 20px;
 
-            div{
+            div {
                 border: 1px solid rgba(0,0,0,0.1);
                 width: 40px;
                 height: 40px;
-                border-radius:40px;
-                padding:8px;
-                padding-left:13px;
-                background-color:white;
+                border-radius: 40px;
+                padding: 8px;
+                padding-left: 13px;
+                background-color: white;
                 font-size: 15px;
                 cursor: pointer;
 
-                &:hover{
-                    background-color:$primaryBtn;
+                &:hover {
+                    background-color: $primaryBtn;
                     color: white;
-                    transition:all 0.5s;
-                    
+                    transition: all 0.5s;
                 }
             }
 
-            .face{
-                padding:8px;
-                padding-left:14px;
+            .face {
+                padding: 8px;
+                padding-left: 14px;
             }
 
-            .twitt{
-                padding:8px;
-                padding-left:12px;
+            .twitt {
+                padding: 8px;
+                padding-left: 12px;
             }
 
-            .pinter{
-                padding:8px;
-                padding-left:12px;
+            .pinter {
+                padding: 8px;
+                padding-left: 12px;
             }
-
         }
     }
-
-
-
-}
+};
 //end-footer

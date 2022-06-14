@@ -1,14 +1,41 @@
-import {getCount} from "./common.js"
-import {favoriCount,basketCount,getCountheart,dropdowns,searchfilterdropdown} from "./common.js"
+
 
 //header start ALL CATEGORIES dropdown
-dropdowns();
+
+$(document).ready(function () {
+
+    $(".dropbtns").click(function () {
+        $("#myDropdown").toggle(1000);
+    });
+
+});
+
+window.onclick = function (event) {
+    if (!event.target.matches('.dropbtns')) {
+        var dropdowns = document.getElementsByClassName("dropdown-contents");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+        }
+    }
+}
 //header end ALL CATEGORIES dropdown
 
 
-//start searchfilter
-searchfilterdropdown();
-//end searchfilter
+
+//start searchfilterdropdown
+
+$(document).ready(function () {
+
+    $("#all-categ").click(function () {
+        $(".dropdown-content-cate").toggle(800);
+
+    })
+});
+//end searchfilterdropdown
 
 
 
@@ -113,15 +140,25 @@ function deletefromstorage(deleteitem) {
 
 
 
-
-
-
-let heartcount=document.querySelector(".heart-count")
+//BasketFavoriCount
+let heartcount = document.querySelector(".heart-count")
 favoriCount(heartcount)
 
+function favoriCount(sum) {
+    sum.innerText = JSON.parse(localStorage.getItem("FavoriProduct")).length
+}
 
-let basketcount=document.querySelector(".basket-count")
+
+
+
+
+let basketcount = document.querySelector(".basket-count")
 basketCount(basketcount)
+
+function basketCount(sum) {
+    sum.innerText = JSON.parse(localStorage.getItem("products")).length
+}
+//BasketFavoriCount
 
 
 //increase count
@@ -139,13 +176,7 @@ $(document).on("click",".plus",function(e){
   //localStorage.setItem("products", JSON.stringify(count+=1))
 
 
-  
-  
-  
 
-
-
- 
 
 })
 
