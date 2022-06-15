@@ -43,7 +43,20 @@ namespace EndProjectOrgani.Controllers
 
             var productlist = await _uow.GetRepository<Product>().GetAllOrderByAsync(x => x.Id, false);
 
-            return View((productdetails, productlist));
+            var commentlist = await _uow.GetRepository<Comment>().GetAllOrderByAsync(x => x.Id, false);
+
+            return View((productdetails, productlist,commentlist,new Comment()));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Comment([Bind(Prefix ="Item4")]Comment model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            await _context.Comments.AddAsync(model);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("ProductDetailsPage");
         }
     }
 }

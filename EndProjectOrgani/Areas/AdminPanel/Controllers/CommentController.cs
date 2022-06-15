@@ -24,7 +24,7 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
 
         public async Task<IActionResult> CommentList()
         {
-            var list = await _context.Comments.Where(x => x.Status != DataStatus.Deleted!).Include(x => x.SaleOff).ToListAsync();
+            var list = await _context.Comments.Where(x => x.Status != DataStatus.Deleted!).Include(x => x.Product).ToListAsync();
 
             return View(list);
         }
@@ -69,7 +69,7 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
 
         public async Task<IActionResult> Details(int id)
         {
-            var details = await _context.Comments.Include(x => x.SaleOff).FirstOrDefaultAsync(x => x.Id == id);
+            var details = await _context.Comments.Include(x => x.Product).FirstOrDefaultAsync(x => x.Id == id);
             return View(details);
         }
     }

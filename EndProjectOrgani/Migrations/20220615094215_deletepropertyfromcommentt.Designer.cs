@@ -4,14 +4,16 @@ using EndProjectOrgani.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EndProjectOrgani.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220615094215_deletepropertyfromcommentt")]
+    partial class deletepropertyfromcommentt
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -263,12 +265,17 @@ namespace EndProjectOrgani.Migrations
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("SaleOffId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ProductId");
+
+                    b.HasIndex("SaleOffId");
 
                     b.ToTable("Comments");
                 });
@@ -635,6 +642,10 @@ namespace EndProjectOrgani.Migrations
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("EndProjectOrgani.Entities.SaleOff", null)
+                        .WithMany("Comments")
+                        .HasForeignKey("SaleOffId");
                 });
 
             modelBuilder.Entity("EndProjectOrgani.Entities.Product", b =>

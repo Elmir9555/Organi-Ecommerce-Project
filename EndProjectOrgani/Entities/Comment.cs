@@ -8,13 +8,12 @@ namespace EndProjectOrgani.Entities
     public class Comment:BaseEntity
     {
         public string Message { get; set; }
-
+        public string ByName { get; set; }
         public int ProductId { get; set; }
-        public int SaleOffId { get; set; }
-
+        
         //Relation Property
         
         public Product Product { get; set; }
-        public SaleOff SaleOff { get; set; }
+        
     }
 }

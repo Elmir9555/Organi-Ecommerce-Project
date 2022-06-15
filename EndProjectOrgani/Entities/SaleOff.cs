@@ -19,7 +19,6 @@ namespace EndProjectOrgani.Entities
 
 
         //Relation Property
-        public List<Comment> Comments { get; set; }
         public SaleOffDetail SaleOffDetails { get; set; }
     }
 }
