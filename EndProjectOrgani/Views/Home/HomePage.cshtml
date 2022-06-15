@@ -21,7 +21,7 @@
                                 </div>
                                 <div class="free">Free Pickup and Delivery Available</div>
                                 <button class="shopnow">
-                                    <a asp-controller="Shop" asp-action="ShopPage" target="_blank">SHOP NOW</a>
+                                    <a href="~/MemberPanel/shop.html" target="_blank">SHOP NOW</a>
                                 </button>
                             </div>
                             <div class="image">
@@ -49,7 +49,7 @@
                                 <img src="~/AdminPanel/img/category/@category2.Image" style="width: 100%;height: 100%;" alt="category">
                             </div>
                             <div class="cate-name">
-                                <a href="#">@category2.Name</a>
+                                <a asp-action="ProductCategoryPage" asp-controller="Product" asp-route-id="@category2.Id">@category2.Name</a>
                             </div>
                         </div>}
                 </div>
@@ -78,7 +78,7 @@
                         {
                             <div class="col-lg-3 col-sm-12" data-id="@product1.Id">
                                 <div class="picture">
-                                    <img src="~/AdminPanel/img/product/@product1.Image" style="width: 100%;height: 100%;" alt="product">
+                                    <img src="~/AdminPanel/img/product/@product1.Image" alt="product">
                                     <div class="icons">
                                         <div class="heart-icon">
                                             <a href="#" id="addheart"><i class="fas fa-heart"></i></a>
@@ -88,12 +88,12 @@
 
                                         </div>
                                         <div class="detail-icon">
-                                            <a href="~/MemberPanel/blogdetail.html"> <i class="fas fa-info"></i></a>
+                                            <a asp-action="ProductDetailsPage" asp-controller="Product" asp-route-id="@product1.Id"> <i class="fas fa-info"></i></a>
                                         </div>
                                     </div>
 
                                     <div class="name">
-                                        <a href="#">@product1.Name</a>
+                                        <a asp-action="ProductDetailsPage" asp-controller="Product" asp-route-id="@product1.Id">@product1.Name</a>
                                     </div>
                                     <div class="price">
                                         $@product1.Price
@@ -115,7 +115,7 @@
                                 {
                                     <div class="col-lg-3 col-sm-12" data-id="@product.Id">
                                         <div class="picture">
-                                            <img src="~/AdminPanel/img/product/@product.Image" style="width: 100%;height: 100%;" alt="product">
+                                            <img src="~/AdminPanel/img/product/@product.Image" alt="product">
                                             <div class="icons">
                                                 <div class="heart-icon">
                                                     <a href="" id="addheart"><i class="fas fa-heart"></i></a>
@@ -124,12 +124,12 @@
                                                     <a href="" id="addproduct"> <i class="fas fa-shopping-cart"></i></a>
                                                 </div>
                                                 <div class="detail-icon">
-                                                    <a href=""> <i class="fas fa-info"></i></a>
+                                                    <a asp-action="ProductDetailsPage" asp-controller="Product" asp-route-id="@product.Id"> <i class="fas fa-info"></i></a>
                                                 </div>
                                             </div>
 
                                             <div class="name">
-                                                <a href="#">@product.Name</a>
+                                                <a asp-action="ProductDetailsPage" asp-controller="Product" asp-route-id="@product.Id">@product.Name</a>
                                             </div>
                                             <div class="price">
                                                 $@product.Price
@@ -155,8 +155,7 @@
                                 <img src="~/AdminPanel/img/advert/@advert.Image" style="width: 100%;height: 100%;"
                                      alt="drink&fruits">
                             </div>
-                        </div>
-                    }
+                        </div>}
 
                 </div>
             </div>
@@ -186,8 +185,8 @@
                                                     {
                                                         drink++;
                                                         <div>
-                                                            <img src="~/AdminPanel/img/product/@item.Image" style="width:100%;height:100%;" alt="">
-                                                            <p style="text-align: center"><a href="">@item.Name: <strong>$@item.Price</strong> </a> </p>
+                                                            <img src="~/AdminPanel/img/product/@item.Image" alt="">
+                                                            <p style="text-align: center"><a asp-action="ProductDetailsPage" asp-controller="Product" asp-route-id="@item.Id">@item.Name: <strong>$@item.Price</strong> </a> </p>
                                                         </div> }
                                                     if (drink == 4) break;
                                                 } }
@@ -202,12 +201,12 @@
                                             @{ var eggs = 0;
                                                 foreach (var item in Model.products)
                                                 {
-                                                    if (item.Category.Name.ToLower() == "eggs & butters")
+                                                    if (item.Category.Name.ToLower() == "egg & butters")
                                                     {
                                                         eggs++;
                                                         <div>
-                                                            <img src="~/AdminPanel/img/product/@item.Image" style="width:100%;height:100%;" alt="">
-                                                            <p style="text-align: center"><a href="">@item.Name: <strong>$@item.Price</strong> </a> </p>
+                                                            <img src="~/AdminPanel/img/product/@item.Image" alt="">
+                                                            <p style="text-align: center"><a asp-action="ProductDetailsPage" asp-controller="Product" asp-route-id="@item.Id">@item.Name: <strong>$@item.Price</strong> </a> </p>
                                                         </div> }
                                                     if (eggs == 4) break;
                                                 } }
@@ -230,8 +229,8 @@
                                                     {
                                                         breads++;
                                                         <div>
-                                                            <img src="~/AdminPanel/img/product/@item.Image" style="width:100%;height:100%;" alt="">
-                                                            <p style="text-align: center"><a href="">@item.Name: <strong>$@item.Price</strong> </a> </p>
+                                                            <img src="~/AdminPanel/img/product/@item.Image" alt="">
+                                                            <p style="text-align: center"><a asp-action="ProductDetailsPage" asp-controller="Product" asp-route-id="@item.Id">@item.Name: <strong>$@item.Price</strong> </a> </p>
                                                         </div> }
                                                     if (breads == 4) break;
                                                 } }
@@ -275,8 +274,8 @@
                                                     {
                                                         count++;
                                                         <div>
-                                                            <img src="~/AdminPanel/img/product/@item.Image" style="width:100%;height:100%;" alt="">
-                                                            <p style="text-align: center"><a href="">@item.Name: <strong>$@item.Price</strong> </a> </p>
+                                                            <img src="~/AdminPanel/img/product/@item.Image" alt="">
+                                                            <p style="text-align: center"><a asp-action="ProductDetailsPage" asp-controller="Product" asp-route-id="@item.Id">@item.Name: <strong>$@item.Price</strong> </a> </p>
                                                         </div> }
                                                     if (count == 4) break;
                                                 } }
@@ -295,8 +294,8 @@
                                                     {
                                                         count1++;
                                                         <div>
-                                                            <img src="~/AdminPanel/img/product/@item.Image" style="width:100%;height:100%;" alt="">
-                                                            <p style="text-align: center"><a href="">@item.Name: <strong>$@item.Price</strong> </a> </p>
+                                                            <img src="~/AdminPanel/img/product/@item.Image" alt="">
+                                                            <p style="text-align: center"><a asp-action="ProductDetailsPage" asp-controller="Product" asp-route-id="@item.Id">@item.Name: <strong>$@item.Price</strong> </a> </p>
                                                         </div> }
                                                     if (count1 == 4) break;
                                                 } }
@@ -319,8 +318,8 @@
                                                     {
                                                         count2++;
                                                         <div>
-                                                            <img src="~/AdminPanel/img/product/@item.Image" style="width:100%;height:100%;" alt="">
-                                                            <p style="text-align: center"><a href="">@item.Name: <strong>$@item.Price</strong> </a> </p>
+                                                            <img src="~/AdminPanel/img/product/@item.Image" alt="">
+                                                            <p style="text-align: center"><a asp-action="ProductDetailsPage" asp-controller="Product" asp-route-id="@item.Id">@item.Name: <strong>$@item.Price</strong> </a> </p>
                                                         </div> }
                                                     if (count2 == 4) break;
                                                 } }
@@ -371,7 +370,7 @@
                             </div>
 
                             <div class="blog-title">
-                                <p> <a href="#">@blog.Title</a> </p>
+                                <p> <a asp-action="BlogDetailsPage" asp-controller="Blog" asp-route-id="@blog.Id">@blog.Title</a> </p>
                             </div>
 
                             <div class="blog-content">

@@ -1,44 +1,32 @@
 ﻿<Properties StartupConfiguration="{478630B5-36FF-40A9-A875-79D5C07D5F87}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="EndProjectOrgani/wwwroot/MemberPanel/assets/js/products.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="EndProjectOrgani/Views/Product/ProductDetailsPage.cshtml">
     <Files>
-      <File FileName="EndProjectOrgani/Views/Product/ProductPage.cshtml" Line="111" Column="1" />
-      <File FileName="EndProjectOrgani/Views/Home/HomePage.cshtml" Line="367" Column="1" />
+      <File FileName="EndProjectOrgani/Views/Product/ProductPage.cshtml" Line="113" Column="72" />
+      <File FileName="EndProjectOrgani/Views/Home/HomePage.cshtml" Line="204" Column="93" />
       <File FileName="EndProjectOrgani/wwwroot/MemberPanel/assets/js/products.js" Line="121" Column="4" />
       <File FileName="EndProjectOrgani/Views/Shared/_Layout.cshtml" Line="12" Column="1" />
       <File FileName="EndProjectOrgani/wwwroot/MemberPanel/assets/js/common.js" Line="12" Column="2" />
       <File FileName="EndProjectOrgani/Views/Contact/ContactPage.cshtml" Line="94" Column="1" />
+      <File FileName="EndProjectOrgani/Controllers/HomeController.cs" Line="1" Column="1" />
+      <File FileName="EndProjectOrgani/Views/Product/ProductDetailsPage.cshtml" Line="3" Column="5" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="EndProjectOrgani" expanded="True">
             <Node name="EndProjectOrgani" expanded="True">
-              <Node name="Areas" expanded="True">
-                <Node name="AdminPanel" expanded="True">
-                  <Node name="Controllers" expanded="True" />
-                  <Node name="Views" expanded="True">
-                    <Node name="BlogDetail" expanded="True" />
-                    <Node name="Shared" expanded="True" />
-                  </Node>
-                </Node>
-              </Node>
               <Node name="Controllers" expanded="True" />
-              <Node name="ViewComponents" expanded="True" />
               <Node name="Views" expanded="True">
-                <Node name="Account" expanded="True" />
-                <Node name="Blog" expanded="True" />
-                <Node name="Contact" expanded="True" />
-                <Node name="Home" expanded="True" />
-                <Node name="Product" expanded="True" />
+                <Node name="Product" expanded="True">
+                  <Node name="ProductDetailsPage.cshtml" selected="True" />
+                </Node>
                 <Node name="Shared" expanded="True" />
               </Node>
               <Node name="wwwroot" expanded="True">
                 <Node name="MemberPanel" expanded="True">
                   <Node name="assets" expanded="True">
                     <Node name="css" expanded="True" />
-                    <Node name="js" expanded="True">
-                      <Node name="products.js" selected="True" />
-                    </Node>
+                    <Node name="js" expanded="True" />
                     <Node name="sass" expanded="True" />
                   </Node>
                 </Node>
