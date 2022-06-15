@@ -56,9 +56,11 @@ $(document).ready(function () {
 
 
 
-//rightcorner favoriproduct count 
+//rightcorner favoriproduct count
+
 let countfavo=document.querySelector(".product-count strong")
-countfavo.innerText=JSON.parse(localStorage.getItem("FavoriProduct")).length
+countfavo.innerText = JSON.parse(localStorage.getItem("FavoriProduct")).length
+
 //rightcorner favoriproduct count
 
 
@@ -116,7 +118,7 @@ products.forEach(product => {
 
 
 
-})
+});
 
 count.innerText = getCount(productList)
 }
@@ -174,16 +176,24 @@ hearticon.forEach(hearticons => {
 
         localStorage.setItem("FavoriProduct", JSON.stringify(favoriList))
         heartcount.innerText = getCountheart(favoriList)
+        function getCountheart(heart) {
+            return heart.length;
+        }
 
 
     })
 });
 
-heartcount.innerText = getCountheart(favoriList)
+heartcount.innerText = getCountheart(favoriList)function getCountheart(heart) {
+    return heart.length;
+}
+
+
  //Add Favori
 
 
 //BasketFavoriCount
+
 let heartcount = document.querySelector(".heart-count")
 favoriCount(heartcount)
 

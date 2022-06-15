@@ -49,6 +49,7 @@
     <None Remove="MimeKit" />
     <None Remove="MailKit" />
     <None Remove="Models\" />
+    <None Remove="Views\Shared\Components\BlogSideBar\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Home\" />
@@ -101,6 +102,7 @@
     <Folder Include="ViewComponents\" />
     <Folder Include="Views\Product\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Shared\Components\BlogSideBar\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\" />

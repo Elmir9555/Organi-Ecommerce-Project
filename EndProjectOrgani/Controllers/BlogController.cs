@@ -28,5 +28,12 @@ namespace EndProjectOrgani.Controllers
 
             return View(list);
         }
+
+        public async Task<IActionResult> BlogDetailsPage(int id)
+        {
+            var blog = await _context.Blogs.Where(x => x.Status != DataStatus.Deleted).Include(x => x.Owner).Include(x => x.BlogDetails).FirstOrDefaultAsync(x => x.Id == id);
+
+            return View(blog);
+        }
     }
 }

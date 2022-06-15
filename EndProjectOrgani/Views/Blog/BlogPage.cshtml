@@ -1,192 +1,88 @@
 ﻿@model List<Blog>
 
-<link rel="stylesheet" href="~/MemberPanel/assets/css/blog.css">
-<link rel="stylesheet" href="~/MemberPanel/assets/sass/blog.css">
+    <link rel="stylesheet" href="~/MemberPanel/assets/sass/blog.css">
+    <link rel="stylesheet" href="~/MemberPanel/assets/css/blog.css">
 
-<main>
+    <main>
 
-    <section id="background-potatoes">
-        <div class="background-potatoes">
-            <div class="img">
-                <img src="~/MemberPanel/assets/img/potatoes-background.jpeg" style="width: 100%;height: 100%;" alt="">
-
-            </div>
-            <div class="name">
-                <p>Blog </p>
-                <span> <a href="~/MemberPanel/home.html"> <strong>Home</strong> </a> -->Blog </span>
-            </div>
-
-
-
-        </div>
-    </section>
-
-    <section id="blog-filter"></section>
-    <div class="blog-filter">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-sm-12">
-                    <div class="filter-search">
-                        <div class="search">
-                            <input type="text" placeholder="Search...">
-                            <span class="search-icon"><i class="fas fa-search"></i></span>
-                        </div>
-                    </div>
-
-                    <div class="categories-title">
-                        Categories
-                    </div>
-
-                    <div class="categories-name">
-                        <div>
-                            <a href="">
-
-                            </a>
-                        </div>
-                        <div>
-                            <a href="">All</a>
-                        </div>
-                        <div>
-                            <a href="">Fresh Meats (20)</a>
-                        </div>
-                        <div>
-                            <a href="">Vegetables (10)</a>
-                        </div>
-                        <div>
-                            <a href="">Fruits (25)</a>
-                        </div>
-                        <div>
-                            <a href="">Fresh Berries (5)</a>
-                        </div>
-
-                        <div>
-                            <a href="">Ocean Food (30)</a>
-                        </div>
-                    </div>
-
-                    <div class="recent-news">
-                        Recent News
-                    </div>
-
-                    <div class="image-content-date">
-                        <div class="img">
-                            <img src="~/MemberPanel/assets/img/strawberry.jpeg" style="width: 100%;height: 100%;" alt="strawberry">
-                        </div>
-
-                        <div class="content-date">
-                            <div class="content">
-                                <a href=""> 09 Kinds Of Vegetables Protect The Liver</a>
-                            </div>
-                            <div class="date">
-                                MAR 05,2022
-                            </div>
-                        </div>
-                    </div>
-                    <div class="image-content-date">
-                        <div class="img">
-                            <img src="~/MemberPanel/assets/img/vegetable.jpeg" style="width: 100%;height: 100%;" alt="strawberry">
-                        </div>
-
-                        <div class="content-date">
-                            <div class="content">
-                                <a href=""> Tips You To Balance Nutrition Meal Day</a>
-                            </div>
-                            <div class="date">
-                                MAR 05,2022
-                            </div>
-                        </div>
-                    </div>
-                    <div class="image-content-date">
-                        <div class="img">
-                            <img src="~/MemberPanel/assets/img/strawberry.jpeg" style="width: 100%;height: 100%;" alt="strawberry">
-                        </div>
-
-                        <div class="content-date">
-                            <div class="content">
-                                <a href=""> 4 Principles Help You Lose Weight With Vegetables</a>
-                            </div>
-                            <div class="date">
-                                MAR 05,2022
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="recent-news">
-                        Search  By
-                    </div>
-
-                    <div class="product-name">
-                        <div class="up">
-                            <span><a href="">Apple</a> </span>
-                            <span><a href="">Banana</a> </span>
-                            <span><a href="">Strawberry</a></span>
-                        </div>
-
-                        <div class="down">
-                            <span><a href="">Meat</a></span>
-                            <span><a href="">Fish</a></span>
-                            <span><a href="">Orange</a></span>
-                        </div>
-
-                    </div>
+        <section id="background-potatoes">
+            <div class="background-potatoes">
+                <div class="img">
+                    <img src="~/MemberPanel/assets/img/potatoes-background.jpeg" style="width: 100%;height: 100%;" alt="">
 
                 </div>
+                <div class="name">
+                    <p>Blog </p>
+                    <span> <a href="~/MemberPanel/home.html"> <strong>Home</strong> </a> -->Blog </span>
+                </div>
 
-                <div class="col-lg-8 col-sm-12">
-                    <div class="row">
-                        @foreach (var blog in Model)
-                        {
-                            <div class="col-lg-6 col-sm-12">
-                                <div class="blog-img">
-                                    <img src="~/AdminPanel/img/blog/@blog.Image" style="width: 100%;height: 100%;" alt="lemon">
+
+
+
+            </div>
+        </section>
+
+        <section id="blog-filter"></section>
+        <div class="blog-filter">
+            <div class="container">
+                <div class="row">
+
+                    @await Component.InvokeAsync("BlogSideBar")
+
+                    <div class="col-lg-8 col-sm-12">
+                        <div class="row">
+                            @foreach (var blog in Model)
+                            {
+                                <div class="col-lg-6 col-sm-12">
+                                    <div class="blog-img">
+                                        <img src="~/AdminPanel/img/blog/@blog.Image" style="width: 100%;height: 100%;" alt="lemon">
+                                    </div>
+
+                                    <div class="date-comment">
+                                        <span class="date"><i class="fas fa-calendar"></i> @blog.CreatedDate.ToString("dd MMMM yyyy")</span>
+
+                                    </div>
+
+                                    <div class="blog-title">
+                                        <p> <a href="#">@blog.Title</a> </p>
+                                    </div>
+
+                                    <div class="blog-content">
+                                        <p>
+                                            @blog.BlogDetails.Description
+                                        </p>
+                                    </div>
+
+                                    <div class="read-more">
+                                        <a asp-action="BlogDetailsPage" asp-controller="Blog" asp-route-id="@blog.Id">READ MORE -></a>
+                                    </div>
+                                </div>}
+
+
+                            <div class="pagination-blog mt-5">
+                                <div class="one active">
+                                    1
                                 </div>
-
-                                <div class="date-comment">
-                                    <span class="date"><i class="fas fa-calendar"></i> @blog.CreatedDate.ToString("dd MMMM yyyy")</span>
-
+                                <div class="two">
+                                    2
                                 </div>
-
-                                <div class="blog-title">
-                                    <p> <a href="#">@blog.Title</a> </p>
+                                <div class="three">
+                                    3
                                 </div>
-
-                                <div class="blog-content">
-                                    <p>
-                                        @blog.BlogDetails.Description
-                                    </p>
-                                </div>
-
-                                <div class="read-more">
-                                    <a href="#">READ MORE -></a>
+                                <div class="count">
+                                    >
                                 </div>
                             </div>
-                        }
 
 
-                        <div class="pagination-blog mt-5">
-                            <div class="one active">
-                                1
-                            </div>
-                            <div class="two">
-                                2
-                            </div>
-                            <div class="three">
-                                3
-                            </div>
-                            <div class="count">
-                                >
-                            </div>
                         </div>
-
-
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</main>
+    </main>
 
-@section Scripts {
-    <script asp-append-version="true" src="~/MemberPanel/assets/js/blog.js"></script>
+    @section Scripts {
+        <script asp-append-version="true" src="~/MemberPanel/assets/js/blog.js"></script>
 
-}
+    }

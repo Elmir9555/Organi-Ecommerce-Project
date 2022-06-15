@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using EndProjectOrgani.Context;
 using EndProjectOrgani.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 namespace EndProjectOrgani.Areas.AdminPanel.Controllers
 {
     [Area("AdminPanel")]
+    [Authorize(Roles = "Admin")]
     public class BlogDetailController : Controller
     {
         readonly AppDbContext _context;
@@ -20,7 +22,7 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> BlogDetailsList()
+        public async Task<IActionResult> BlogDetailList()
         {
             var list = await _context.BlogDetails.Where(x => x.Status != DataStatus.Deleted!).Include(x => x.Blog).ToListAsync();
 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using EndProjectOrgani.Entities;
 using EndProjectOrgani.UniteOfWork;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using static EndProjectOrgani.Entities.Subscribe;
@@ -13,6 +14,7 @@ using static EndProjectOrgani.Entities.Subscribe;
 namespace EndProjectOrgani.Areas.AdminPanel.Controllers
 {
     [Area("AdminPanel")]
+    [Authorize(Roles ="Admin")]
     public class SubscribeController : Controller
     {
         readonly IUow _uow;

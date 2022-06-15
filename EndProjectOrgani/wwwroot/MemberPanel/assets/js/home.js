@@ -180,6 +180,9 @@ products.forEach(product => {
 })
 
 count.innerText = getCount(productList)
+//function getCount(list) {
+//    return list.length;
+//};
 }
 
 //Add Basket 

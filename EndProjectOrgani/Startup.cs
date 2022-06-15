@@ -55,7 +55,7 @@ namespace EndProjectOrgani
                 opt.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
                 opt.Cookie.Name = "UdemyIdentity";
                 opt.LoginPath = new PathString("/Account/Login");
-                //opt.AccessDeniedPath = new PathString("/Home/AccessDenied");
+                opt.AccessDeniedPath = new PathString("/Account/AccessDenied");
 
             });
 
