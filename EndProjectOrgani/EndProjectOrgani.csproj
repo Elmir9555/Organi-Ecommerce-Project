@@ -50,6 +50,9 @@
     <None Remove="MailKit" />
     <None Remove="Models\" />
     <None Remove="Views\Shared\Components\BlogSideBar\" />
+    <None Remove="Views\Shared\Components\Subscribe\" />
+    <None Remove="Views\Shared\Components\ProductSearch\" />
+    <None Remove="Views\Common\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Home\" />
@@ -103,6 +106,9 @@
     <Folder Include="Views\Product\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Shared\Components\BlogSideBar\" />
+    <Folder Include="Views\Shared\Components\Subscribe\" />
+    <Folder Include="Views\Shared\Components\ProductSearch\" />
+    <Folder Include="Views\Common\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\" />

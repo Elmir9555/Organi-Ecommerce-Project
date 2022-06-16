@@ -35,5 +35,17 @@ namespace EndProjectOrgani.Controllers
 
             return View(blog);
         }
+
+        public async Task<IActionResult> BlogSearch(string search)
+        {
+            var blogs = from m in _context.Blogs.Include(x=> x.BlogDetails) select m;
+
+            if (!String.IsNullOrEmpty(search))
+            {
+                blogs = blogs.Where(x => x.Title.Contains(search));
+            }
+
+            return View("BlogPage", (await blogs.Where(x => x.Status != DataStatus.Deleted).ToListAsync()));
+        }
     }
 }

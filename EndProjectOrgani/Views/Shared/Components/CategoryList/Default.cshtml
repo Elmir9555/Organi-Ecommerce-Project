@@ -4,5 +4,5 @@
 
 @foreach (var item in Model)
 {
-    <a asp-action="AllProduct" asp-controller="Product" asp-route-id="@item.Id">@item.Name</a>
+    <a asp-action="ProductCategoryPage" asp-controller="Product" asp-route-id="@item.Id">@item.Name</a>
 }

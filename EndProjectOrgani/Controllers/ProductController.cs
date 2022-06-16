@@ -39,24 +39,44 @@ namespace EndProjectOrgani.Controllers
 
         public async Task<IActionResult> ProductDetailsPage(int id)
         {
-            var productdetails = await _context.Products.Where(x => x.Status != DataStatus.Deleted).Include(x => x.ProductDetails).OrderByDescending(x => x.Id).FirstOrDefaultAsync(x => x.Id == id);
+            var productdetails = await _context.Products.Where(x => x.Status != DataStatus.Deleted).Include(x => x.ProductDetails).FirstOrDefaultAsync(x => x.Id == id);
 
             var productlist = await _uow.GetRepository<Product>().GetAllOrderByAsync(x => x.Id, false);
 
             var commentlist = await _uow.GetRepository<Comment>().GetAllOrderByAsync(x => x.Id, false);
 
-            return View((productdetails, productlist,commentlist,new Comment()));
+            var comment = await _context.Comments.FindAsync(id);
+
+            TempData["ProId"] = id;
+            
+            return View((productdetails, productlist, commentlist, comment));
         }
 
         [HttpPost]
         public async Task<IActionResult> Comment([Bind(Prefix ="Item4")]Comment model)
         {
-            if (!ModelState.IsValid) return View(model);
+            var id = TempData["ProId"];
+
+            model.ProductId = (int)id;
+
 
             await _context.Comments.AddAsync(model);
             await _context.SaveChangesAsync();
 
-            return RedirectToAction("ProductDetailsPage");
+            return RedirectToAction("HomePage","Home");
         }
+
+        public async Task<IActionResult> ProductSearch(string search)
+        {
+            var products = from m in _context.Products select m;
+
+            if (!String.IsNullOrEmpty(search))
+            {
+                products = products.Where(x => x.Name.Contains(search));
+            }
+
+            return View("ProductPage", (await products.Where(x => x.Status != DataStatus.Deleted).ToListAsync()));
+        }
+
     }
 }

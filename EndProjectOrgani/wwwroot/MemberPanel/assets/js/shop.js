@@ -2169,7 +2169,7 @@ products.forEach(product => {
 
             });
 
-            alert("Product Added Success!")
+            swal("Good job!", "You clicked the button!", "success");
 
 
 

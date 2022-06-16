@@ -8,10 +8,10 @@
                 <input type="text" placeholder="Search...">
                 <span class="search-icon"><i class="fas fa-search"></i></span>
             </div>*@
-        <form id="search" asp-action="ProductSearch" asp-controller="Product">
-            <input type="search" placeholder="Search..." name="search" />
-            <button type="submit">
-                <span class="search-icon"><i class="fas fa-search"></i></span>
+        <form id="search" asp-action="BlogSearch" asp-controller="Blog">
+            <input  style="position: relative; width: 301px; height: 40px; border-radius: 238px; border: 1px solid rgba(0,0,0,0.3); padding-left: 14px;outline:none;" type="search" placeholder="Search..." name="search" />
+            <button style="position: absolute; right: 144px; top: 7px; border: none; background-color: white;" type="submit">
+                <span style=" color: rgba(0,0,0,0.4);" class="search-icon"><i class="fas fa-search"></i></span>
             </button>
         </form>
     </div>
@@ -27,7 +27,7 @@
             </a>
         </div>
         <div>
-            <a asp-action="AllProduct" asp-controller="Product">All</a>
+            <a asp-action="ProductPage" asp-controller="Product">All</a>
         </div>
         @foreach (var category in Model.categories)
         {

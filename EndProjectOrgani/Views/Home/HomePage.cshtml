@@ -1,8 +1,12 @@
 ﻿@model (List<Category> categories, List<Product> products, List<Blog> blogs, List<Advert> adverts)
 <!-- Start-Body -->
 
-<link rel="stylesheet" href="~/MemberPanel/assets/sass/home.css">
-<link rel="stylesheet" href="~/MemberPanel/assets/css/home.css">
+@section style{
+
+    <link rel="stylesheet" href="~/MemberPanel/assets/sass/home.css">
+    <link rel="stylesheet" href="~/MemberPanel/assets/css/home.css">
+}
+
 
 <main>
     <section id="first-part-body">
@@ -21,7 +25,7 @@
                                 </div>
                                 <div class="free">Free Pickup and Delivery Available</div>
                                 <button class="shopnow">
-                                    <a href="~/MemberPanel/shop.html" target="_blank">SHOP NOW</a>
+                                    <a asp-controller="shop" asp-action="ShopPage">SHOP NOW</a>
                                 </button>
                             </div>
                             <div class="image">
@@ -389,6 +393,12 @@
     </section>
 </main>
 
-<script type="module" src="~/MemberPanel/assets/js/home.js"></script>
+@*<script type="module" src="~/MemberPanel/assets/js/home.js"></script>*@
+
+
+@section scripts {
+    <script asp-append-version="true" src="~/MemberPanel/assets/js/home.js"></script>
+
+}
 
 <!-- End-body -->

@@ -1,7 +1,8 @@
 ﻿
 @model List<Product>
 
-
+<link rel="stylesheet" href="~/MemberPanel/assets/sass/products.css">
+<link rel="stylesheet" href="~/MemberPanel/assets/css/products.css">
 
 <main>
     <section id="background-potatoes">
@@ -63,10 +64,10 @@
                                             <img src="~/AdminPanel/img/product/@product.Image" alt="potatoes">
                                             <div class="icons">
                                                 <div class="heart-icon">
-                                                    <a href=""><i class="fas fa-heart"></i></a>
+                                                    <a href="" id="addheart"><i class="fas fa-heart"></i></a>
                                                 </div>
                                                 <div class="basket-icon">
-                                                    <a href=""> <i class="fas fa-shopping-cart"></i></a>
+                                                    <a href="" id="addproduct"> <i class="fas fa-shopping-cart"></i></a>
                                                 </div>
                                                 <div class="detail-icon">
                                                     <a asp-action="ProductDetailsPage" asp-controller="Product" asp-route-id="@product.Id"> <i class="fas fa-info"></i></a>
@@ -110,3 +111,9 @@
         </div>
     </section>
 </main>
+
+
+@section Scripts {
+    <script asp-append-version="true" src="~/MemberPanel/assets/js/shop.js"></script>
+
+}

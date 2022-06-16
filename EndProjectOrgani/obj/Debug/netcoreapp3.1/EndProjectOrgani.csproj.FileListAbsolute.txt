@@ -139,3 +139,7 @@
 /Users/elmirustayev/Desktop/EndProjectOrgani/EndProjectOrgani/obj/Debug/netcoreapp3.1/Razor/Views/Account/AccessDenied.cshtml.g.cs
 /Users/elmirustayev/Desktop/EndProjectOrgani/EndProjectOrgani/obj/Debug/netcoreapp3.1/Razor/Views/Blog/BlogDetailsPage.cshtml.g.cs
 /Users/elmirustayev/Desktop/EndProjectOrgani/EndProjectOrgani/obj/Debug/netcoreapp3.1/Razor/Views/Shared/Components/BlogSideBar/Default.cshtml.g.cs
+/Users/elmirustayev/Desktop/EndProjectOrgani/EndProjectOrgani/obj/Debug/netcoreapp3.1/Razor/Views/Shared/Components/Subscribe/Default.cshtml.g.cs
+/Users/elmirustayev/Desktop/EndProjectOrgani/EndProjectOrgani/obj/Debug/netcoreapp3.1/Razor/Views/Shared/Components/ProductSearch/Default.cshtml.g.cs
+/Users/elmirustayev/Desktop/EndProjectOrgani/EndProjectOrgani/obj/Debug/netcoreapp3.1/Razor/Views/Common/BasketPage.cshtml.g.cs
+/Users/elmirustayev/Desktop/EndProjectOrgani/EndProjectOrgani/obj/Debug/netcoreapp3.1/Razor/Views/Common/FavoriPage.cshtml.g.cs

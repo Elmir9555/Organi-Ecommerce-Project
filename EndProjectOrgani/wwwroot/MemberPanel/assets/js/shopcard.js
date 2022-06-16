@@ -1,7 +1,5 @@
 
 
-//header start ALL CATEGORIES dropdown
-
 $(document).ready(function () {
 
     $(".dropbtns").click(function () {
@@ -141,24 +139,21 @@ function deletefromstorage(deleteitem) {
 
 
 //BasketFavoriCount
+let favoriList = JSON.parse(localStorage.getItem("FavoriProduct"))
 let heartcount = document.querySelector(".heart-count")
-favoriCount(heartcount)
-
-function favoriCount(sum) {
-    sum.innerText = JSON.parse(localStorage.getItem("FavoriProduct")).length
+heartcount.innerText = getCountheart(favoriList)
+function getCountheart(heart) {
+    return heart.length;
 }
 
-
-
-
-
-let basketcount = document.querySelector(".basket-count")
-basketCount(basketcount)
-
-function basketCount(sum) {
-    sum.innerText = JSON.parse(localStorage.getItem("products")).length
-}
+let productList = JSON.parse(localStorage.getItem("products"))
+let favsum = document.querySelector(".basket-count")
+favsum.innerText = getCount(productList)
+function getCount(list) {
+    return list.length;
+};
 //BasketFavoriCount
+
 
 
 //increase count
@@ -207,15 +202,14 @@ let prices=price.map(m=>m.price)
 let pricess=prices.map(s=>s.slice(1))
 
 var array = pricess.map(Number);
-let sum=0;
+let subsum=0;
 for (let i = 0; i < array.length; i++) {
- sum+=array[i]
+ subsum+=array[i]
 
 }
 
-total.innerText=sum+ ".00 $"
-totall.innerText=sum+ ".00 $"
-
+total.innerText=subsum+ ".00 $"
+totall.innerText=subsum+ ".00 $"
 
 
 

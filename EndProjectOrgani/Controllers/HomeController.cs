@@ -33,6 +33,17 @@ namespace EndProjectOrgani.Controllers
             var advert = await _uow.GetRepository<Advert>().GetAllOrderByAsync(x => x.Id, false);
             return View((categories, products, blogs, advert));
         }
+
+        [HttpPost]
+        public async Task<IActionResult> SubscribePage(Subscribe subscribe)
+        {
+            if (!ModelState.IsValid) return RedirectToAction("HomePage");
+
+            await _context.Subscribes.AddAsync(subscribe);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("HomePage");
+        }
+
     }
 
 }

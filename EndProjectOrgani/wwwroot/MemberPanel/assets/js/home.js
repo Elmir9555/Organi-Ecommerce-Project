@@ -180,10 +180,10 @@ products.forEach(product => {
 })
 
 count.innerText = getCount(productList)
-//function getCount(list) {
-//    return list.length;
-//};
-}
+function getCount(list) {
+    return list.length;
+};
+
 
 //Add Basket 
 
@@ -199,7 +199,7 @@ if (JSON.parse(localStorage.getItem("FavoriProduct")) == null) {
 }
 
 let favoriList = JSON.parse(localStorage.getItem("FavoriProduct"))
-let heartcount = document.querySelector(".heart-count")
+let heartcountt = document.querySelector(".heart-count")
 
 hearticon.forEach(hearticons => {
 
@@ -239,39 +239,47 @@ hearticon.forEach(hearticons => {
 
 
         localStorage.setItem("FavoriProduct", JSON.stringify(favoriList))
-        heartcount.innerText = getCountheart(favoriList)
+        heartcountt.innerText = getCountheart(favoriList)
+
+        //function getCountheart(heart) {
+        //    return heart.length;
+        //};
 
 
     })
 });
 
-heartcount.innerText = getCountheart(favoriList)
+heartcountt.innerText = getCountheart(favoriList)
+function getCountheart(heart) {
+    return heart.length;
+}
+
  //Add Favori
 
 
 //BasketFavoriCount
 
-let heartcount = document.querySelector(".heart-count")
-favoriCount(heartcount)
+//let heartcount = document.querySelector(".heart-count")
+//favoriCount(heartcount)
 
-function favoriCount(sum) {
-    sum.innerText = JSON.parse(localStorage.getItem("FavoriProduct")).length
-}
-
-
+//function favoriCount(sum) {
+//    sum.innerText = JSON.parse(localStorage.getItem("FavoriProduct")).length
+//}
 
 
 
-let basketcount = document.querySelector(".basket-count")
-basketCount(basketcount)
 
-function basketCount(sum) {
-    sum.innerText = JSON.parse(localStorage.getItem("products")).length
-}
+
+//let basketcount = document.querySelector(".basket-count")
+//basketCount(basketcount)
+
+//function basketCount(sum) {
+//    sum.innerText = JSON.parse(localStorage.getItem("products")).length
+//}
 //BasketFavoriCount
 
 
-
+console.log("salam")
 
 
 

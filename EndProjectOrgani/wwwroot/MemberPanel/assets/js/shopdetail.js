@@ -153,6 +153,44 @@ localStorage.setItem("products", JSON.stringify(productList))
 
 //Add Basket
 
+//Add Favori
+
+let addfav = document.querySelector(".favori-icon")
+addfav.addEventListener("click", addfavorite)
+function addfavorite() {
+    if (JSON.parse(localStorage.getItem("FavoriProduct") == null)) {
+        localStorage.setItem("FavoriProduct", JSON.stringify([]));
+    }
+
+    let favoriList = JSON.parse(localStorage.getItem("FavoriProduct"))
+    let favoriname = this.parentElement.parentElement.children[0].innerText;
+    let favoriprice = this.parentElement.parentElement.children[2].innerText;
+    let favoriimg = this.parentElement.parentElement.parentElement.parentElement.children[0].children[0].children[0].getAttribute("src")
+    let favoriid = this.parentElement.parentElement.parentElement.parentElement.children[0].children[0].getAttribute("data-id")
+
+    let existproductt = favoriList.find(m => m.id)
+
+    if (existproductt == undefined) {
+        favoriList.push({
+            id: favoriid,
+            image: favoriimg,
+            name: favoriname,
+            price: favoriprice,
+            count: 1
+        });
+
+        alert("Product Added Success!")
+    }
+    else {
+        alert("You have added this Product to your Cart,Please check your basket")
+    }
+
+
+    localStorage.setItem("FavoriProduct", JSON.stringify(favoriList))
+}
+}
+//Add Favori
+
 
 
 
