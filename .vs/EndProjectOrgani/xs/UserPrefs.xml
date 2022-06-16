@@ -5,18 +5,16 @@
         <State name="__root__">
           <Node name="EndProjectOrgani" expanded="True">
             <Node name="EndProjectOrgani" expanded="True">
-              <Node name="Controllers" expanded="True" />
               <Node name="Views" expanded="True">
-                <Node name="Common" expanded="True">
-                  <Node name="BasketPage.cshtml" selected="True" />
+                <Node name="Product" expanded="True">
+                  <Node name="ProductPage.cshtml" selected="True" />
                 </Node>
-                <Node name="Home" expanded="True" />
                 <Node name="Shared" expanded="True" />
+                <Node name="Shop" expanded="True" />
               </Node>
               <Node name="wwwroot" expanded="True">
                 <Node name="MemberPanel" expanded="True">
                   <Node name="assets" expanded="True">
-                    <Node name="css" expanded="True" />
                     <Node name="js" expanded="True" />
                   </Node>
                 </Node>

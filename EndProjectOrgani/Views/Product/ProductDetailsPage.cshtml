@@ -26,7 +26,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 col-sm-12">
-                        <div class="img-product" data-id="1">
+                        <div class="img-product" data-id="@Model.product.Id">
                             <img src="~/AdminPanel/img/product/@Model.product.Image" style="width: 100%;height: 100%;" alt="">
                         </div>
                     </div>
@@ -40,7 +40,7 @@
                                     <i class="fas fa-star"></i>
                                 }
 
-                                @*<span>(15 reviews)</span>*@
+                                <span>(@Model.commentlist.Count reviews)</span>
                             </div>
 
                             <div class="price">
@@ -54,15 +54,13 @@
                             <div class="addtocart">
                               
 
-                                <div class="addbtn">
-                                    <button>
-                                        Add To Cart
+                                <div style=" padding: 7px;" class="addbtn">
+                                    <button style=" height: 25px; padding-left: 25px;" >
+                                        <a asp-controller="product" asp-action="productPage" style="color:white;text-decoration:none;"> Shop Now</a>
                                     </button>
                                 </div>
 
-                                <div class="favori-icon">
-                                    <i class="fas fa-heart"></i>
-                                </div>
+                                
                             </div>
 
                             <hr style="color:rgba(0,0,0,0.3)">
@@ -86,7 +84,7 @@
 
                                 <div class="feat-content">
                                     <div class="stock">
-                                        @((Model.product.ProductDetails.Availability)? "Movcuddur.": "Movcud Deyil!")
+                                        @((Model.product.ProductDetails.Availability)? "Movcuddur.": "Movcud Deyil")
                                     </div>
                                     <div class="day">
                                         @Model.product.Count
@@ -259,8 +257,8 @@
                     }
                     else
                     {
-                        <div class="alert alert-info" role="alert">
-                            Rey bildirmek ucun hesaba giris etmelisiniz.<a asp-controller="Account" asp-action="Login">Login</a>
+                        <div style="text-align:center;" class="alert alert-info" role="alert">
+                            Rey bildirmek ucun hesaba giris etmelisiniz.<a style=" margin-left: 27px; width: 99px;" class="btn btn-primary" asp-controller="Account" asp-action="Login">Login</a>
                         </div>
                     }
 
@@ -287,15 +285,15 @@
 
                         @foreach (var product in Model.productlist.Take(4))
                         {
-                            <div class="col-lg-3 col-sm-12">
+                            <div class="col-lg-3 col-sm-12" data-id="@product.Id">
                                 <div class="picture">
                                     <img src="~/AdminPanel/img/product/@product.Image" alt="banana">
                                     <div class="icons">
                                         <div class="heart-icon">
-                                            <a href=""><i class="fas fa-heart"></i></a>
+                                            <a href="" id="addheart"><i class="fas fa-heart"></i></a>
                                         </div>
                                         <div class="basket-icon">
-                                            <a href=""> <i class="fas fa-shopping-cart"></i></a>
+                                            <a href="" id="addproduct"> <i class="fas fa-shopping-cart"></i></a>
                                         </div>
                                         <div class="detail-icon">
                                             <a href=""> <i class="fas fa-info"></i></a>

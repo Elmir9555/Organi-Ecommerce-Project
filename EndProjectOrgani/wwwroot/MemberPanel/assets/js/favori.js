@@ -132,7 +132,7 @@ products.forEach(product => {
 
             });
 
-            alert("Product Added Success!")
+            swal("Good job!", "Product added succes!", "success");
 
 
 
@@ -141,7 +141,7 @@ products.forEach(product => {
         }
 
         else {
-            alert("You have added this Product to your Cart,Please check your basket")
+            swal("Info!", "You have added this Product to your Cart,Please check your basket!", "info");
         }
 
 
@@ -165,7 +165,8 @@ countfavo.innerText=JSON.parse(localStorage.getItem("FavoriProduct")).length
 //rightcorner favoriproduct count 
 
 //remove-all product
-let removeall=document.querySelector("#remove-all");
+let removeall = document.querySelector("#remove-all");
+
 if((localStorage.getItem("FavoriProduct")!=[])){
     removeall.style.display="block"
 }

@@ -138,7 +138,7 @@
 
                                 @foreach (var item in Model.saleoff.Take(6))
                                 {
-                                    <div class="item" style="height:370px;">
+                                    <div class="item" style="height:370px;" data-id="@item.Id">
                                         <div class="picture">
                                             <img src="~/AdminPanel/img/saleoff/@item.Image" alt="meat">
                                             <div class="icons">

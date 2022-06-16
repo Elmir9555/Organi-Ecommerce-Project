@@ -158,7 +158,7 @@ products.forEach(product => {
 
             });
 
-            alert("Product Added Success!")
+            swal("Good job!", "Product added succes!", "success");
 
 
 
@@ -167,7 +167,7 @@ products.forEach(product => {
         }
 
         else {
-            alert("You have added this Product to your Cart,Please check your basket")
+            swal("Info!", "You have added this Product to your Cart,Please check your basket!", "info");
         }
 
 
@@ -223,12 +223,12 @@ hearticon.forEach(hearticons => {
 
             });
 
-            alert("Product Added Success!")
+            swal("Good job!", "Product added succes!", "success");
 
         }
 
         else {
-            alert("You have added this Product to your  Favourites page,Please check your Favourites Page")
+            swal("Info!", "You have added this Product to your Cart,Please check your basket!", "info");
 
         }
 
@@ -241,10 +241,7 @@ hearticon.forEach(hearticons => {
         localStorage.setItem("FavoriProduct", JSON.stringify(favoriList))
         heartcountt.innerText = getCountheart(favoriList)
 
-        //function getCountheart(heart) {
-        //    return heart.length;
-        //};
-
+      
 
     })
 });
@@ -254,32 +251,9 @@ function getCountheart(heart) {
     return heart.length;
 }
 
- //Add Favori
-
-
-//BasketFavoriCount
-
-//let heartcount = document.querySelector(".heart-count")
-//favoriCount(heartcount)
-
-//function favoriCount(sum) {
-//    sum.innerText = JSON.parse(localStorage.getItem("FavoriProduct")).length
-//}
 
 
 
-
-
-//let basketcount = document.querySelector(".basket-count")
-//basketCount(basketcount)
-
-//function basketCount(sum) {
-//    sum.innerText = JSON.parse(localStorage.getItem("products")).length
-//}
-//BasketFavoriCount
-
-
-console.log("salam")
 
 
 

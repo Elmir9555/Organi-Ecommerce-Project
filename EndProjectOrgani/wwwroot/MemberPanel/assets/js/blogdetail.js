@@ -55,3 +55,4 @@ function basketCount(sum) {
     sum.innerText = JSON.parse(localStorage.getItem("products")).length
 }
 //BasketFavoriCount
+

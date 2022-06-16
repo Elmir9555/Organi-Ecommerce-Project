@@ -15,7 +15,7 @@
             </div>
             <div class="name">
                 <p>Products</p>
-                <span> <a href="./home.html"> <strong>Home</strong> </a> -->Shop </span>
+                <span> <a asp-controller="home" asp-action="homePage"> <strong>Home</strong> </a> -->Shop </span>
             </div>
 
 
@@ -58,7 +58,7 @@
 
                                 @foreach (var product in Model)
                                 {
-                                    <div class="col-lg-3 col-sm-12">
+                                    <div class="col-lg-3 col-sm-12" data-id="@product.Id">
                                         <div class="picture">
                                             <img src="~/AdminPanel/img/product/@product.Image" alt="potatoes">
                                             <div class="icons">

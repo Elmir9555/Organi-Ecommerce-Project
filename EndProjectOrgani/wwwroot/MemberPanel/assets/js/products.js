@@ -99,7 +99,7 @@ products.forEach(product => {
 
             });
 
-            alert("Product Added Success!")
+            swal("Good job!", "Product added succes!", "success");
 
 
 
@@ -108,7 +108,7 @@ products.forEach(product => {
         }
 
         else {
-            alert("You have added this Product to your Cart,Please check your basket")
+            swal("Info!", "You have added this Product to your Cart,Please check your basket!", "info");
         }
 
 
@@ -159,12 +159,12 @@ hearticon.forEach(hearticons => {
 
             });
 
-            alert("Product Added Success!")
+            swal("Good job!", "Product added succes!", "success");
 
         }
 
         else {
-            alert("You have added this Product to your  Favourites page,Please check your Favourites Page")
+            swal("Info!", "You have added this Product to your Cart,Please check your basket!", "info");
 
         }
 

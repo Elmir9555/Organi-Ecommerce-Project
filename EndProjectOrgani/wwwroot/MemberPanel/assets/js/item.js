@@ -9,18 +9,18 @@ let prcsss=prcss.map(Number)
 
 
 
-let tot = document.querySelector(".price").children[1];
+let tots = document.querySelector(".price").children[1];
 
 
-let sum=0;
+let pricesum=0;
 for (let i = 0; i < prcsss.length; i++) {
-    
-    sum+=prcsss[i];
+
+    pricesum += prcsss[i];
     
 }
 
 
-tot.innerText = sum + ".00$"
+tots.innerText = pricesum + ".00$"
 
 
 
