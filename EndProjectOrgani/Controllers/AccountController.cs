@@ -6,7 +6,9 @@ using System.Net.Mail;
 using System.Threading.Tasks;
 using EndProjectOrgani.Entities;
 using EndProjectOrgani.Models;
+using EndProjectOrgani.ViewModels.Accaunt;
 using MailKit.Security;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MimeKit;
@@ -22,6 +24,8 @@ namespace EndProjectOrgani.Controllers
         readonly UserManager<AppUser> _userManager;
         readonly SignInManager<AppUser> _signInManager;
         readonly RoleManager<AppRole> _roleManager;
+        readonly IWebHostEnvironment _env;
+
 
         public AccountController(RoleManager<AppRole> roleManager, SignInManager<AppUser> singInManager, UserManager<AppUser> userManager)
         {
@@ -68,7 +72,7 @@ namespace EndProjectOrgani.Controllers
 
                     var message = new MimeMessage();
 
-                    message.From.Add(new MailboxAddress("Ogani", "elmiriu@code.edu.az"));
+                    message.From.Add(new MailboxAddress("Ogani", "elmirustayev9@gmail.com"));
 
                     message.To.Add(new MailboxAddress(appUser.UserName, appUser.Email));
                     message.Subject = "Confirm Email";
@@ -190,5 +194,99 @@ namespace EndProjectOrgani.Controllers
         {
             return View();
         }
+
+
+
+
+
+
+
+        #region ForgotPassword
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ForgotPassword(ForgotPasswordVM forgotPasswordVM)
+        {
+            if (!ModelState.IsValid) return View(forgotPasswordVM);
+
+            var user = await _userManager.FindByEmailAsync(forgotPasswordVM.Email);
+
+            if (user is null)
+            {
+                ModelState.AddModelError("", "This email hasn't been registrated");
+                return View(forgotPasswordVM);
+            }
+
+            var message = new MimeMessage();
+
+            message.From.Add(new MailboxAddress("Ogani", "elmirustayev9@gmail.com"));
+
+            message.To.Add(new MailboxAddress(user.UserName, user.Email));
+            message.Subject = "Reset Password";
+
+            string emailbody = string.Empty;
+
+            using (StreamReader streamReader = new StreamReader(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Templates", "Reset.html")))
+            {
+                emailbody = streamReader.ReadToEnd();
+            }
+
+            string forgotpasswordtoken = await _userManager.GeneratePasswordResetTokenAsync(user);
+            string url = Url.Action(nameof(ResetPassword), "Account", new { email = user.Email, Id = user.Id, token = forgotpasswordtoken, }, Request.Scheme);
+
+            emailbody = emailbody.Replace("{{fullname}}", $"{user.UserName}").Replace("{{code}}", $"{url}");
+
+            message.Body = new TextPart(TextFormat.Html) { Text = emailbody };
+
+            using var smtp = new SmtpClient();
+
+            smtp.Connect("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
+            smtp.Authenticate("elmirustayev9@gmail.com", "iibetythnxwkhwli");
+            smtp.Send(message);
+            smtp.Disconnect(true);
+            return View();
+        }
+        #endregion
+
+
+        #region Reset Password
+        [HttpGet]
+        public IActionResult ResetPassword(string email, string token)
+        {
+            var resetPasswordModel = new ResetPasswordVM { Email = email, Token = token };
+            return View(resetPasswordModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ResetPassword(ResetPasswordVM resetPasswordVM)
+        {
+            if (!ModelState.IsValid) return View(resetPasswordVM);
+
+            var user = await _userManager.FindByEmailAsync(resetPasswordVM.Email);
+
+            if (user is null) return NotFound();
+
+            IdentityResult result = await _userManager.ResetPasswordAsync(user, resetPasswordVM.Token, resetPasswordVM.Password);
+
+            if (!result.Succeeded)
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError("", item.Description);
+                }
+                return View(resetPasswordVM);
+
+            }
+
+
+            return RedirectToAction(nameof(Login));
+
+        }
+        #endregion
     }
 }

@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using EndProjectOrgani.Context;
 using EndProjectOrgani.Entities;
 using EndProjectOrgani.UniteOfWork;
+using EndProjectOrgani.Utilities.Paginations;
+using EndProjectOrgani.ViewModels.Admin.ProductViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -22,19 +24,51 @@ namespace EndProjectOrgani.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> ProductPage()
+        public async Task<IActionResult> ProductPage(int page = 1, int take = 9)
         {
-            var list = await _uow.GetRepository<Product>().GetAllOrderByAsync(x => x.Id, false);
 
-            return View(list);
+            List<Product> products = await _context.Products
+            .Where(x=> x.Status != DataStatus.Deleted)
+            .Skip((page - 1) * take)
+            .Take(take)
+            .OrderBy(m => m.Id)
+            .ToListAsync();
+
+
+            var productsVM = GetMapDatas(products);
+
+            int count = await GetPageCount(take);
+
+            Paginate<ProductVM> result = new Paginate<ProductVM>(productsVM, page, count);
+
+            
+
+            //var list = await _uow.GetRepository<Product>().GetAllOrderByAsync(x => x.Id, false);
+
+            return View(result);
         }
 
 
-        public async Task<IActionResult> ProductCategoryPage(int id)
+        public async Task<IActionResult> ProductCategoryPage(int id, int page = 1, int take = 9)
         {
-            var list = await _context.Products.Where(x => x.Status != DataStatus.Deleted).Where(x => x.CategoryId == id).Include(x => x.Category).OrderByDescending(x => x.Id).ToListAsync();
+            //var list = await _context.Products.Where(x => x.Status != DataStatus.Deleted).Where(x => x.CategoryId == id).Include(x => x.Category).OrderByDescending(x => x.Id).ToListAsync();
 
-            return View(list);
+
+            List<Product> products = await _context.Products
+              .Where(x => x.Status != DataStatus.Deleted).Where(x => x.CategoryId == id).Include(x => x.Category).OrderByDescending(x => x.Id)
+              .Skip((page - 1) * take)
+              .Take(take)
+              .OrderBy(m => m.Id)
+              .ToListAsync();
+        
+
+            var productsVM = GetMapDatas(products);
+
+            int count = await GetPageCount(take);
+
+            Paginate<ProductVM> result = new Paginate<ProductVM>(productsVM, page, count);
+
+            return View(result);
         }
 
         public async Task<IActionResult> ProductDetailsPage(int id)
@@ -78,5 +112,45 @@ namespace EndProjectOrgani.Controllers
             return View("ProductPage", (await products.Where(x => x.Status != DataStatus.Deleted).ToListAsync()));
         }
 
+
+
+
+
+
+
+        private async Task<int> GetPageCount(int take)
+        {
+            var count = await _context.Products.CountAsync();
+
+            return (int)Math.Ceiling((decimal)count / take);
+        }
+
+        private List<ProductVM> GetMapDatas(List<Product> products)
+        {
+            List<ProductVM> productList = new List<ProductVM>();
+
+            foreach (var product in products)
+            {
+                ProductVM newProduct = new ProductVM
+                {
+                    Id = product.Id,
+                    Name = product.Name,
+                    Image = product.Image,
+                    Price = product.Price,
+                    Count=product.Count,
+                    Category=product.Category,
+                    CategoryId=product.CategoryId
+
+
+                };
+
+                productList.Add(newProduct);
+            }
+
+            return productList;
+        }
+
     }
+
 }
+

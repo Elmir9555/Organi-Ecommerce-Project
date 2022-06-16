@@ -9,8 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300&family=Dosis:wght@600&display=swap"
           rel="stylesheet">
 
-    <link rel="stylesheet" href="~/MemberPanel/assets/sass/home.css">
-    <link rel="stylesheet" href="~/MemberPanel/assets/css/home.css">
+    @*<link rel="stylesheet" href="~/MemberPanel/assets/sass/home.css">
+    <link rel="stylesheet" href="~/MemberPanel/assets/css/home.css">*@
 
     @*<link rel="stylesheet" href="~/MemberPanel/assets/css/blog.css">
         <link rel="stylesheet" href="~/MemberPanel/assets/sass/blog.css">*@
@@ -116,7 +116,7 @@
                                     }
                                     else
                                     {
-                                        <span>@User.Identity.Name</span>
+                                        <span style="padding-top: 3px;">@User.Identity.Name</span>
 
                                         @if (User.IsInRole("Admin"))
                                         {
@@ -250,7 +250,7 @@
 
                             <div class="phone">
                                 <div class="number">
-                                    +994 55 856 23 93
+                                    +994 50 450 95 55
                                 </div>
                                 <div class="support">
                                     support 24/7 time
@@ -366,19 +366,20 @@
 
     <script src="https://kit.fontawesome.com/ad811518ca.js" crossorigin="anonymous"></script>
 
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-
-
-    <script src="~/MemberPanel/assets/js/item.js"></script>
 
     @RenderSection("Scripts", required: false)
+
+
+
 
 
     @*<script type="module" src="~/MemberPanel/assets/js/products.js"></script>*@
 
     @*<script src="~/MemberPanel/assets/js/home.js"></script>*@
+    <script src="~/MemberPanel/assets/js/item.js"></script>
 
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
 </body>

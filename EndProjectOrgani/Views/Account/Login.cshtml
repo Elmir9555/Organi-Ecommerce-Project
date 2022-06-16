@@ -29,9 +29,11 @@
                 <input class="text" asp-for="Username" placeholder="Username" required="">
                 <input class="text" asp-for="Password" type="password" placeholder="Password" required="">
 
-                <button style="font-size: .9em; color: #fff; background: #76b852; outline: none; border: 1px solid #76b852; cursor: pointer; padding: 0.9em; -webkit-appearance: none; width: 95%; margin: 2em 0; letter-spacing: 4px;margin-top:0px;" type="submit">LOGIN</button>
+                <button style="font-size: .9em; color: #fff; background: #76b852; outline: none; border: 1px solid #76b852; cursor: pointer; padding: 0.9em; -webkit-appearance: none; width: 95%; margin: 1em 0; letter-spacing: 4px;margin-top:0px;" type="submit">LOGIN</button>
+
+                <a style=" color: rgba(0,0,0,0.5);" asp-controller="Account" asp-action="ForgotPassword" class="auth-link text-black">Forgot password?</a>
             </form>
-            <p>Don't you have an Account? <a asp-action="SignUp" asp-controller="Account"> Register Now!</a></p>
+            <p style=" padding-top: 16px">Don't you have an Account? <a asp-action="SignUp" asp-controller="Account"> Register Now!</a></p>
         </div>
     </div>
     <!-- copyright -->

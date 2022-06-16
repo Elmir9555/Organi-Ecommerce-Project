@@ -53,6 +53,10 @@
     <None Remove="Views\Shared\Components\Subscribe\" />
     <None Remove="Views\Shared\Components\ProductSearch\" />
     <None Remove="Views\Common\" />
+    <None Remove="ViewModels\" />
+    <None Remove="ViewModels\Account\" />
+    <None Remove="ViewModels\Admin\" />
+    <None Remove="ViewModels\Admin\ProductViewModels\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Home\" />
@@ -109,6 +113,10 @@
     <Folder Include="Views\Shared\Components\Subscribe\" />
     <Folder Include="Views\Shared\Components\ProductSearch\" />
     <Folder Include="Views\Common\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="ViewModels\Account\" />
+    <Folder Include="ViewModels\Admin\" />
+    <Folder Include="ViewModels\Admin\ProductViewModels\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\" />

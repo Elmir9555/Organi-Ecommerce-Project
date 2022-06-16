@@ -143,3 +143,5 @@
 /Users/elmirustayev/Desktop/EndProjectOrgani/EndProjectOrgani/obj/Debug/netcoreapp3.1/Razor/Views/Shared/Components/ProductSearch/Default.cshtml.g.cs
 /Users/elmirustayev/Desktop/EndProjectOrgani/EndProjectOrgani/obj/Debug/netcoreapp3.1/Razor/Views/Common/BasketPage.cshtml.g.cs
 /Users/elmirustayev/Desktop/EndProjectOrgani/EndProjectOrgani/obj/Debug/netcoreapp3.1/Razor/Views/Common/FavoriPage.cshtml.g.cs
+/Users/elmirustayev/Desktop/EndProjectOrgani/EndProjectOrgani/obj/Debug/netcoreapp3.1/Razor/Views/Account/ForgotPassword.cshtml.g.cs
+/Users/elmirustayev/Desktop/EndProjectOrgani/EndProjectOrgani/obj/Debug/netcoreapp3.1/Razor/Views/Account/ResetPassword.cshtml.g.cs
