@@ -18,7 +18,7 @@
             </div>
             <div class="name">
                 <p>Organi Shop</p>
-                <span> <a href="~/MemberPanel/home.html"> <strong>Home</strong> </a> -->Shop </span>
+                <span> <a asp-controller="home" asp-action="homePage"> <strong>Home</strong> </a> -->Shop </span>
             </div>
 
 
@@ -140,7 +140,7 @@
                                 {
                                     <div class="item" style="height:370px;" data-id="@item.Id">
                                         <div class="picture">
-                                            <img src="~/AdminPanel/img/saleoff/@item.Image" alt="meat">
+                                            <img src="~/AdminPanel/img/saleoff/@item.Image" style="width: 100%;height: 100%;" alt="meat">
                                             <div class="icons">
                                                 <div class="heart-icon">
                                                     <a href="" id="addheart"><i class="fas fa-heart"></i></a>

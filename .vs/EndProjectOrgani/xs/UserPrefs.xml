@@ -1,24 +1,32 @@
 ﻿<Properties StartupConfiguration="{478630B5-36FF-40A9-A875-79D5C07D5F87}|Default">
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="EndProjectOrgani/Views/Common/FavoriPage.cshtml">
+    <Files>
+      <File FileName="EndProjectOrgani/Areas/AdminPanel/Views/Product/ProductList.cshtml" Line="43" Column="126" />
+      <File FileName="EndProjectOrgani/Areas/AdminPanel/Views/Product/Update.cshtml" Line="1" Column="1" />
+      <File FileName="EndProjectOrgani/Views/Product/ProductPage.cshtml" Line="18" Column="70" />
+      <File FileName="EndProjectOrgani/Views/Home/HomePage.cshtml" Line="51" Column="37" />
+      <File FileName="EndProjectOrgani/Views/Shop/ShopPage.cshtml" Line="199" Column="46" />
+      <File FileName="EndProjectOrgani/Views/Blog/BlogPage.cshtml" Line="16" Column="74" />
+      <File FileName="EndProjectOrgani/Views/Blog/BlogDetailsPage.cshtml" Line="1" Column="1" />
+      <File FileName="EndProjectOrgani/Views/Product/ProductCategoryPage.cshtml" Line="64" Column="46" />
+      <File FileName="EndProjectOrgani/Views/Shared/Components/ProductSearch/Default.cshtml" Line="5" Column="37" />
+      <File FileName="EndProjectOrgani/Views/Contact/ContactPage.cshtml" Line="15" Column="70" />
+      <File FileName="EndProjectOrgani/Views/Common/BasketPage.cshtml" Line="1" Column="1" />
+      <File FileName="EndProjectOrgani/Views/Common/FavoriPage.cshtml" Line="1" Column="1" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="EndProjectOrgani" expanded="True">
             <Node name="EndProjectOrgani" expanded="True">
-              <Node name="Views" expanded="True">
-                <Node name="Product" expanded="True">
-                  <Node name="ProductPage.cshtml" selected="True" />
-                </Node>
-                <Node name="Shared" expanded="True" />
-                <Node name="Shop" expanded="True" />
-              </Node>
-              <Node name="wwwroot" expanded="True">
-                <Node name="MemberPanel" expanded="True">
-                  <Node name="assets" expanded="True">
-                    <Node name="js" expanded="True" />
+              <Node name="Areas" expanded="True">
+                <Node name="AdminPanel" expanded="True">
+                  <Node name="Views" expanded="True">
+                    <Node name="SaleOff" expanded="True" />
                   </Node>
                 </Node>
               </Node>
+              <Node name="Views" expanded="True" />
             </Node>
           </Node>
         </State>
