@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using EndProjectOrgani.Context;
 using EndProjectOrgani.Entities;
 using EndProjectOrgani.UniteOfWork;
+using EndProjectOrgani.Utilities.Paginations;
+using EndProjectOrgani.ViewModels.Admin.BlogViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,6 +27,7 @@ namespace EndProjectOrgani.Controllers
         public async Task<IActionResult> BlogPage()
         {
             var list = await _context.Blogs.Where(x => x.Status != DataStatus.Deleted).Include(x => x.BlogDetails).OrderByDescending(x => x.Id).ToListAsync();
+
 
             return View(list);
         }
@@ -47,5 +50,8 @@ namespace EndProjectOrgani.Controllers
 
             return View("BlogPage", (await blogs.Where(x => x.Status != DataStatus.Deleted).ToListAsync()));
         }
+
+
+      
     }
 }

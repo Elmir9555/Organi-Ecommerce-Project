@@ -57,6 +57,7 @@
     <None Remove="ViewModels\Account\" />
     <None Remove="ViewModels\Admin\" />
     <None Remove="ViewModels\Admin\ProductViewModels\" />
+    <None Remove="ViewModels\Admin\BlogViewModels\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Home\" />
@@ -117,6 +118,7 @@
     <Folder Include="ViewModels\Account\" />
     <Folder Include="ViewModels\Admin\" />
     <Folder Include="ViewModels\Admin\ProductViewModels\" />
+    <Folder Include="ViewModels\Admin\BlogViewModels\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\" />

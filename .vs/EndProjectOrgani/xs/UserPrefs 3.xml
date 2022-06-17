@@ -1,24 +1,29 @@
 ﻿<Properties StartupConfiguration="{478630B5-36FF-40A9-A875-79D5C07D5F87}|Default">
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="EndProjectOrgani/Controllers/ShopController.cs">
+    <Files>
+      <File FileName="EndProjectOrgani/Views/Shop/ShopPage.cshtml" Line="7" Column="1" />
+      <File FileName="EndProjectOrgani/Views/Product/ProductPage.cshtml" Line="2" Column="18" />
+      <File FileName="EndProjectOrgani/Controllers/ProductController.cs" Line="118" Column="1" />
+      <File FileName="EndProjectOrgani/Controllers/ShopController.cs" Line="1" Column="1" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="EndProjectOrgani" expanded="True">
             <Node name="EndProjectOrgani" expanded="True">
-              <Node name="Controllers" expanded="True" />
-              <Node name="Entities" expanded="True">
-                <Node name="Blog.cs" selected="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="ShopController.cs" selected="True" />
               </Node>
+              <Node name="Entities" expanded="True" />
               <Node name="Utilities" expanded="True">
                 <Node name="Paginations" expanded="True" />
               </Node>
               <Node name="ViewModels" expanded="True">
                 <Node name="Admin" expanded="True">
-                  <Node name="BlogViewModels" expanded="True" />
+                  <Node name="ProductViewModels" expanded="True" />
                 </Node>
               </Node>
               <Node name="Views" expanded="True">
-                <Node name="Blog" expanded="True" />
                 <Node name="Contact" expanded="True" />
                 <Node name="Product" expanded="True" />
                 <Node name="Shared" expanded="True">

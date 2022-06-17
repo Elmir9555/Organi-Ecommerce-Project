@@ -1,5 +1,6 @@
-﻿@model (List<SaleOff> saleoff, List<Product> products, List<Category> categories)
-
+﻿@model (List<SaleOff> saleoff, List<Product> products, List<Category> categories, Paginate<ProductVM> paginate)
+@using EndProjectOrgani.ViewModels.Admin.ProductViewModels
+@using EndProjectOrgani.Utilities.Paginations
 
 <link rel="stylesheet" asp-append-version="true" href="~/MemberPanel/assets/css/shop.css">
 
@@ -219,6 +220,27 @@
 
 
                             </div>
+                        </div>
+
+
+                        <div class="row my-3 justify-content-center">
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination ">
+                                    <li class="page-item @(Model.paginate.HasPrevious ? "": "disabled")">
+                                        <a class="page-link" asp-action="ShopPage" asp-area="" asp-route-page="@(Model.paginate.CurrentPage-1)">Previous</a>
+                                    </li>
+                                    @for (int i = 1; i <= Model.paginate.TotalPage; i++)
+                                    {
+                                        <li class="page-item @(i == Model.paginate.CurrentPage ? "disabled" : "")">
+                                            <a class="page-link" asp-action="ShopPage" asp-area="" asp-route-page="@i">@i</a>
+                                        </li>
+                                    }
+
+                                    <li class="page-item @(Model.paginate.HasNext ? "": "disabled")">
+                                        <a class="page-link" asp-action="ShopPage" asp-area="" asp-route-page="@(Model.paginate.CurrentPage+1)">Next</a>
+                                    </li>
+                                </ul>
+                            </nav>
                         </div>
 
                     </div>
