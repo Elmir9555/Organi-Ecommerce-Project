@@ -6,34 +6,22 @@
           <Node name="EndProjectOrgani" expanded="True">
             <Node name="EndProjectOrgani" expanded="True">
               <Node name="Controllers" expanded="True" />
-              <Node name="Entities" expanded="True">
-                <Node name="Blog.cs" selected="True" />
-              </Node>
+              <Node name="Entities" expanded="True" />
               <Node name="Utilities" expanded="True">
                 <Node name="Paginations" expanded="True" />
               </Node>
-              <Node name="ViewModels" expanded="True">
-                <Node name="Admin" expanded="True">
-                  <Node name="BlogViewModels" expanded="True" />
-                </Node>
-              </Node>
               <Node name="Views" expanded="True">
-                <Node name="Blog" expanded="True" />
-                <Node name="Contact" expanded="True" />
-                <Node name="Product" expanded="True" />
-                <Node name="Shared" expanded="True">
-                  <Node name="Components" expanded="True">
-                    <Node name="CategoryList" expanded="True" />
-                    <Node name="ProductSearch" expanded="True" />
-                  </Node>
-                </Node>
-                <Node name="Shop" expanded="True" />
+                <Node name="Account" expanded="True" />
+                <Node name="Common" expanded="True" />
+                <Node name="Home" expanded="True" />
               </Node>
               <Node name="wwwroot" expanded="True">
                 <Node name="AdminPanel" expanded="True" />
                 <Node name="MemberPanel" expanded="True">
                   <Node name="assets" expanded="True">
-                    <Node name="js" expanded="True" />
+                    <Node name="js" expanded="True">
+                      <Node name="favori.js" selected="True" />
+                    </Node>
                   </Node>
                 </Node>
               </Node>

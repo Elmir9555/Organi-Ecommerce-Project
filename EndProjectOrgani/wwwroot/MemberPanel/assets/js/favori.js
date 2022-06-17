@@ -1,5 +1,4 @@
-import {favoriCount,basketCount,getCountheart,dropdowns,searchfilterdropdown} from "./common.js"
-import {addproducts} from "./common.js"
+
 
 //header start ALL CATEGORIES dropdown
 
@@ -49,9 +48,9 @@ if (JSON.parse(localStorage.getItem("FavoriProduct")!=null)) {
 ShowFavoruites();
 function ShowFavoruites() {
     for (const favs of favories) {
-        fav.innerHTML+=`  <div class="col-lg-3 col-sm-12">
+        fav.innerHTML += `  <div class="col-lg-3 col-sm-12 data-id="${favs.id}">
         <div class="picture">
-            <img src="${favs.image}" alt="banana">
+            <img src="${favs.image}" style="width: 100%;height: 100%;" alt="banana">
             <div class="icons">
                
                 <div class="basket-icon">
@@ -153,8 +152,11 @@ products.forEach(product => {
 
 })
 
-count.innerText = getCount(productList)
+function getCount(list) {
+    return list.length;
 }
+count.innerText = getCount(productList)
+
 
 //Add Basket 
 
