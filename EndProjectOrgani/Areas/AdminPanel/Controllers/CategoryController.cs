@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using EndProjectOrgani.Context;
 using EndProjectOrgani.Entities;
 using EndProjectOrgani.UniteOfWork;
+using EndProjectOrgani.Utilities.Paginations;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -19,17 +22,33 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
     {
         readonly IUow _uow;
         readonly IWebHostEnvironment _env;
-        public CategoryController(IUow uow, IWebHostEnvironment env)
+        readonly AppDbContext _context;
+        public CategoryController(IUow uow, IWebHostEnvironment env, AppDbContext context)
         {
             _uow = uow;
             _env = env;
+            _context = context;
         }
 
-        public async Task<IActionResult> CategoryList()
+        public async Task<IActionResult> CategoryList(int page = 1, int take = 8)
         {
-            var list = await _uow.GetRepository<Category>().GetAllOrderByAsync(x => x.Id, false);
+            var Categories = from b in _context.Categories.Where(x => x.Status != DataStatus.Deleted)
+                             select b;
 
-            return View(list);
+            int count = await GetPageCount(take);
+
+            var CategoryList = await Categories.Skip((page - 1) * take).Take(take).ToListAsync();
+
+            Paginate<Category> result = new Paginate<Category>(CategoryList, page, count);
+
+            return View(result);
+        }
+
+        private async Task<int> GetPageCount(int take)
+        {
+            var count = await _context.Categories.CountAsync();
+
+            return (int)Math.Ceiling((decimal)count / take);
         }
 
         public IActionResult Create()

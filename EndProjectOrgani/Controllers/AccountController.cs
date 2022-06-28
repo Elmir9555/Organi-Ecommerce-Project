@@ -72,7 +72,7 @@ namespace EndProjectOrgani.Controllers
 
                     var message = new MimeMessage();
 
-                    message.From.Add(new MailboxAddress("Ogani", "elmirustayev9@gmail.com"));
+                    message.From.Add(new MailboxAddress("Ogani", "ogani.eccommerce@gmail.com"));
 
                     message.To.Add(new MailboxAddress(appUser.UserName, appUser.Email));
                     message.Subject = "Confirm Email";
@@ -97,7 +97,7 @@ namespace EndProjectOrgani.Controllers
                     using var smtp = new SmtpClient();
 
                     smtp.Connect("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
-                    smtp.Authenticate("elmirustayev9@gmail.com", "iibetythnxwkhwli");
+                    smtp.Authenticate("ogani.eccommerce@gmail.com", "ndkwzmzrqlwmjesr");
                     smtp.Send(message);
                     smtp.Disconnect(true);
 
@@ -223,7 +223,7 @@ namespace EndProjectOrgani.Controllers
 
             var message = new MimeMessage();
 
-            message.From.Add(new MailboxAddress("Ogani", "elmirustayev9@gmail.com"));
+            message.From.Add(new MailboxAddress("Ogani", "ogani.eccommerce@gmail.com"));
 
             message.To.Add(new MailboxAddress(user.UserName, user.Email));
             message.Subject = "Reset Password";
@@ -245,7 +245,7 @@ namespace EndProjectOrgani.Controllers
             using var smtp = new SmtpClient();
 
             smtp.Connect("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
-            smtp.Authenticate("elmirustayev9@gmail.com", "iibetythnxwkhwli");
+            smtp.Authenticate("ogani.eccommerce@gmail.com", "ndkwzmzrqlwmjesr");
             smtp.Send(message);
             smtp.Disconnect(true);
             return View();

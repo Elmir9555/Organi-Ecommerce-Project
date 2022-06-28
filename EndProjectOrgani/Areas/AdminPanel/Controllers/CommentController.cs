@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using EndProjectOrgani.Context;
 using EndProjectOrgani.Entities;
+using EndProjectOrgani.Utilities.Paginations;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -22,11 +23,25 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> CommentList()
+        public async Task<IActionResult> CommentList(int page = 1, int take = 8)
         {
-            var list = await _context.Comments.Where(x => x.Status != DataStatus.Deleted!).Include(x => x.Product).ToListAsync();
+            var Comments = from b in _context.Comments.Where(x => x.Status != DataStatus.Deleted).Include(x => x.Product)
+                           select b;
 
-            return View(list);
+            int count = await GetPageCount(take);
+
+            var CommentList = await Comments.Skip((page - 1) * take).Take(take).ToListAsync();
+
+            Paginate<Comment> result = new Paginate<Comment>(CommentList, page, count);
+
+            return View(result);
+        }
+
+        private async Task<int> GetPageCount(int take)
+        {
+            var count = await _context.Comments.CountAsync();
+
+            return (int)Math.Ceiling((decimal)count / take);
         }
 
 

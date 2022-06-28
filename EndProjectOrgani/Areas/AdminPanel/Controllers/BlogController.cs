@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using EndProjectOrgani.Context;
 using EndProjectOrgani.Entities;
 using EndProjectOrgani.UniteOfWork;
+using EndProjectOrgani.Utilities.Paginations;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -29,11 +30,25 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> BlogList()
+        public async Task<IActionResult> BlogList(int page = 1, int take = 8)
         {
-            var list = await _context.Blogs.Where(x => x.Status != DataStatus.Deleted!).Include(x => x.Owner).ToListAsync();
+            var Blogs = from b in _context.Blogs.Where(x => x.Status != DataStatus.Deleted).Include(x=>x.Owner)
+                           select b;
 
-            return View(list);
+            int count = await GetPageCount(take);
+
+            var BlogList = await Blogs.Skip((page - 1) * take).Take(take).ToListAsync();
+
+            Paginate<Blog> result = new Paginate<Blog>(BlogList, page, count);
+
+            return View(result);
+        }
+
+        private async Task<int> GetPageCount(int take)
+        {
+            var count = await _context.Blogs.CountAsync();
+
+            return (int)Math.Ceiling((decimal)count / take);
         }
 
         public async Task<IActionResult> Create()

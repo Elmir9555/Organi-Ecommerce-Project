@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using EndProjectOrgani.Context;
 using EndProjectOrgani.Entities;
+using EndProjectOrgani.Utilities.Paginations;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -22,11 +23,26 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> ProductDetailList()
+        public async Task<IActionResult> ProductDetailList(int page = 1, int take = 8)
         {
-            var list = await _context.ProductDetails.Where(x => x.Status != DataStatus.Deleted).Include(x => x.Product).ToListAsync();
 
-            return View(list);
+            var ProductDetails = from b in _context.ProductDetails.Where(x => x.Status != DataStatus.Deleted).Include(x => x.Product)
+                                 select b;
+
+            int count = await GetPageCount(take);
+
+            var ProductDetailList = await ProductDetails.Skip((page - 1) * take).Take(take).ToListAsync();
+
+            Paginate<ProductDetail> result = new Paginate<ProductDetail>(ProductDetailList, page, count);
+
+            return View(result);
+        }
+
+        private async Task<int> GetPageCount(int take)
+        {
+            var count = await _context.ProductDetails.CountAsync();
+
+            return (int)Math.Ceiling((decimal)count / take);
         }
 
 

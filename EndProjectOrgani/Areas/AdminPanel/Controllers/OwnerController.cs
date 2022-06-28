@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using EndProjectOrgani.Context;
 using EndProjectOrgani.Entities;
 using EndProjectOrgani.UniteOfWork;
+using EndProjectOrgani.Utilities.Paginations;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -19,16 +22,33 @@ namespace EndProjectOrgani.Areas.AdminPanel.Controllers
     {
         readonly IUow _uow;
         readonly IWebHostEnvironment _env;
-        public OwnerController(IUow uow, IWebHostEnvironment env)
+        readonly AppDbContext _context;
+        public OwnerController(IUow uow, IWebHostEnvironment env, AppDbContext context)
         {
             _uow = uow;
             _env = env;
+            _context = context;
         }
 
-        public async Task<IActionResult> OwnerList()
+        public async Task<IActionResult> OwnerList(int page = 1, int take = 8)
         {
-            var list = await _uow.GetRepository<Owner>().GetAllOrderByAsync(x => x.Id, false);
-            return View(list);
+            var Owners = from b in _context.Owners.Where(x => x.Status != DataStatus.Deleted)
+                           select b;
+
+            int count = await GetPageCount(take);
+
+            var OwnerList = await Owners.Skip((page - 1) * take).Take(take).ToListAsync();
+
+            Paginate<Owner> result = new Paginate<Owner>(OwnerList, page, count);
+
+            return View(result);
+        }
+
+        private async Task<int> GetPageCount(int take)
+        {
+            var count = await _context.Owners.CountAsync();
+
+            return (int)Math.Ceiling((decimal)count / take);
         }
 
         public IActionResult Create()
