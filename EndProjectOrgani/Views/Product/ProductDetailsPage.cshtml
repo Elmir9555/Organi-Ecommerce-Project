@@ -1,7 +1,10 @@
 ﻿@model (Product product, List<Product> productlist, List<Comment> commentlist, Comment comment)
+@{
+    ViewData["Title"] = Model.product.Name + " Details";
+}
 
 <link rel="stylesheet" href="~/MemberPanel/assets/sass/home.css">
-    <link rel="stylesheet" href="~/MemberPanel/assets/css/home.css">
+<link rel="stylesheet" href="~/MemberPanel/assets/css/home.css">
 
 <link rel="stylesheet" href="~/MemberPanel/assets/sass/shopdetail.css">
 <link rel="stylesheet" href="~/MemberPanel/assets/css/shopdetail.css">
@@ -172,8 +175,6 @@
                             <div class="send-btn pt-3" style="display:flex;justify-content:flex-end;padding-right:70px;">
                                 <input asp-for="@Model.comment.Product" type="hidden" />
 
-
-
                                 <button type="submit" style="width:150px;letter-spacing: 1px;" class="btn btn-success" id="send">
                                     Send
                                 </button>
@@ -215,45 +216,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="d-flex into-cmt">
-                                    <div class="user-img">
-                                        <img src="~/MemberPanel/assets/img/user.webp" style="width: 100%;height: 100%;" alt="">
-                                    </div>
-                                    <div class="user-comment">
-                                        <div class="name">
-                                            ELMIR USTAYEV
-                                        </div>
-                                        <div class="cmt">
-                                            Çox keyfiyyətli məhsuldur.Tövsiyyə edirəm
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex into-cmt">
-                                    <div class="user-img">
-                                        <img src="~/MemberPanel/assets/img/user.webp" style="width: 100%;height: 100%;" alt="">
-                                    </div>
-                                    <div class="user-comment">
-                                        <div class="name">
-                                            ELMIR USTAYEV
-                                        </div>
-                                        <div class="cmt">
-                                            Çox keyfiyyətli məhsuldur.Tövsiyyə edirəm
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex into-cmt">
-                                    <div class="user-img">
-                                        <img src="~/MemberPanel/assets/img/user.webp" style="width: 100%;height: 100%;" alt="">
-                                    </div>
-                                    <div class="user-comment">
-                                        <div class="name">
-                                            ELMIR USTAYEV
-                                        </div>
-                                        <div class="cmt">
-                                            Çox keyfiyyətli məhsuldur.Tövsiyyə edirəm
-                                        </div>
-                                    </div>
-                                </div>*@
+                            *@
 
                         </div>
                     }
@@ -298,11 +261,11 @@
                                             <a href="" id="addproduct"> <i class="fas fa-shopping-cart"></i></a>
                                         </div>
                                         <div class="detail-icon">
-                                            <a href=""> <i class="fas fa-info"></i></a>
+                                            <a asp-action="ProductDetailsPage" asp-controller="Product" asp-area="" asp-route-id="@product.Id"> <i class="fas fa-info"></i></a>
                                         </div>
                                     </div>
                                     <div class="name">
-                                        <a href="#">@product.Name</a>
+                                        <a asp-action="ProductDetailsPage" asp-controller="Product" asp-area="" asp-route-id="@product.Id">@product.Name</a>
                                     </div>
                                     <div class="price">
                                         $@product.Price

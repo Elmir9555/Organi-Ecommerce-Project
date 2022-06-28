@@ -1,6 +1,11 @@
-﻿@model (List<SaleOff> saleoff, List<Product> products, List<Category> categories, Paginate<ProductVM> paginate)
+﻿
 @using EndProjectOrgani.ViewModels.Admin.ProductViewModels
 @using EndProjectOrgani.Utilities.Paginations
+
+
+
+@model (List<SaleOff> saleoff, Paginate<ProductVM> paginate)
+
 
 <link rel="stylesheet" asp-append-version="true" href="~/MemberPanel/assets/css/shop.css">
 
@@ -36,16 +41,12 @@
                                 <p>
                                     Categories
                                 </p>
-                                @foreach (var category in Model.categories)
-                                {
-                                    <a href="#">@category.Name</a>
-                                }
+                                @await Component.InvokeAsync("CategoryList")
 
                             </div>
 
                             @*<div class="price">
                                     <p class="name">Price</p>
-
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <div id="slider-range"></div>
@@ -67,60 +68,7 @@
                                             </form>
                                         </div>
                                     </div>
-
                                 </div>*@
-
-                            <div class="colors">
-                                <p class="name">
-                                    Colors
-                                </p>
-
-                                <div class="color-filter">
-                                    <div class="left">
-                                        <div class="color-white">
-                                            <div class="white" style="border: 2px solid black;margin-top: 6px;">
-
-                                            </div>
-                                            <div><a href="#">White</a></div>
-                                        </div>
-                                        <div class="color-white">
-                                            <div class="white"
-                                                 style="background-color:rgb(233, 66, 66);margin-top: 6px;">
-
-                                            </div>
-                                            <div style="font-weight:200;"><a href="#">Red</a></div>
-                                        </div>
-                                        <div class="color-white">
-                                            <div class="white"
-                                                 style="background-color:rgb(71, 71, 241);margin-top: 6px;">
-
-                                            </div>
-                                            <div><a href="#">Blue</a></div>
-                                        </div>
-
-                                    </div>
-                                    <div class="right">
-                                        <div class="color-white">
-                                            <div class="white" style="background-color: grey;margin-top: 6px;">
-
-                                            </div>
-                                            <div><a href="#">Grey</a></div>
-                                        </div>
-                                        <div class="color-white">
-                                            <div class="white" style="background-color:black;margin-top: 6px;">
-
-                                            </div>
-                                            <div style="font-weight:200;"><a href="#">Black</a></div>
-                                        </div>
-                                        <div class="color-white">
-                                            <div class="white" style="background-color:green;margin-top: 6px;">
-
-                                            </div>
-                                            <div><a href="#">Green</a></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
 
                         </div>
@@ -179,20 +127,20 @@
                                 <button id="default">Default <i class="fas fa-angle-down" id="icon"></i></button>
                                 <div class="sort-content">
                                     <a href="#">Default</a>
-                                    <a href="#">Name</a>
-                                    <a href="#">Price</a>
+                                    <a asp-action="ShopPage" asp-controller="Shop" asp-route-sortOrder="@ViewBag.Name" asp-route-page="@Model.paginate.CurrentPage">Name</a>
+                                    <a asp-action="ShopPage" asp-controller="Shop" asp-route-sortOrder="@ViewBag.Price" asp-route-page="@Model.paginate.CurrentPage">Price</a>
 
                                 </div>
                             </div>
 
                             <div class="product-count">
-                                <strong>@Model.products.Count</strong> <span>Products found</span>
+                                <strong>@ViewBag.AllProducts</strong> <span>Products found</span>
                             </div>
                         </div>
 
                         <div class="products">
                             <div class="row">
-                                @foreach (var product in Model.products)
+                                @foreach (var product in Model.paginate.Datas)
                                 {
                                     <div class="col-lg-4 col-sm-12" data-id="@product.Id">
                                         <div class="picture">
@@ -205,11 +153,11 @@
                                                     <a href="" id="addproduct"> <i class="fas fa-shopping-cart"></i></a>
                                                 </div>
                                                 <div class="detail-icon">
-                                                    <a href=""> <i class="fas fa-info"></i></a>
+                                                    <a asp-action="ProductDetailsPage" asp-controller="Product" asp-route-id="@product.Id"> <i class="fas fa-info"></i></a>
                                                 </div>
                                             </div>
                                             <div class="name">
-                                                <a href="#">@product.Name</a>
+                                                <a asp-action="ProductDetailsPage" asp-controller="Product" asp-route-id="@product.Id">@product.Name</a>
                                             </div>
                                             <div class="price">
                                                 $@product.Price
@@ -255,5 +203,4 @@
     <script asp-append-version="true" src="~/MemberPanel/assets/js/shop.js"></script>
 
 }
-
 

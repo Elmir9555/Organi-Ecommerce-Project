@@ -24,99 +24,45 @@ namespace EndProjectOrgani.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> ProductPage(int page = 1, int take = 9)
+
+        #region ProductList
+        public async Task<IActionResult> ProductPage(string sortOrder, int page = 1, int take = 8)
         {
+            ViewBag.Name = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.Price = (sortOrder == "price_desc") ? "price_asc" : "price_desc";
 
-            List<Product> products = await _context.Products
-            .Where(x=> x.Status != DataStatus.Deleted)
-            .Skip((page - 1) * take)
-            .Take(take)
-            .OrderBy(m => m.Id)
-            .ToListAsync();
+            var Products = from b in _context.Products.Where(x => x.Status != DataStatus.Deleted)
+                           select b;
 
-
-            var productsVM = GetMapDatas(products);
-
-            int count = await GetPageCount(take);
-
-            Paginate<ProductVM> result = new Paginate<ProductVM>(productsVM, page, count);
-
-            
-
-            //var list = await _uow.GetRepository<Product>().GetAllOrderByAsync(x => x.Id, false);
-
-            return View(result);
-        }
-
-
-        public async Task<IActionResult> ProductCategoryPage(int id, int page = 1, int take = 9)
-        {
-            //var list = await _context.Products.Where(x => x.Status != DataStatus.Deleted).Where(x => x.CategoryId == id).Include(x => x.Category).OrderByDescending(x => x.Id).ToListAsync();
-
-
-            List<Product> products = await _context.Products
-              .Where(x => x.Status != DataStatus.Deleted).Where(x => x.CategoryId == id).Include(x => x.Category).OrderByDescending(x => x.Id)
-              .Skip((page - 1) * take)
-              .Take(take)
-              .OrderBy(m => m.Id)
-              .ToListAsync();
-        
-
-            var productsVM = GetMapDatas(products);
-
-            int count = await GetPageCount(take);
-
-            Paginate<ProductVM> result = new Paginate<ProductVM>(productsVM, page, count);
-
-            return View(result);
-        }
-
-        public async Task<IActionResult> ProductDetailsPage(int id)
-        {
-            var productdetails = await _context.Products.Where(x => x.Status != DataStatus.Deleted).Include(x => x.ProductDetails).FirstOrDefaultAsync(x => x.Id == id);
-
-            var productlist = await _uow.GetRepository<Product>().GetAllOrderByAsync(x => x.Id, false);
-
-            var commentlist = await _uow.GetRepository<Comment>().GetAllOrderByAsync(x => x.Id, false);
-
-            var comment = await _context.Comments.FindAsync(id);
-
-            TempData["ProId"] = id;
-            
-            return View((productdetails, productlist, commentlist, comment));
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Comment([Bind(Prefix ="Item4")]Comment model)
-        {
-            var id = TempData["ProId"];
-
-            model.ProductId = (int)id;
-
-
-            await _context.Comments.AddAsync(model);
-            await _context.SaveChangesAsync();
-
-            return RedirectToAction("HomePage","Home");
-        }
-
-        public async Task<IActionResult> ProductSearch(string search)
-        {
-            var products = from m in _context.Products select m;
-
-            if (!String.IsNullOrEmpty(search))
+            switch (sortOrder)
             {
-                products = products.Where(x => x.Name.Contains(search));
+                case "price_desc":
+                    Products = Products.OrderByDescending(x => x.Price);
+                    break;
+                case "price_asc":
+                    Products = Products.OrderBy(x => x.Price);
+                    break;
+                case "name_desc":
+                    Products = Products.OrderByDescending(x => x.Name);
+                    break;
+                default:
+                    Products = Products.OrderBy(x => x.Name);
+                    break;
             }
 
-            return View("ProductPage", (await products.Where(x => x.Status != DataStatus.Deleted).ToListAsync()));
+            var list = await Products.Skip((page - 1) * take).Take(take).ToListAsync();
+
+            var productsVM = GetMapDatas(list);
+            int count = await GetPageCount(take);
+
+            var result = new Paginate<ProductVM>(productsVM, page, count);
+
+
+            //All Products Count
+            ViewBag.AllProducts = _context.Products.Count();
+
+            return View(result);
         }
-
-
-
-
-
-
 
         private async Task<int> GetPageCount(int take)
         {
@@ -124,7 +70,6 @@ namespace EndProjectOrgani.Controllers
 
             return (int)Math.Ceiling((decimal)count / take);
         }
-
         private List<ProductVM> GetMapDatas(List<Product> products)
         {
             List<ProductVM> productList = new List<ProductVM>();
@@ -137,11 +82,9 @@ namespace EndProjectOrgani.Controllers
                     Name = product.Name,
                     Image = product.Image,
                     Price = product.Price,
-                    Count=product.Count,
-                    Category=product.Category,
-                    CategoryId=product.CategoryId
-
-
+                    Count = product.Count,
+                    Category = product.Category,
+                    CategoryId = product.CategoryId
                 };
 
                 productList.Add(newProduct);
@@ -149,6 +92,141 @@ namespace EndProjectOrgani.Controllers
 
             return productList;
         }
+        #endregion
+
+
+        #region ProductCategory
+        public async Task<IActionResult> ProductCategoryPage(string sortOrder, int id, int page = 1, int take = 9)
+        {
+            ViewBag.Name = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.Price = (sortOrder == "price_desc") ? "price_asc" : "price_desc";
+
+            var CategoryProducts = from b in _context.Products
+                           .Where(x => x.Status != DataStatus.Deleted)
+                           .Where(x => x.CategoryId == id)
+                           .Include(x => x.Category)
+                                   select b;
+
+            switch (sortOrder)
+            {
+                case "price_desc":
+                    CategoryProducts = CategoryProducts.OrderByDescending(x => x.Price);
+                    break;
+                case "price_asc":
+                    CategoryProducts = CategoryProducts.OrderBy(x => x.Price);
+                    break;
+                case "name_desc":
+                    CategoryProducts = CategoryProducts.OrderByDescending(x => x.Name);
+                    break;
+                default:
+                    CategoryProducts = CategoryProducts.OrderBy(x => x.Name);
+                    break;
+            }
+
+            var list = await CategoryProducts.Skip((page - 1) * take).Take(take).ToListAsync();
+
+            var productsVM = GetMapDatas(list);
+            int count = await GetPageCount(take);
+
+            var result = new Paginate<ProductVM>(productsVM, page, count);
+
+
+            //All Products Count
+            ViewBag.AllProducts = CategoryProducts.Count();
+
+            return View(result);
+        }
+        #endregion
+
+
+        #region ProductDetails
+        public async Task<IActionResult> ProductDetailsPage(int id)
+        {
+            try
+            {
+                var productdetails = await _context.Products.Where(x => x.Status != DataStatus.Deleted).Include(x => x.ProductDetails).FirstOrDefaultAsync(x => x.Id == id);
+                if (productdetails.ProductDetails == null) return View("ExcptError");
+
+                var productlist = await _uow.GetRepository<Product>().GetAllOrderByAsync(x => x.Id, false);
+
+                var commentlist = await _context.Comments.Where(x => x.Status != DataStatus.Deleted).Where(x => x.ProductId == id).OrderByDescending(x => x.CreatedDate).ToListAsync();
+
+                var comment = await _context.Comments.FindAsync(id);
+
+                TempData["ProId"] = id;
+
+                return View((productdetails, productlist, commentlist, comment));
+            }
+            catch (Exception ex)
+            {
+
+                return View("ExcptError");
+            }
+        }
+        #endregion
+
+
+        #region Comment
+        [HttpPost]
+        public async Task<IActionResult> Comment([Bind(Prefix = "Item4")] Comment model)
+        {
+            var id = TempData["ProId"];
+
+            model.ProductId = (int)id;
+
+
+            await _context.Comments.AddAsync(model);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("HomePage", "Home");
+        }
+        #endregion
+
+
+        #region Search
+        public async Task<IActionResult> ProductSearch(string search, string sortOrder, int page = 1, int take = 8)
+        {
+
+            var Products = from m in _context.Products.Where(x => x.Status != DataStatus.Deleted) select m;
+
+            if (!String.IsNullOrEmpty(search))
+            {
+                Products = Products.Where(x => x.Name.Contains(search));
+            }
+
+            ViewBag.Name = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.Price = (sortOrder == "price_desc") ? "price_asc" : "price_desc";
+            ViewBag.AllProducts = Products.Count();
+
+
+            switch (sortOrder)
+            {
+                case "price_desc":
+                    Products = Products.OrderByDescending(x => x.Price);
+                    break;
+                case "price_asc":
+                    Products = Products.OrderBy(x => x.Price);
+                    break;
+                case "name_desc":
+                    Products = Products.OrderByDescending(x => x.Name);
+                    break;
+                default:
+                    Products = Products.OrderBy(x => x.Name);
+                    break;
+            }
+
+            var list = await Products.Skip((page - 1) * take).Take(take).ToListAsync();
+
+            var productsVM = GetMapDatas(list);
+            int count = await GetPageCount(take);
+
+            var result = new Paginate<ProductVM>(productsVM, page, count);
+
+
+            return View("ProductPage", result);
+        }
+        #endregion 
+
 
     }
 

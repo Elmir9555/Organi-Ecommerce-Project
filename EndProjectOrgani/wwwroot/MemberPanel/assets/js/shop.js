@@ -2210,7 +2210,6 @@ function getCount(list) {
 count.innerText = getCount(productList)
 
 
-
 //Add Basket
 
     

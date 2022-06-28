@@ -24,38 +24,45 @@ namespace EndProjectOrgani.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> ShopPage(int page = 1, int take = 9)
+
+
+
+        public async Task<IActionResult> ShopPage(string sortOrder, int page = 1, int take = 6)
         {
-            var saleoff = await _uow.GetRepository<SaleOff>().GetAllOrderByAsync(x => x.Id, false);
-            var categories = await _uow.GetRepository<Category>().GetAllOrderByAsync(x => x.Id, true);
-            var productss = await _uow.GetRepository<Product>().GetAllOrderByAsync(x => x.Id, false);
+            ViewBag.Name = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.Price = (sortOrder == "price_desc") ? "price_asc" : "price_desc";
+            ViewBag.AllProducts = _context.Products.Count();
 
-          List<Product> products = await _context.Products
-          .Where(x => x.Status != DataStatus.Deleted)
-          .Skip((page - 1) * take)
-          .Take(take)
-          .OrderBy(m => m.Id)
-          .ToListAsync();
+            var Products = from b in _context.Products.Where(x => x.Status != DataStatus.Deleted)
+                           select b;
 
+            switch (sortOrder)
+            {
+                case "price_desc":
+                    Products = Products.OrderByDescending(x => x.Price);
+                    break;
+                case "price_asc":
+                    Products = Products.OrderBy(x => x.Price);
+                    break;
+                case "name_desc":
+                    Products = Products.OrderByDescending(x => x.Name);
+                    break;
+                default:
+                    Products = Products.OrderBy(x => x.Name);
+                    break;
+            }
 
-            var productsVM = GetMapDatas(products);
+            var list = await Products.Skip((page - 1) * take).Take(take).ToListAsync();
 
+            var productsVM = GetMapDatas(list);
             int count = await GetPageCount(take);
 
-            Paginate<ProductVM> result = new Paginate<ProductVM>(productsVM, page, count);
+            var result = new Paginate<ProductVM>(productsVM, page, count);
+            var saleoff = await _uow.GetRepository<SaleOff>().GetAllOrderByAsync(x => x.Id, false);
 
 
-
-            return View((saleoff, productss, categories,result));
+            return View((saleoff, result));
         }
-
-        public async Task<List<Product>> GetProductsWithPrice(int minValue, int maxValue)
-        {
-            return await _context.Products.Where(m => m.Price >= (decimal)minValue && m.Price <= (decimal)maxValue).ToListAsync();
-        }
-
-
-
 
 
         private async Task<int> GetPageCount(int take)
@@ -64,7 +71,6 @@ namespace EndProjectOrgani.Controllers
 
             return (int)Math.Ceiling((decimal)count / take);
         }
-
         private List<ProductVM> GetMapDatas(List<Product> products)
         {
             List<ProductVM> productList = new List<ProductVM>();

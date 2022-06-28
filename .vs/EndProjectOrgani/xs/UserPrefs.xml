@@ -1,29 +1,35 @@
 ﻿<Properties StartupConfiguration="{478630B5-36FF-40A9-A875-79D5C07D5F87}|Default">
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="EndProjectOrgani/appsettings.Development.json">
+    <Files>
+      <File FileName="EndProjectOrgani/Controllers/ShopController.cs" Line="98" Column="1" />
+      <File FileName="EndProjectOrgani/Views/Shop/ShopPage.cshtml" Line="205" Column="2" />
+      <File FileName="EndProjectOrgani/Controllers/BlogController.cs" Line="84" Column="6" />
+      <File FileName="EndProjectOrgani/Views/Blog/BlogDetailsPage.cshtml" Line="92" Column="2" />
+      <File FileName="EndProjectOrgani/Views/Blog/BlogPage.cshtml" Line="2" Column="46" />
+      <File FileName="EndProjectOrgani/Controllers/ProductController.cs" Line="139" Column="19" />
+      <File FileName="EndProjectOrgani/Views/Product/ProductCategoryPage.cshtml" Line="2" Column="46" />
+      <File FileName="EndProjectOrgani/Views/Product/ProductDetailsPage.cshtml" Line="1" Column="1" />
+      <File FileName="EndProjectOrgani/Views/Product/ProductPage.cshtml" Line="1" Column="1" />
+      <File FileName="EndProjectOrgani/appsettings.json" Line="1" Column="1" />
+      <File FileName="EndProjectOrgani/appsettings.Development.json" Line="1" Column="1" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="EndProjectOrgani" expanded="True">
             <Node name="EndProjectOrgani" expanded="True">
               <Node name="Controllers" expanded="True" />
-              <Node name="Entities" expanded="True" />
-              <Node name="Utilities" expanded="True">
-                <Node name="Paginations" expanded="True" />
-              </Node>
+              <Node name="ViewComponents" expanded="True" />
               <Node name="Views" expanded="True">
-                <Node name="Account" expanded="True" />
-                <Node name="Common" expanded="True" />
-                <Node name="Home" expanded="True" />
+                <Node name="Blog" expanded="True" />
+                <Node name="Product" expanded="True" />
+                <Node name="Shop" expanded="True" />
               </Node>
               <Node name="wwwroot" expanded="True">
                 <Node name="AdminPanel" expanded="True" />
-                <Node name="MemberPanel" expanded="True">
-                  <Node name="assets" expanded="True">
-                    <Node name="js" expanded="True">
-                      <Node name="favori.js" selected="True" />
-                    </Node>
-                  </Node>
-                </Node>
+              </Node>
+              <Node name="appsettings.json" expanded="True">
+                <Node name="appsettings.Development.json" selected="True" />
               </Node>
             </Node>
           </Node>

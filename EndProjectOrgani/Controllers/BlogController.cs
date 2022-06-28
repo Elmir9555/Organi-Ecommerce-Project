@@ -24,34 +24,62 @@ namespace EndProjectOrgani.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> BlogPage()
+        #region BlogPage
+        public async Task<IActionResult> BlogPage(int page = 1, int take = 4)
         {
-            var list = await _context.Blogs.Where(x => x.Status != DataStatus.Deleted).Include(x => x.BlogDetails).OrderByDescending(x => x.Id).ToListAsync();
 
+            var list = await _context.Blogs.Where(x => x.Status != DataStatus.Deleted).Include(x => x.BlogDetails)
+                .Skip((page - 1) * take)
+                .Take(take)
+                .ToListAsync();
 
-            return View(list);
+            int count = await GetPageCount(take);
+            var result = new Paginate<Blog>(list, page, count);
+
+            return View(result);
         }
+        private async Task<int> GetPageCount(int take)
+        {
+            var count = await _context.Blogs.CountAsync();
 
+            return (int)Math.Ceiling((decimal)count / take);
+        }
+        #endregion
+
+
+
+        #region BlogDetails
         public async Task<IActionResult> BlogDetailsPage(int id)
         {
             var blog = await _context.Blogs.Where(x => x.Status != DataStatus.Deleted).Include(x => x.Owner).Include(x => x.BlogDetails).FirstOrDefaultAsync(x => x.Id == id);
 
             return View(blog);
         }
+        #endregion
 
-        public async Task<IActionResult> BlogSearch(string search)
+
+
+        #region Blog Search 
+        public async Task<IActionResult> BlogSearch(string search, int page = 1, int take = 4)
         {
-            var blogs = from m in _context.Blogs.Include(x=> x.BlogDetails) select m;
+            var blogs = from m in _context.Blogs.Where(x => x.Status != DataStatus.Deleted).Include(x => x.BlogDetails) select m;
 
             if (!String.IsNullOrEmpty(search))
             {
                 blogs = blogs.Where(x => x.Title.Contains(search));
             }
 
-            return View("BlogPage", (await blogs.Where(x => x.Status != DataStatus.Deleted).ToListAsync()));
+            var list = await blogs.Skip((page - 1) * take).Take(take).ToListAsync();
+
+            int count = await GetPageCount(take);
+            var result = new Paginate<Blog>(list, page, count);
+
+
+            return View("BlogPage", result);
         }
+        #endregion
 
 
-      
+
     }
 }
